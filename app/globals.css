@@ -1,0 +1,484 @@
+@import "tailwindcss";
+
+/* =========================================================================
+   FAREFOLD DESIGN SYSTEM — "THE SPECIFICATION"
+   The site is built as a working packaging specification. Every visual
+   primitive below is borrowed from real structural-packaging drafting:
+   cut lines, crease lines, bleed, dimension leaders, registration marks.
+   Nothing here is decorative-technical; each token has a job.
+   ========================================================================= */
+
+@theme {
+  /* --- Substrate tones. The page moves through materials, not moods. --- */
+  --color-ink: #16130f;
+  --color-ink-raised: #221d16;
+  --color-ink-soft: #57503f;
+  --color-ink-mute: #665f4e;
+
+  --color-paper: #f7f4ec;
+  --color-paper-2: #ece5d6;
+
+  --color-kraft: #c08a4a;
+  --color-kraft-deep: #8a6230;
+  --color-kraft-pale: #e9dabe;
+
+  --color-brand: #234d38;
+  --color-brand-deep: #13301f;
+  --color-brand-pale: #d5e1d3;
+
+  /* Crease vermillion. In dieline software the crease/fold layer is drawn
+     in a second colour so it can be separated from the cut layer. It is the
+     single accent of this site, and it is only ever used for folds, active
+     states and revision marks. */
+  --color-crease: #a24120;
+  --color-crease-line: #c8552e;
+
+  --color-line: #ddd2ba;
+  --color-line-ink: #3a3328;
+  --color-whatsapp: #25d366;
+
+  --ease-spec: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-fold: cubic-bezier(0.34, 1.16, 0.44, 1);
+}
+
+@theme inline {
+  --font-display: var(--font-archivo);
+  --font-sans: var(--font-archivo);
+  --font-mono: var(--font-plex-mono);
+  --font-editorial: var(--font-instrument);
+}
+
+/* -------------------------------------------------------------------------
+   Base. overflow-x is clipped at the root so composition elements can bleed
+   past the grid — which this design does deliberately — without ever
+   producing a horizontal scrollbar.
+   ------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  overflow-x: clip;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-variation-settings: "wdth" 100;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-crease);
+  color: var(--color-paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-crease-line);
+  outline-offset: 3px;
+}
+
+/* -------------------------------------------------------------------------
+   TYPE REGISTERS
+   Three voices, one family plus two specialists:
+   .t-display  — Archivo pushed to its expanded + black extremes. Statements.
+   .t-tech     — IBM Plex Mono. Annotation, codes, dimensions, labels.
+   .t-editorial— Instrument Serif. Used sparingly, for the human sentence in
+                 a technical document.
+   ------------------------------------------------------------------------- */
+@utility t-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-variation-settings: "wdth" 112, "wght" 800;
+  letter-spacing: -0.035em;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+@utility t-display-tight {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-variation-settings: "wdth" 92, "wght" 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+@utility t-tech {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.45;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@utility t-tech-sm {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  line-height: 1.4;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+@utility t-editorial {
+  font-family: var(--font-editorial);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.16;
+}
+
+/* -------------------------------------------------------------------------
+   DRAFTING PRIMITIVES
+   Real dieline conventions:
+     cut       — solid, continuous. Where the knife goes.
+     crease    — long dash in the second colour. Where the board folds.
+     bleed     — fine dot. Where artwork runs past the trim.
+     perf      — tight dash. Where the board tears.
+   ------------------------------------------------------------------------- */
+@utility rule-cut {
+  height: 1px;
+  background: currentColor;
+}
+
+@utility rule-crease {
+  height: 1px;
+  background-image: repeating-linear-gradient(
+    to right,
+    currentColor 0 9px,
+    transparent 9px 15px
+  );
+}
+
+@utility rule-crease-y {
+  width: 1px;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    currentColor 0 9px,
+    transparent 9px 15px
+  );
+}
+
+@utility rule-bleed {
+  height: 1px;
+  background-image: repeating-linear-gradient(
+    to right,
+    currentColor 0 1.5px,
+    transparent 1.5px 6px
+  );
+}
+
+@utility rule-perf {
+  height: 1px;
+  background-image: repeating-linear-gradient(
+    to right,
+    currentColor 0 3px,
+    transparent 3px 7px
+  );
+}
+
+@utility rule-perf-y {
+  width: 1px;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    currentColor 0 3px,
+    transparent 3px 7px
+  );
+}
+
+/* Board grain. An overlay only — never affects layout or hit targets. */
+@utility substrate {
+  position: relative;
+  isolation: isolate;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("/textures/grain.svg");
+    background-size: 180px 180px;
+  }
+}
+
+/* Corrugated flute profile — used on the corrugated material swatch and the
+   corrugated edge of the pizza specimen. A true E-flute section. */
+@utility flute {
+  background-image: repeating-linear-gradient(
+    to right,
+    color-mix(in srgb, var(--color-kraft-deep) 55%, transparent) 0 1px,
+    transparent 1px 3px,
+    color-mix(in srgb, var(--color-kraft-deep) 22%, transparent) 3px 4px,
+    transparent 4px 6px
+  );
+}
+
+/* Drawing layers. Every structural drawing on the site separates its cut
+   layer from its crease layer the way a dieline file does — the crease layer
+   is a different colour precisely so a die-maker can tell them apart. */
+.dl {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dl-crease {
+  stroke: var(--color-crease-line);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+}
+
+.dl-dim {
+  stroke: currentColor;
+  stroke-width: 0.75;
+  opacity: 0.55;
+}
+
+/* Industry row. The packaging problem literally widens as you look at it —
+   Archivo's width axis, driven on hover. Held to hover-capable devices so a
+   tap never leaves a row stuck open. */
+.seg-name {
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 90, "wght" 650;
+  letter-spacing: -0.02em;
+  transition:
+    font-variation-settings 0.5s var(--ease-spec),
+    color 0.5s var(--ease-spec);
+}
+
+@media (hover: hover) {
+  .group:hover .seg-name {
+    font-variation-settings: "wdth" 118, "wght" 700;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   MATERIAL SWATCHES
+   Each swatch is a study of the actual substrate — kraft's warm fibre, the
+   flute profile of E-flute, the cloudiness of PP against the clarity of PET,
+   the fleck of recycled board. Painted in CSS so the materials wall costs
+   nothing to load.
+   ------------------------------------------------------------------------- */
+.sw {
+  background-color: var(--color-paper-2);
+  background-blend-mode: normal;
+}
+
+.sw-kraft {
+  background:
+    repeating-linear-gradient(
+      92deg,
+      rgba(120, 82, 40, 0.07) 0 1px,
+      transparent 1px 4px
+    ),
+    linear-gradient(160deg, #cda071, #b8874f);
+}
+
+.sw-white {
+  background:
+    radial-gradient(120% 90% at 20% 10%, #ffffff, transparent 60%),
+    linear-gradient(160deg, #fbfaf6, #f0ece2);
+}
+
+.sw-corrugated {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(96, 64, 28, 0.32) 0 1px,
+      transparent 1px 3px,
+      rgba(96, 64, 28, 0.12) 3px 4px,
+      transparent 4px 7px
+    ),
+    linear-gradient(160deg, #c99c6c, #b1804a);
+}
+
+.sw-paper {
+  background:
+    repeating-linear-gradient(
+      75deg,
+      rgba(140, 120, 86, 0.05) 0 1px,
+      transparent 1px 5px
+    ),
+    linear-gradient(160deg, #f5f0e4, #e8e0cd);
+}
+
+.sw-greaseproof {
+  background:
+    radial-gradient(90% 70% at 70% 20%, rgba(255, 255, 255, 0.85), transparent 65%),
+    linear-gradient(160deg, #eee6d3, #ded3b8);
+}
+
+.sw-pet {
+  background:
+    linear-gradient(115deg, transparent 38%, rgba(255, 255, 255, 0.95) 45%, transparent 52%),
+    linear-gradient(150deg, rgba(222, 236, 238, 0.95), rgba(188, 209, 213, 0.9));
+}
+
+.sw-pp {
+  background:
+    radial-gradient(70% 60% at 30% 30%, rgba(255, 255, 255, 0.9), transparent 70%),
+    radial-gradient(60% 50% at 75% 70%, rgba(255, 255, 255, 0.6), transparent 70%),
+    linear-gradient(160deg, #e9e9e2, #d4d4cb);
+}
+
+.sw-aluminium {
+  background:
+    repeating-linear-gradient(
+      104deg,
+      rgba(255, 255, 255, 0.65) 0 1px,
+      transparent 1px 3px,
+      rgba(90, 92, 94, 0.18) 3px 4px,
+      transparent 4px 6px
+    ),
+    linear-gradient(150deg, #e2e3e2, #b9bbbb);
+}
+
+.sw-recycled {
+  background:
+    radial-gradient(circle at 18% 28%, rgba(60, 46, 28, 0.55) 0 1.1px, transparent 1.2px),
+    radial-gradient(circle at 62% 14%, rgba(60, 46, 28, 0.4) 0 1px, transparent 1.1px),
+    radial-gradient(circle at 38% 68%, rgba(60, 46, 28, 0.45) 0 1.2px, transparent 1.3px),
+    radial-gradient(circle at 82% 78%, rgba(60, 46, 28, 0.35) 0 1px, transparent 1.1px),
+    radial-gradient(circle at 8% 84%, rgba(60, 46, 28, 0.4) 0 1px, transparent 1.1px),
+    linear-gradient(160deg, #cec0a3, #b8a888);
+  background-size:
+    26px 26px,
+    34px 34px,
+    30px 30px,
+    38px 38px,
+    22px 22px,
+    100% 100%;
+}
+
+.sw-fibre {
+  background:
+    radial-gradient(circle at 30% 40%, rgba(120, 96, 58, 0.35) 0 1.4px, transparent 1.5px),
+    radial-gradient(circle at 72% 62%, rgba(120, 96, 58, 0.28) 0 1.2px, transparent 1.3px),
+    linear-gradient(160deg, #e0d2b6, #cbb997);
+  background-size:
+    18px 18px,
+    24px 24px,
+    100% 100%;
+}
+
+@utility link-rule {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: -4px;
+    height: 1px;
+    background: currentColor;
+    transition: right 0.35s var(--ease-spec);
+  }
+  &:hover::after,
+  &:focus-visible::after {
+    right: 0;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   MOTION
+   Every animation here explains a packaging idea: a line being drawn by a
+   plotter, a crease closing, a mark travelling a production loop. Nothing
+   moves for atmosphere.
+   ------------------------------------------------------------------------- */
+@keyframes plot-line {
+  from {
+    stroke-dashoffset: var(--plot-length, 1200);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes ink-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Cover entrance. Pure CSS so the first screen never waits on JavaScript —
+   the largest text on the page must not depend on hydration. */
+@keyframes sheet-enter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.enter {
+  animation: sheet-enter 0.95s var(--ease-spec) both;
+  animation-delay: calc(var(--enter-i, 0) * 95ms);
+}
+
+/* A mark travelling the production loop. Path length is 2 × 600 straight plus
+   a full circle of r=200, so ~2457 units — the dash pattern and the offset
+   are derived from that so the mark completes exactly one circuit. */
+@keyframes loop-run {
+  to {
+    stroke-dashoffset: -2457;
+  }
+}
+
+.loop-travel {
+  stroke-dasharray: 46 2411;
+  animation: loop-run 18s linear infinite;
+}
+
+@keyframes crease-close {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0.04);
+  }
+}
+
+/* Plotter draw-on. Applied to <path> elements whose pathLength is normalised
+   to 100, so one rule serves every drawing regardless of real path length. */
+.plot {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.plot-run .plot {
+  animation: plot-line 1.1s var(--ease-spec) both;
+  animation-delay: calc(var(--plot-i, 0) * 90ms);
+  --plot-length: 100;
+}
+
+.plot-run .ink {
+  animation: ink-in 0.5s linear both;
+  animation-delay: calc(320ms + var(--plot-i, 0) * 90ms);
+}
+
+.ink {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .plot {
+    stroke-dashoffset: 0 !important;
+  }
+  .ink {
+    opacity: 1 !important;
+  }
+}
