@@ -63,6 +63,81 @@ export function WhatsAppIcon(props: IconProps) {
   );
 }
 
+// Status glyphs. Four distinct silhouettes — circle, diamond, triangle,
+// rounded square — so a status is never read by colour alone: shape carries
+// the meaning first, colour only reinforces it. Kept in the same stroked,
+// currentColor style as the icons above rather than importing a library.
+export function StatusSuccessIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="12" r="8" />
+      <path d="M8.5 12.2l2.4 2.4 4.6-5.2" />
+    </svg>
+  );
+}
+
+export function StatusErrorIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 3.5 20.5 12 12 20.5 3.5 12z" />
+      <path d="M9.5 9.5l5 5m0-5-5 5" />
+    </svg>
+  );
+}
+
+export function StatusWarningIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 4 21 19.5H3z" strokeLinejoin="round" />
+      <path d="M12 10v4" />
+      <path d="M12 16.75v.1" />
+    </svg>
+  );
+}
+
+export function StatusInfoIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="4" y="4" width="16" height="16" rx="4" />
+      <path d="M12 11v5.5" />
+      <path d="M12 7.75v.1" />
+    </svg>
+  );
+}
+
+/** Neutral lifecycle glyph — a plain dash. Deliberately not a status colour
+ * or a status shape: out-of-stock and similar neutral states use this
+ * instead of borrowing success/error/warning/info. */
+export function StatusNeutralIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M7 12h10" />
+    </svg>
+  );
+}
+
+// Header utility icons — Cart and Account. Plain line glyphs in the same
+// stroked, currentColor register as the icons above; no badge/count dot
+// baked in, since there is no real cart or account state to report yet.
+export function CartIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M3.5 5h2l1.1 10.2a1.6 1.6 0 0 0 1.6 1.4h8.2a1.6 1.6 0 0 0 1.58-1.36L19.5 8.5H7" />
+      <circle cx="9.5" cy="19.5" r="1.1" fill="currentColor" stroke="none" />
+      <circle cx="16.5" cy="19.5" r="1.1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+export function AccountIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="8.3" r="3.3" />
+      <path d="M4.75 19.5c1.1-3.4 4-5.2 7.25-5.2s6.15 1.8 7.25 5.2" />
+    </svg>
+  );
+}
+
 /**
  * The Farefold mark: a panel with one corner folded back, the crease drawn
  * the way a dieline draws a crease. The whole business in one fold.

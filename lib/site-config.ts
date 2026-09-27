@@ -50,28 +50,53 @@ export const quoteBrief = [
 export const whatsappOpener =
   "Hi Farefold — I would like to talk about packaging. Here is what I serve and roughly what I need:";
 
-// --- Navigation -------------------------------------------------------------
+/**
+ * A category-aware variant of whatsappOpener, used on taxonomy pages
+ * (/products, /businesses, /foods and their detail pages) so a visitor
+ * doesn't have to re-explain what page they were looking at.
+ */
+export function getCategoryWhatsappOpener(categoryName: string) {
+  return `Hi Farefold — I'm looking at ${categoryName} packaging and would like to talk. Here is what I serve and roughly what I need:`;
+}
 
-export const navLinks = [
-  { label: "How we work", href: "#sequence" },
-  { label: "Packaging", href: "#library" },
-  { label: "Industries", href: "#industries" },
-  { label: "Materials", href: "#materials" },
-  { label: "Brand", href: "#brand" },
-  { label: "Contact", href: "#contact" },
+// --- Navigation -------------------------------------------------------------
+//
+// Hrefs are root-relative ("/#section") rather than bare hashes ("#section")
+// because the header and footer that render them are not homepage-only:
+// every route in the platform shares the same root layout, and a bare
+// "#section" href only scrolls correctly when the visitor is already on
+// "/" — root-relative hrefs navigate home first, then scroll, from any
+// route.
+//
+// primaryNav is the platform's six real commercial/informational
+// destinations — Products, Custom, Solutions, Businesses, Materials, Lab —
+// the set the global header's desktop nav and mobile drawer are both built
+// from. Foods is deliberately not in this list: it's a live taxonomy at
+// /foods, reachable from the homepage's own food-discovery pathway and from
+// siteMap below, without competing for a primary content-nav slot. Cart and
+// Account are also deliberately not in this list — they're utility actions
+// rendered separately in Header.tsx, and there is no real cart or account
+// route yet to link them to.
+export type NavLink = { label: string; href: string };
+
+export const primaryNav: NavLink[] = [
+  { label: "Products", href: "/products" },
+  { label: "Custom", href: "/custom-packaging" },
+  { label: "Solutions", href: "/solutions" },
+  { label: "Businesses", href: "/businesses" },
+  { label: "Materials", href: "/materials" },
+  { label: "Lab", href: "/lab" },
 ];
 
-// The sheet index — drives the left drafting rail and the footer colophon.
-export const sheets = [
-  { no: "01", title: "Cover", href: "#top" },
-  { no: "02", title: "Method", href: "#thinking" },
-  { no: "03", title: "Development", href: "#sequence" },
-  { no: "04", title: "Library", href: "#library" },
-  { no: "05", title: "Industries", href: "#industries" },
-  { no: "06", title: "Materials", href: "#materials" },
-  { no: "07", title: "Brand", href: "#brand" },
-  { no: "08", title: "Production", href: "#process" },
-  { no: "09", title: "Work order", href: "#contact" },
+// The fuller site map — every real route on the platform, including Home,
+// Foods, and Contact — drives the footer's "Contents" column, which is a
+// denser, secondary surface than the header and can afford to list more
+// than primaryNav without crowding anything.
+export const siteMap: NavLink[] = [
+  { label: "Home", href: "/#top" },
+  ...primaryNav,
+  { label: "Foods", href: "/foods" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 // --- SHEET 02 — Method ------------------------------------------------------

@@ -9,12 +9,21 @@
 import type { ReactNode } from "react";
 import { Reveal } from "@/components/Reveal";
 
-export type Tone = "paper" | "ink" | "kraft" | "brand";
+export type Tone = "paper" | "ink" | "kraft" | "brand" | "page";
 
 const toneClasses: Record<
   Tone,
   { body: string; meta: string; rule: string; accent: string; heading: string }
 > = {
+  /** Reads the current [data-page-world] scope's semantic tokens instead of
+   *  the fixed paper/ink/crease system — for routes wrapped in PageWorld. */
+  page: {
+    body: "text-page-ink-soft",
+    meta: "text-page-ink-mute",
+    rule: "text-page-border-strong",
+    accent: "text-page-accent",
+    heading: "text-page-ink",
+  },
   paper: {
     body: "text-ink-soft",
     meta: "text-ink-mute",
@@ -125,6 +134,74 @@ export function SheetHead({
         >
           {headline}
         </h2>
+      </Reveal>
+
+      {intro && (
+        <Reveal delay={120}>
+          <div className={`mt-7 max-w-[54ch] text-[1.0625rem] leading-[1.65] ${t.body}`}>
+            {intro}
+          </div>
+        </Reveal>
+      )}
+
+      {meta && (
+        <Reveal delay={180}>
+          <dl className={`mt-8 flex flex-wrap gap-x-10 gap-y-3 ${t.meta}`}>
+            {meta.map(([k, v]) => (
+              <div key={k} className="t-tech-sm">
+                <dt className="inline opacity-60">{k}</dt>
+                <dd className={`ml-2 inline ${t.accent}`}>{v}</dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
+      )}
+    </header>
+  );
+}
+
+type PageHeadProps = {
+  eyebrow: string;
+  headline: ReactNode;
+  intro?: ReactNode;
+  meta?: [string, string][];
+  tone?: Tone;
+  /** Headline measure. Narrow keeps a statement tight; wide lets it run. */
+  width?: "narrow" | "wide";
+};
+
+/**
+ * A page-level header for routes outside the homepage's nine numbered
+ * sheets — same tone system and typographic treatment as SheetHead, but
+ * keyed off a plain eyebrow label instead of a "Sheet NN" position that
+ * doesn't mean anything off the homepage. Renders an <h1>, since these
+ * pages don't have Hero's <h1> above them the way a homepage section does.
+ */
+export function PageHead({
+  eyebrow,
+  headline,
+  intro,
+  meta,
+  tone = "paper",
+  width = "narrow",
+}: PageHeadProps) {
+  const t = toneClasses[tone];
+
+  return (
+    <header>
+      <Reveal>
+        <p className={`t-tech-sm ${t.meta}`}>{eyebrow}</p>
+        <div className={`rule-cut mt-3 ${t.rule}`} />
+      </Reveal>
+
+      <Reveal delay={60}>
+        <h1
+          className={`t-display mt-8 text-[clamp(2.1rem,6.2vw,4.5rem)] ${t.heading} ${
+            width === "narrow" ? "max-w-[18ch]" : "max-w-[24ch]"
+          }`}
+        >
+          {headline}
+        </h1>
       </Reveal>
 
       {intro && (

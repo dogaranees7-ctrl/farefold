@@ -1,7 +1,8 @@
+import Link from "next/link";
 import { WhatsAppIcon, MailIcon, FoldMark } from "@/components/icons";
 import {
   siteConfig,
-  sheets,
+  siteMap,
   services,
   getWhatsappLink,
   getMailtoLink,
@@ -19,30 +20,29 @@ export function Footer() {
       <div className="mx-auto w-full max-w-[112rem] px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-4">
-            <a href="#top" className="group inline-flex items-center gap-3">
+            <Link href="/#top" className="group inline-flex items-center gap-3">
               <FoldMark className="h-7 w-7 text-ink transition-colors duration-300 group-hover:text-crease" />
               <span className="t-display-tight text-lg text-ink">Farefold</span>
-            </a>
+            </Link>
             <p className="mt-5 max-w-[38ch] text-[0.95rem] leading-7 text-ink-soft">
               {siteConfig.description}
             </p>
             <p className="t-tech-sm mt-6 text-ink-mute">
-              Issued as nine sheets · Rev A
+              Packaging platform · Rev A
             </p>
           </div>
 
           <div className="lg:col-span-3">
             <h2 className="t-tech-sm text-ink-mute">Contents</h2>
             <ul className="mt-4 flex flex-col gap-2">
-              {sheets.map((s) => (
-                <li key={s.href}>
-                  <a
-                    href={s.href}
+              {siteMap.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
                     className="link-rule inline-flex items-baseline gap-3 text-[0.95rem] text-ink-soft transition-colors hover:text-ink"
                   >
-                    <span className="t-tech-sm text-ink-mute">{s.no}</span>
-                    {s.title}
-                  </a>
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>

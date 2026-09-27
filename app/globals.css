@@ -46,6 +46,33 @@
   --font-sans: var(--font-archivo);
   --font-mono: var(--font-plex-mono);
   --font-editorial: var(--font-instrument);
+
+  /* Semantic page tokens — resolved at runtime from whichever
+     [data-page-world] ancestor is in scope (see "PAGE WORLDS" below), so
+     they're registered `inline` rather than `@theme` proper: Tailwind must
+     keep referencing the custom property, not bake in a literal at build
+     time, the same reason --font-display above points at --font-archivo
+     instead of duplicating its value. */
+  --color-page-bg: var(--page-bg);
+  --color-page-surface: var(--page-surface);
+  --color-page-ink: var(--page-ink);
+  --color-page-ink-soft: var(--page-ink-soft);
+  --color-page-ink-mute: var(--page-ink-mute);
+  --color-page-accent: var(--page-accent);
+  --color-page-accent-ink: var(--page-accent-ink);
+  --color-page-border: var(--page-border);
+  --color-page-border-strong: var(--page-border-strong);
+
+  /* Global status tokens — never page-scoped. A success state reads the
+     same shade of green on every page world; see "GLOBAL STATUS TOKENS". */
+  --color-status-success-ink: var(--status-success-ink);
+  --color-status-success-surface: var(--status-success-surface);
+  --color-status-error-ink: var(--status-error-ink);
+  --color-status-error-surface: var(--status-error-surface);
+  --color-status-warning-ink: var(--status-warning-ink);
+  --color-status-warning-surface: var(--status-warning-surface);
+  --color-status-info-ink: var(--status-info-ink);
+  --color-status-info-surface: var(--status-info-surface);
 }
 
 /* -------------------------------------------------------------------------
@@ -75,6 +102,313 @@ body {
 :focus-visible {
   outline: 2px solid var(--color-crease-line);
   outline-offset: 3px;
+}
+
+/* =========================================================================
+   SEMANTIC PAGE TOKENS
+   The platform is organised into thirteen "page worlds" (home, shop,
+   product, custom, solutions, businesses, foods, materials, lab, safety,
+   cart, checkout, account), each carrying its own two-colour palette from
+   the Farefold design-system specification. Components never read a page's
+   raw hex — they read these nine semantic slots, so a component written
+   once (a card, a badge, a rule) repaints correctly in every page world
+   without ever branching on which one it's in.
+
+   Defined here, at :root, are the fallback values every one of the nine
+   slots resolves to outside any [data-page-world] scope — deliberately set
+   equal to the existing paper/ink/crease system so nothing already shipped
+   (the homepage, the header, the footer) changes appearance. Each page
+   world further down overrides the same nine custom properties inside its
+   own [data-page-world="…"] scope; cascade does the rest.
+   ========================================================================= */
+:root {
+  --page-bg: var(--color-paper);
+  --page-surface: var(--color-paper-2);
+  --page-ink: var(--color-ink);
+  --page-ink-soft: var(--color-ink-soft);
+  --page-ink-mute: var(--color-ink-mute);
+  --page-accent: var(--color-crease);
+  --page-accent-ink: var(--color-paper);
+  --page-border: color-mix(in srgb, var(--color-ink) 20%, transparent);
+  --page-border-strong: color-mix(in srgb, var(--color-ink) 45%, transparent);
+}
+
+/* -------------------------------------------------------------------------
+   PAGE WORLDS
+   Every block below sets exactly two raw values — --page-primary and
+   --page-secondary — taken verbatim from the locked specification (never
+   altered), then derives the nine semantic slots from those two alone via
+   color-mix(), the same primitive .flute already uses above. No page world
+   ever references another page world's variables — Foods cannot silently
+   inherit Businesses' or Shop's palette, because each block is a closed,
+   self-contained cascade of its own two colours.
+
+   --page-bg / --page-ink take whichever of the pair is lighter / darker
+   (WCAG relative luminance). --page-accent always carries the darker,
+   more saturated value untouched, for large-scale use (fills, headlines,
+   buttons) per WCAG's 3:1 non-text threshold. For the three pairs whose
+   raw contrast falls short of 4.5:1 for body text — Product Details,
+   Custom Packaging, Checkout — --page-ink is a darkened derivative of the
+   same accent colour (color-mix toward black) so running text stays
+   readable without inventing an unrelated hue; --page-accent keeps the
+   exact locked value regardless. --page-surface, --ink-soft, --ink-mute,
+   --border and --border-strong are one consistent color-mix formula
+   applied everywhere, so no two page worlds are shaded by different rules.
+   ========================================================================= */
+
+/* 01 — Home. #21F1A8 / #171717. Not yet worn by the current homepage — see
+   app/page.tsx, which stays on the paper/ink system until the homepage
+   rebuild phase. Defined here so that phase has a world to step into. */
+[data-page-world="home"] {
+  --page-primary: #21f1a8;
+  --page-secondary: #171717;
+  --page-bg: var(--page-primary);
+  --page-ink: var(--page-secondary);
+  --page-accent: var(--page-secondary);
+  --page-accent-ink: var(--page-bg);
+  --page-surface: color-mix(in srgb, var(--page-bg) 94%, var(--page-ink) 6%);
+  --page-ink-soft: color-mix(in srgb, var(--page-ink) 78%, var(--page-bg) 22%);
+  --page-ink-mute: color-mix(in srgb, var(--page-ink) 58%, var(--page-bg) 42%);
+  --page-border: color-mix(in srgb, var(--page-ink) 20%, var(--page-bg) 80%);
+  --page-border-strong: color-mix(in srgb, var(--page-ink) 45%, var(--page-bg) 55%);
+}
+
+/* 02 — Shop / Products. #E4FD97 / #2D3E2C. */
+[data-page-world="shop"] {
+  --page-primary: #e4fd97;
+  --page-secondary: #2d3e2c;
+  --page-bg: var(--page-primary);
+  --page-ink: var(--page-secondary);
+  --page-accent: var(--page-secondary);
+  --page-accent-ink: var(--page-bg);
+  --page-surface: color-mix(in srgb, var(--page-bg) 94%, var(--page-ink) 6%);
+  --page-ink-soft: color-mix(in srgb, var(--page-ink) 78%, var(--page-bg) 22%);
+  --page-ink-mute: color-mix(in srgb, var(--page-ink) 58%, var(--page-bg) 42%);
+  --page-border: color-mix(in srgb, var(--page-ink) 20%, var(--page-bg) 80%);
+  --page-border-strong: color-mix(in srgb, var(--page-ink) 45%, var(--page-bg) 55%);
+}
+
+/* 03 — Product Details. #EA2E00 / #F0E7D6. Raw pair contrast is 3.5:1 —
+   enough for large text/UI (WCAG 3:1) but not body copy (4.5:1), so
+   --page-ink darkens the accent toward black rather than using it as-is. */
+[data-page-world="product"] {
+  --page-primary: #ea2e00;
+  --page-secondary: #f0e7d6;
+  --page-bg: var(--page-secondary);
+  --page-accent: var(--page-primary);
+  --page-accent-ink: var(--page-bg);
+  --page-ink: color-mix(in srgb, var(--page-primary) 80%, black 20%);
+  --page-surface: color-mix(in srgb, var(--page-bg) 94%, var(--page-ink) 6%);
+  --page-ink-soft: color-mix(in srgb, var(--page-ink) 78%, var(--page-bg) 22%);
+  --page-ink-mute: color-mix(in srgb, var(--page-ink) 58%, var(--page-bg) 42%);
+  --page-border: color-mix(in srgb, var(--page-ink) 20%, var(--page-bg) 80%);
+  --page-border-strong: color-mix(in srgb, var(--page-ink) 45%, var(--page-bg) 55%);
+}
+
+/* 04 — Custom Packaging. #FFAA40 / #007279. Raw pair contrast is 3.0:1 —
+   same accessibility treatment as Product Details above. */
+[data-page-world="custom"] {
+  --page-primary: #ffaa40;
+  --page-secondary: #007279;
+  --page-bg: var(--page-primary);
+  --page-accent: var(--page-secondary);
+  --page-accent-ink: var(--page-bg);
+  --page-ink: color-mix(in srgb, var(--page-secondary) 70%, black 30%);
+  --page-surface: color-mix(in srgb, var(--page-bg) 94%, var(--page-ink) 6%);
+  --page-ink-soft: color-mix(in srgb, var(--page-ink) 78%, var(--page-bg) 22%);
+  --page-ink-mute: color-mix(in srgb, var(--page-ink) 58%, var(--page-bg) 42%);
+  --page-border: color-mix(in srgb, var(--page-ink) 20%, var(--page-bg) 80%);
+  --page-border-strong: color-mix(in srgb, var(--page-ink) 45%, var(--page-bg) 55%);
+}
+
+/* 05 — Solutions. #013E37 / #FFEFB4. */
+[data-page-world="solutions"] {
+  --page-primary: #013e37;
+  --page-secondary: #ffefb4;
+  --page-bg: var(--page-secondary);
+  --page-ink: var(--page-primary);
+  --page-accent: var(--page-primary);
+  --page-accent-ink: var(--page-bg);
+  --page-surface: color-mix(in srgb, var(--page-bg) 94%, var(--page-ink) 6%);
+  --page-ink-soft: color-mix(in srgb, var(--page-ink) 78%, var(--page-bg) 22%);
+  --page-ink-mute: color-mix(in srgb, var(--page-ink) 58%, var(--page-bg) 42%);
+  --page-border: color-mix(in srgb, var(--page-ink) 20%, var(--page-bg) 80%);
+  --page-border-strong: color-mix(in srgb, var(--page-ink) 45%, var(--page-bg) 55%);
+}
+
+/* 06 — Businesses. #3C1A47 / #B6FF00. */
+[data-page-world="businesses"] {
+  --page-primary: #3c1a47;
+  --page-secondary: #b6ff00;
+  --page-bg: var(--page-secondary);
+  --page-ink: var(--page-primary);
+  --page-accent: var(--page-primary);
+  --page-accent-ink: var(--page-bg);
+  --page-surface: color-mix(in srgb, var(--page-bg) 94%, var(--page-ink) 6%);
+  --page-ink-soft: color-mix(in srgb, var(--page-ink) 78%, var(--page-bg) 22%);
+  --page-ink-mute: color-mix(in srgb, var(--page-ink) 58%, var(--page-bg) 42%);
+  --page-border: color-mix(in srgb, var(--page-ink) 20%, var(--page-bg) 80%);
+  --page-border-strong: color-mix(in srgb, var(--page-ink) 45%, var(--page-bg) 55%);
+}
+
+/* 07 — Foods. #3A241A / #FFD6A0. Distinct from Businesses and Shop above:
+   this block references only its own --page-primary/--page-secondary, never
+   [data-page-world="businesses"] or [data-page-world="shop"]. */
+[data-page-world="foods"] {
+  --page-primary: #3a241a;
+  --page-secondary: #ffd6a0;
+  --page-bg: var(--page-secondary);
+  --page-ink: var(--page-primary);
+  --page-accent: var(--page-primary);
+  --page-accent-ink: var(--page-bg);
+  --page-surface: color-mix(in srgb, var(--page-bg) 94%, var(--page-ink) 6%);
+  --page-ink-soft: color-mix(in srgb, var(--page-ink) 78%, var(--page-bg) 22%);
+  --page-ink-mute: color-mix(in srgb, var(--page-ink) 58%, var(--page-bg) 42%);
+  --page-border: color-mix(in srgb, var(--page-ink) 20%, var(--page-bg) 80%);
+  --page-border-strong: color-mix(in srgb, var(--page-ink) 45%, var(--page-bg) 55%);
+}
+
+/* 08 — Materials. #FFC6A8 / #741A2F. */
+[data-page-world="materials"] {
+  --page-primary: #ffc6a8;
+  --page-secondary: #741a2f;
+  --page-bg: var(--page-primary);
+  --page-ink: var(--page-secondary);
+  --page-accent: var(--page-secondary);
+  --page-accent-ink: var(--page-bg);
+  --page-surface: color-mix(in srgb, var(--page-bg) 94%, var(--page-ink) 6%);
+  --page-ink-soft: color-mix(in srgb, var(--page-ink) 78%, var(--page-bg) 22%);
+  --page-ink-mute: color-mix(in srgb, var(--page-ink) 58%, var(--page-bg) 42%);
+  --page-border: color-mix(in srgb, var(--page-ink) 20%, var(--page-bg) 80%);
+  --page-border-strong: color-mix(in srgb, var(--page-ink) 45%, var(--page-bg) 55%);
+}
+
+/* 09 — Packaging Lab. #FFD662 / #422057. */
+[data-page-world="lab"] {
+  --page-primary: #ffd662;
+  --page-secondary: #422057;
+  --page-bg: var(--page-primary);
+  --page-ink: var(--page-secondary);
+  --page-accent: var(--page-secondary);
+  --page-accent-ink: var(--page-bg);
+  --page-surface: color-mix(in srgb, var(--page-bg) 94%, var(--page-ink) 6%);
+  --page-ink-soft: color-mix(in srgb, var(--page-ink) 78%, var(--page-bg) 22%);
+  --page-ink-mute: color-mix(in srgb, var(--page-ink) 58%, var(--page-bg) 42%);
+  --page-border: color-mix(in srgb, var(--page-ink) 20%, var(--page-bg) 80%);
+  --page-border-strong: color-mix(in srgb, var(--page-ink) 45%, var(--page-bg) 55%);
+}
+
+/* 10 — Safety. #FCF6F5 / #990011. Its "Documented" evidence state is
+   deliberately NOT wired to --status-success-* — see the Status component
+   for that rule; this block only carries the page's own bg/ink pair. */
+[data-page-world="safety"] {
+  --page-primary: #fcf6f5;
+  --page-secondary: #990011;
+  --page-bg: var(--page-primary);
+  --page-ink: var(--page-secondary);
+  --page-accent: var(--page-secondary);
+  --page-accent-ink: var(--page-bg);
+  --page-surface: color-mix(in srgb, var(--page-bg) 94%, var(--page-ink) 6%);
+  --page-ink-soft: color-mix(in srgb, var(--page-ink) 78%, var(--page-bg) 22%);
+  --page-ink-mute: color-mix(in srgb, var(--page-ink) 58%, var(--page-bg) 42%);
+  --page-border: color-mix(in srgb, var(--page-ink) 20%, var(--page-bg) 80%);
+  --page-border-strong: color-mix(in srgb, var(--page-ink) 45%, var(--page-bg) 55%);
+}
+
+/* 11 — Cart. #004741 / #F0EDE4. */
+[data-page-world="cart"] {
+  --page-primary: #004741;
+  --page-secondary: #f0ede4;
+  --page-bg: var(--page-secondary);
+  --page-ink: var(--page-primary);
+  --page-accent: var(--page-primary);
+  --page-accent-ink: var(--page-bg);
+  --page-surface: color-mix(in srgb, var(--page-bg) 94%, var(--page-ink) 6%);
+  --page-ink-soft: color-mix(in srgb, var(--page-ink) 78%, var(--page-bg) 22%);
+  --page-ink-mute: color-mix(in srgb, var(--page-ink) 58%, var(--page-bg) 42%);
+  --page-border: color-mix(in srgb, var(--page-ink) 20%, var(--page-bg) 80%);
+  --page-border-strong: color-mix(in srgb, var(--page-ink) 45%, var(--page-bg) 55%);
+}
+
+/* 12 — Checkout. #FFFDF1 / #59C749. Raw pair contrast is 2.1:1 — the
+   weakest of the thirteen — so --page-ink darkens the mantis accent toward
+   black for body text; --page-accent keeps true Mantis #59C749 untouched.
+   Mantis stays this page's colour only — never the global success token
+   (see GLOBAL STATUS TOKENS below). */
+[data-page-world="checkout"] {
+  --page-primary: #fffdf1;
+  --page-secondary: #59c749;
+  --page-bg: var(--page-primary);
+  --page-accent: var(--page-secondary);
+  --page-accent-ink: var(--page-bg);
+  --page-ink: color-mix(in srgb, var(--page-secondary) 60%, black 40%);
+  --page-surface: color-mix(in srgb, var(--page-bg) 94%, var(--page-ink) 6%);
+  --page-ink-soft: color-mix(in srgb, var(--page-ink) 78%, var(--page-bg) 22%);
+  --page-ink-mute: color-mix(in srgb, var(--page-ink) 58%, var(--page-bg) 42%);
+  --page-border: color-mix(in srgb, var(--page-ink) 20%, var(--page-bg) 80%);
+  --page-border-strong: color-mix(in srgb, var(--page-ink) 45%, var(--page-bg) 55%);
+}
+
+/* 13 — Account / Packaging Management. #FF4103 / #001621. */
+[data-page-world="account"] {
+  --page-primary: #ff4103;
+  --page-secondary: #001621;
+  --page-bg: var(--page-primary);
+  --page-ink: var(--page-secondary);
+  --page-accent: var(--page-secondary);
+  --page-accent-ink: var(--page-bg);
+  --page-surface: color-mix(in srgb, var(--page-bg) 94%, var(--page-ink) 6%);
+  --page-ink-soft: color-mix(in srgb, var(--page-ink) 78%, var(--page-bg) 22%);
+  --page-ink-mute: color-mix(in srgb, var(--page-ink) 58%, var(--page-bg) 42%);
+  --page-border: color-mix(in srgb, var(--page-ink) 20%, var(--page-bg) 80%);
+  --page-border-strong: color-mix(in srgb, var(--page-ink) 45%, var(--page-bg) 55%);
+}
+
+/* =========================================================================
+   GLOBAL STATUS TOKENS
+   Success, error, warning, info — four semantic categories, each an ink
+   (text/icon/border) plus a surface (fill), locked by the specification and
+   never page-scoped: a success state reads the same green in Cart as it
+   would in Solutions. Lifecycle states (pending, processing, confirmed,
+   cancelled, out-of-stock) are NOT separate colours — they reuse one of
+   these four categories plus their own glyph and label; see the Status
+   component in components/ui/Status.tsx. Out-of-stock reuses the current
+   page world's neutral ink/border instead of any of these four, since it
+   communicates absence, not success/error/warning/info.
+
+   Which of the two applies is decided by the current page world's own
+   declared tone — data-tone="light" | "dark", stamped onto the page root by
+   PageWorld from the pageWorlds registry (lib/design/page-worlds.ts) — NOT
+   by the visitor's OS/browser colour-scheme preference. A page world's tone
+   is a specification decision independent of its own --page-bg/--page-ink
+   lightness (Foods is a dark-toned world even though its --page-bg happens
+   to be the pale #FFD6A0), so it can't be inferred from those at runtime;
+   the registry is the single source of truth and this file only reads it
+   back via the attribute PageWorld already exposes. :root below is the
+   light-tone default for anything rendered outside a PageWorld scope (the
+   homepage, header, footer today) — an ordinary, undeclared context has no
+   reason to assume dark.
+   ========================================================================= */
+:root {
+  --status-success-ink: #166635;
+  --status-success-surface: #eaf1ed;
+  --status-error-ink: #b4023e;
+  --status-error-surface: #f8e8ee;
+  --status-warning-ink: #7e4f00;
+  --status-warning-surface: #f3efe8;
+  --status-info-ink: #1d599e;
+  --status-info-surface: #ebf0f6;
+}
+
+[data-tone="dark"] {
+  --status-success-ink: #7cdb9e;
+  --status-success-surface: #212e26;
+  --status-error-ink: #ff9c91;
+  --status-error-surface: #332524;
+  --status-warning-ink: #f5b95a;
+  --status-warning-surface: #32291c;
+  --status-info-ink: #8cbdf3;
+  --status-info-surface: #232a32;
 }
 
 /* -------------------------------------------------------------------------
