@@ -8,7 +8,7 @@ type PageWorldProps = {
 };
 
 /**
- * Puts a route inside one of the thirteen locked page-palette scopes: a
+ * Puts a route inside one of the fourteen locked page-palette scopes: a
  * data-page-world attribute matching a [data-page-world="…"] block in
  * app/globals.css, which is what actually resolves --page-bg, --page-ink,
  * --page-accent and the rest for every semantic-token-consuming component
