@@ -80,6 +80,7 @@ export function Reveal({
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
+    setReady(true);
     const el = ref.current;
     if (!el) return;
 
@@ -104,9 +105,9 @@ export function Reveal({
   return (
     <div
       ref={ref}
-      className={`transition-[opacity,transform] duration-[900ms] ${
-        visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-      } ${className}`}
+      className={`reveal-container transition-[opacity,transform] duration-[900ms] ${
+        ready && !visible ? "reveal-hidden" : "translate-y-0 opacity-100"
+      } ${ready ? "reveal-ready" : ""} ${className}`}
       style={{
         transitionTimingFunction: "var(--ease-spec)",
         transitionDelay: `${delay}ms`,
