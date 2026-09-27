@@ -52,7 +52,11 @@ export default function Home() {
       <PageWorld world="home">
         <Hero />
         <StandardVsCustom />
-        <Matcher />
+        <Matcher
+          foodGroups={getTopLevel(foodTypes).map(({ slug, name }) => ({ slug, name }))}
+          businessGroups={getTopLevel(businessTypes).map(({ slug, name }) => ({ slug, name }))}
+          problemGroups={getTopLevel(packagingProblems).map(({ slug, name }) => ({ slug, name }))}
+        />
         <Discovery entries={discoveryEntries} />
         <FinalCta />
         <Contact />
