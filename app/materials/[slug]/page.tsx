@@ -21,15 +21,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const node = getNodeBySlug(materials, slug);
   if (!node) return {};
 
-  const hasChildren = getChildren(materials, node.slug).length > 0;
-
   return {
     title: node.name,
     description:
       node.description ??
       `${node.name} — a packaging material family Farefold classifies for. Browse related materials or talk to us about what you need.`,
     alternates: { canonical: `/materials/${node.slug}` },
-    ...(hasChildren ? {} : { robots: { index: false, follow: true } }),
   };
 }
 
