@@ -77,6 +77,7 @@ export function Reveal({
   // False on the server and on the client's first render alike, so hydration
   // is deterministic.
   const [visible, setVisible] = useState(false);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -94,7 +95,7 @@ export function Reveal({
 
   if (mode === "plot") {
     return (
-      <div ref={ref} className={`${visible ? "plot-run" : ""} ${className}`}>
+      <div ref={ref} className={`${ready ? "reveal-ready" : ""} ${visible ? "plot-run" : ""} ${className}`}>
         {children}
       </div>
     );
