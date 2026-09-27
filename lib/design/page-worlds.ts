@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// Page worlds — the thirteen locked palettes from the Farefold design-system
+// Page worlds — the fourteen locked palettes from the Farefold design-system
 // specification, one per page of the eventual platform. This file is the
 // single TypeScript source of truth for which keys exist and which two
 // locked hex values each one carries; the actual semantic tokens those two
