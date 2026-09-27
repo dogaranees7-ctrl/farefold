@@ -4,19 +4,11 @@ import { useState } from "react";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { ArrowRightIcon } from "@/components/icons";
-import { businessTypes, foodTypes, packagingProblems, getTopLevel } from "@/lib/data";
 
 // The Packaging Matcher entry point — a structured discovery tool, not a
-// recommendation engine. lib/data/relationships.ts (`relations`) is
-// intentionally empty today, so this component never claims to compute a
-// match: the final step honestly says so and hands the visitor real links
-// into the taxonomy pages for whatever they picked instead. Every label
-// here is a real slug from lib/data/ — nothing is invented, and nothing
-// here is a food-safety or suitability claim.
-
-const foodGroups = getTopLevel(foodTypes);
-const businessGroups = getTopLevel(businessTypes);
-const problemGroups = getTopLevel(packagingProblems);
+// recommendation engine. The server page passes only the small top-level
+// taxonomy projection this interactive UI needs, keeping the full taxonomy
+// data out of the client bundle.
 
 // Generic journey categories — UI framing, not a data-backed taxonomy file.
 // Kept deliberately small and plainly descriptive, matching the language
@@ -28,7 +20,13 @@ const journeys = [
   "Shipped / courier",
 ];
 
-type Context = { kind: "food" | "business"; slug: string; name: string };
+type TaxonomyOption = { slug: string; name: string };
+
+type MatcherProps = {
+  foodGroups: TaxonomyOption[];
+  businessGroups: TaxonomyOption[];
+  problemGroups: TaxonomyOption[];
+};
 
 const steps = ["What are you packing?", "How does it travel?", "What are you trying to solve?"];
 
@@ -57,7 +55,7 @@ function ChipButton({
   );
 }
 
-export function Matcher() {
+export function Matcher({ foodGroups, businessGroups, problemGroups }: MatcherProps) {
   const [context, setContext] = useState<Context | null>(null);
   const [journey, setJourney] = useState<string | null>(null);
   const [problem, setProblem] = useState<{ slug: string; name: string } | null>(null);
