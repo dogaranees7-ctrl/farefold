@@ -21,12 +21,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const node = getNodeBySlug(businessTypes, slug);
   if (!node) return {};
 
+  const hasChildren = getChildren(businessTypes, node.slug).length > 0;
+
   return {
     title: node.name,
     description:
       node.description ??
       `${node.name} — a business segment Farefold's packaging platform classifies for. Browse related categories or talk to us about what you need.`,
     alternates: { canonical: `/businesses/${node.slug}` },
+    ...(hasChildren ? {} : { robots: { index: false, follow: true } }),
   };
 }
 
