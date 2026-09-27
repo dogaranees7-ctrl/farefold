@@ -791,7 +791,7 @@ body {
   --plot-length: 100;
 }
 
-.plot-run .ink {
+.reveal-ready.plot-run .ink {
   animation: ink-in 0.5s linear both;
   animation-delay: calc(320ms + var(--plot-i, 0) * 90ms);
 }
