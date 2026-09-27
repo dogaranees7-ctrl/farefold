@@ -27,15 +27,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const node = getNodeBySlug(packagingProblems, slug);
   if (!node) return {};
 
-  const hasChildren = getChildren(packagingProblems, node.slug).length > 0;
-
   return {
     title: node.name,
     description:
       node.description ??
       `${node.name} — a packaging problem Farefold classifies for. Browse related problems or talk to us about what you're trying to solve.`,
     alternates: { canonical: `/solutions/${node.slug}` },
-    ...(hasChildren ? {} : { robots: { index: false, follow: true } }),
   };
 }
 
