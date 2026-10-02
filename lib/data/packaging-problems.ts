@@ -32,7 +32,7 @@ export const packagingProblems: PackagingProblem[] = [
     slug: "condensation-control",
     name: "Condensation Control",
     parentSlug: "thermal-moisture",
-    description: "Research addition — managing condensation on chilled/cold-fill packaging.",
+    description: "Managing moisture that forms on packaging surfaces when temperature differences cause condensation.",
   },
 
   // --- Containment -------------------------------------------------------------
@@ -47,7 +47,7 @@ export const packagingProblems: PackagingProblem[] = [
     slug: "allergen-cross-contact-risk",
     name: "Allergen Cross-Contact Risk",
     parentSlug: "containment",
-    description: "Research addition — packaging's role in separating/labelling allergen-bearing items.",
+    description: "Reducing the risk of allergen cross-contact through separation, handling and clear identification of food items.",
   },
 
   // --- Structural & logistics -----------------------------------------------------
@@ -68,7 +68,7 @@ export const packagingProblems: PackagingProblem[] = [
     slug: "regulatory-labelling-requirements",
     name: "Regulatory Labelling Requirements",
     parentSlug: "commercial-presentation",
-    description: "Research addition — on-pack information a market's regulations require.",
+    description: "Identifying the product and market-specific information that applicable rules require on packaging.",
   },
 
   // --- Supply & sustainability ---------------------------------------------------------
@@ -81,7 +81,7 @@ export const packagingProblems: PackagingProblem[] = [
     slug: "recyclability-end-of-life",
     name: "Recyclability / End-of-Life Handling",
     parentSlug: "supply-sustainability",
-    description: "Research addition — what happens to the pack after use, distinct from any compostability claim.",
+    description: "Considering whether packaging can be collected, sorted, reused, recycled or otherwise handled after use in the intended market.",
   },
 ];
 
