@@ -47,13 +47,13 @@ export const businessTypes: BusinessType[] = [
     slug: "buffet-restaurant",
     name: "Buffet Restaurant",
     parentSlug: "restaurants",
-    description: "Research addition — self-serve/buffet format, common enough to warrant its own node.",
+    description: "Food-service operations where customers select food from a shared self-service or staffed buffet.",
   },
   {
     slug: "food-court-vendor",
     name: "Food Court Vendor",
     parentSlug: "restaurants",
-    description: "Research addition — a stall/counter operating inside a shared food court.",
+    description: "A food business operating from a stall or counter within a shared food-court space.",
   },
 
   // --- Bakery & Desserts -------------------------------------------------
@@ -120,6 +120,6 @@ export const businessTypes: BusinessType[] = [
     slug: "convenience-store-food-service",
     name: "Convenience Store Food Service",
     parentSlug: "retail-production",
-    description: "Research addition — hot/fresh food counters inside convenience retail.",
+    description: "Convenience retailers that prepare or sell ready-to-eat food from an in-store counter.",
   },
 ];
