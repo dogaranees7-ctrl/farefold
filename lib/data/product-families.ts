@@ -123,7 +123,7 @@ export const productFamilies: ProductFamily[] = [
   {
     slug: "cones",
     name: "Cones",
-    description: "Research addition — cone-format packaging for scoop/fried snack formats.",
+    description: "Cone-format packaging used for servings such as ice cream, fries and other snacks.",
   },
   { slug: "ice-cream-cones", name: "Ice Cream Cones", parentSlug: "cones" },
   { slug: "fries-cones", name: "Fries Cones", parentSlug: "cones" },
@@ -133,7 +133,7 @@ export const productFamilies: ProductFamily[] = [
   {
     slug: "buckets",
     name: "Buckets",
-    description: "Research addition — tapered bucket formats, chicken being the common case.",
+    description: "Tapered packaging formats used for bucket-sized servings, including chicken and snacks.",
   },
   { slug: "chicken-buckets", name: "Chicken Buckets", parentSlug: "buckets" },
   { slug: "snack-buckets", name: "Snack Buckets", parentSlug: "buckets" },
