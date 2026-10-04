@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: node.name,
-    description: node.description ?? fallbackDescription
+    description: node.description ?? fallbackDescription,
     alternates: { canonical: `/products/${node.slug}` },
   };
 }
