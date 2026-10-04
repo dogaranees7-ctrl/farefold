@@ -8,28 +8,28 @@ const concepts = [
     no: "01",
     label: "THE TAKEAWAY KIT",
     title: "More than a pizza box.",
-    detail: "A concept for keeping the main meal, sides and sauces organised in one thoughtful carry experience.",
+    detail: "Keep the pizza level, give fries and sauces their own compartments, and turn the walk from counter to table into a branded moment.",
     className: "bg-page-bg text-page-ink",
     kind: "pizza",
-    tags: ["Meal + sides", "Organised carry", "Brand moment"],
+    tags: ["Separate the sides", "Keep sauces upright", "Built for sharing"],
   },
   {
     no: "02",
     label: "THE COFFEE RUN",
     title: "Carry the whole ritual.",
-    detail: "A concept exploring stable cup placement and a dedicated space for a small treat or add-on.",
+    detail: "Separate cups, protect lids and give a biscuit or add-on its own place — designed for a steadier carry and a more thoughtful coffee run.",
     className: "bg-page-accent text-page-accent-ink",
     kind: "coffee",
-    tags: ["Cup carrier", "Add-on space", "Easy handoff"],
+    tags: ["Secure cup positions", "Room for a treat", "One-hand carry"],
   },
   {
     no: "03",
     label: "THE MEAL SYSTEM",
     title: "Every part has a place.",
-    detail: "A concept for separating meal components to help improve presentation from kitchen to customer.",
+    detail: "Give sauces, toppings and the main meal defined spaces to help reduce spills, keep components organised and make opening the box feel intentional.",
     className: "bg-page-surface text-page-ink",
     kind: "meal",
-    tags: ["Separated portions", "Clear layout", "Brand-ready"],
+    tags: ["Keep components apart", "Reduce messy handoffs", "Designed to open well"],
   },
 ];
 
@@ -118,11 +118,11 @@ export function ConceptShowcase() {
             <div>
               <p className="t-tech-sm text-page-accent">FareFold / Concept studio</p>
               <h2 id="concept-showcase-title" className="t-display-tight mt-3 max-w-[16ch] text-3xl sm:text-5xl lg:text-6xl">
-                Packaging that works harder.
+                Make the package part of the product.
               </h2>
             </div>
             <p className="max-w-[42ch] text-sm leading-6 text-page-ink-soft sm:text-base">
-              Better packaging can protect the product, simplify the handoff and make a brand more memorable. Explore the ideas — then shape one around your business.
+              From smarter compartments to a more memorable unboxing, these concept studies start with a real customer problem. Choose an idea and we’ll explore how it could work for your product and brand.
             </p>
           </div>
         </Reveal>
@@ -137,7 +137,7 @@ export function ConceptShowcase() {
                   <div className="w-full max-w-[21rem] transition-transform duration-500 group-hover:scale-[1.035]">
                     <PackageSketch kind={concept.kind} />
                   </div>
-                  <span className="absolute bottom-4 right-5 t-tech-sm opacity-70">STRUCTURE STUDY · NOT A SKU</span>
+                  <span className="absolute bottom-4 right-5 t-tech-sm opacity-70">CONCEPT STUDY · NOT FOR SALE</span>
                 </div>
                 <div className="flex flex-1 flex-col p-6 sm:p-7">
                   <p className="t-tech-sm text-page-ink-mute">{concept.label}</p>
