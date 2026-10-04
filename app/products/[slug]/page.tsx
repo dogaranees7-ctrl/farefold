@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageHead } from "@/components/spec/Sheet";
 import { Breadcrumbs } from "@/components/taxonomy/Breadcrumbs";
@@ -92,9 +93,9 @@ export default async function ProductFamilyPage({ params }: Props) {
         <div className="mt-14 border-t border-page-border pt-8 sm:mt-20">
           <p className="max-w-[54ch] text-[0.9rem] leading-6 text-page-ink-mute">
             Exploring packaging by material, food or business type? Browse{" "}
-            <a href="/materials" className="link-rule text-page-ink">Materials</a>,{" "}
-            <a href="/foods" className="link-rule text-page-ink">Foods</a> or{" "}
-            <a href="/businesses" className="link-rule text-page-ink">Businesses</a>.
+            <Link href="/materials" className="link-rule text-page-ink">Materials</Link>,{" "}
+            <Link href="/foods" className="link-rule text-page-ink">Foods</Link> or{" "}
+            <Link href="/businesses" className="link-rule text-page-ink">Businesses</Link>.
           </p>
         </div>
 
