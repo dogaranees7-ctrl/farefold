@@ -21,11 +21,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const node = getNodeBySlug(businessTypes, slug);
   if (!node) return {};
 
+  const ancestors = getAncestors(businessTypes, node.slug);
+  const hierarchy = ancestors.map((ancestor) => ancestor.name).join(" / ");
+  const fallbackDescription = hierarchy
+    ? `${node.name} — food-business segment within ${hierarchy}. Explore this business segment and its subcategories in Farefold's business taxonomy.`
+    : `${node.name} — food-business segment. Explore this business segment and its subcategories in Farefold's business taxonomy.`;
+
   return {
     title: node.name,
-    description:
-      node.description ??
-      `${node.name} — a business segment Farefold's packaging platform classifies for. Browse related categories or talk to us about what you need.`,
+    description: node.description ?? fallbackDescription
     alternates: { canonical: `/businesses/${node.slug}` },
   };
 }
