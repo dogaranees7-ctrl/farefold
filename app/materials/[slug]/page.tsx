@@ -21,11 +21,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const node = getNodeBySlug(materials, slug);
   if (!node) return {};
 
+  const ancestors = getAncestors(materials, node.slug);
+  const hierarchy = ancestors.map((ancestor) => ancestor.name).join(" / ");
+  const fallbackDescription = hierarchy
+    ? `${node.name} — packaging material within ${hierarchy}. Explore its place in Farefold's material taxonomy.`
+    : `${node.name} — packaging material. Explore its place in Farefold's material taxonomy.`;
+
   return {
     title: node.name,
-    description:
-      node.description ??
-      `${node.name} — a packaging material family Farefold classifies for. Browse related materials or talk to us about what you need.`,
+    description: node.description ?? fallbackDescription,
     alternates: { canonical: `/materials/${node.slug}` },
   };
 }
