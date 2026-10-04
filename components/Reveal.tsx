@@ -80,6 +80,9 @@ export function Reveal({
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
+    // Intentional hydration gate: don't hide content until effects run on the
+    // client, preserving readable content when JavaScript is unavailable.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setReady(true);
     const el = ref.current;
     if (!el) return;
