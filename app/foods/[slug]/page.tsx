@@ -35,11 +35,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const node = getNodeBySlug(foodTypes, slug);
   if (!node) return {};
 
+  const ancestors = getAncestors(foodTypes, node.slug);
+  const hierarchy = ancestors.map((ancestor) => ancestor.name).join(" / ");
+  const fallbackDescription = hierarchy
+    ? `${node.name} — food category within ${hierarchy}. Explore this food category and its subcategories in Farefold's food taxonomy.`
+    : `${node.name} — food category. Explore this food category and its subcategories in Farefold's food taxonomy.`;
+
   return {
     title: node.name,
-    description:
-      node.description ??
-      `${node.name} — a food type Farefold's packaging platform classifies for. Browse related categories or talk to us about what you need.`,
+    description: node.description ?? fallbackDescription
     alternates: { canonical: `/foods/${node.slug}` },
   };
 }
