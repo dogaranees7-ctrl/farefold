@@ -21,6 +21,9 @@ const journeys = [
 ];
 
 type TaxonomyOption = { slug: string; name: string };
+type Context =
+  | { kind: "food"; slug: string; name: string }
+  | { kind: "business"; slug: string; name: string };
 
 type MatcherProps = {
   foodGroups: TaxonomyOption[];
