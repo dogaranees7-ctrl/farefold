@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { PageHead } from "@/components/spec/Sheet";
 import { Breadcrumbs } from "@/components/taxonomy/Breadcrumbs";
 import { TaxonomyCard } from "@/components/taxonomy/TaxonomyCard";
-import { CatalogueEmptyState } from "@/components/taxonomy/CatalogueEmptyState";
+import { ProductFormatCatalogue } from "@/components/taxonomy/ProductFormatCatalogue";
 import { PageWorld } from "@/components/ui/PageWorld";
 import { productFamilies, getNodeBySlug, getChildren, getAncestors, getRelated } from "@/lib/data";
 
@@ -85,9 +85,7 @@ export default async function ProductFamilyPage({ params }: Props) {
             ))}
           </ul>
         ) : (
-          <div className="mt-14 sm:mt-20">
-            <CatalogueEmptyState categoryName={node.name} />
-          </div>
+          <ProductFormatCatalogue slug={node.slug} categoryName={node.name} />
         )}
 
         <div className="mt-14 border-t border-page-border pt-8 sm:mt-20">
