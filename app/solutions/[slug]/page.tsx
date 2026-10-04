@@ -95,7 +95,7 @@ export default async function PackagingProblemPage({ params }: Props) {
 
         <div className="mt-14 border-t border-page-border pt-8 sm:mt-20">
           <p className="max-w-[54ch] text-[0.9rem] leading-6 text-page-ink-mute">
-            Explore other parts of the packaging taxonomy: <Link href="/products" className="link-rule text-page-ink">Products</Link>, <Link href="/materials" className="link-rule text-page-ink">Materials</Link>,  or <Link href="/foods" className="link-rule text-page-ink">Foods</Link>.
+            Explore other parts of the packaging taxonomy: <Link href="/products" className="link-rule text-page-ink">Products</Link>, <Link href="/materials" className="link-rule text-page-ink">Materials</Link> or <Link href="/foods" className="link-rule text-page-ink">Foods</Link>.
           </p>
         </div>
 
