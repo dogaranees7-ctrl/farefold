@@ -27,11 +27,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const node = getNodeBySlug(packagingProblems, slug);
   if (!node) return {};
 
+  const ancestors = getAncestors(packagingProblems, node.slug);
+  const hierarchy = ancestors.map((ancestor) => ancestor.name).join(" / ");
+  const fallbackDescription = hierarchy
+    ? `${node.name} — packaging problem within ${hierarchy}. Explore its place in Farefold's problem taxonomy.`
+    : `${node.name} — packaging problem. Explore its place in Farefold's problem taxonomy.`;
+
   return {
     title: node.name,
-    description:
-      node.description ??
-      `${node.name} — a packaging problem Farefold classifies for. Browse related problems or talk to us about what you're trying to solve.`,
+    description: node.description ?? fallbackDescription,
     alternates: { canonical: `/solutions/${node.slug}` },
   };
 }
