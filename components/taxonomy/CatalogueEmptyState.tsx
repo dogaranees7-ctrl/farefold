@@ -21,13 +21,13 @@ export function CatalogueEmptyState({ categoryName }: { categoryName: string }) 
   return (
     <div className="border border-page-border bg-page-surface px-6 py-10 sm:px-10 sm:py-12">
       <p className="t-tech-sm text-page-accent">Catalogue status</p>
-      <h3 className="t-display-tight mt-3 max-w-[26ch] text-2xl text-page-ink sm:text-3xl">
-        This category&apos;s catalogue is being prepared.
+      <h3 className="t-display-tight mt-3 max-w-[30ch] text-2xl text-page-ink sm:text-3xl">
+        Need packaging for {categoryName}?
       </h3>
       <p className="mt-4 max-w-[54ch] text-[0.95rem] leading-6 text-page-ink-soft">
-        We&apos;re documenting real specifications, materials and photography for{" "}
-        <strong className="text-page-ink">{categoryName}</strong> before publishing a single SKU
-        — not before. Tell us what you serve and we&apos;ll spec it directly.
+        This page is part of Farefold&apos;s packaging taxonomy, but the public catalogue does not
+        yet list verified SKUs for this category. Tell us what you need and we can discuss the
+        format, use case and specifications before recommending a product.
       </p>
 
       <div className="mt-7 flex flex-col gap-3 sm:flex-row">
