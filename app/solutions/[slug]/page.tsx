@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageHead } from "@/components/spec/Sheet";
 import { Breadcrumbs } from "@/components/taxonomy/Breadcrumbs";
@@ -91,6 +92,12 @@ export default async function PackagingProblemPage({ params }: Props) {
             <CatalogueEmptyState categoryName={node.name} />
           </div>
         )}
+
+        <div className="mt-14 border-t border-page-border pt-8 sm:mt-20">
+          <p className="max-w-[54ch] text-[0.9rem] leading-6 text-page-ink-mute">
+            Explore other parts of the packaging taxonomy: <Link href="/products" className="link-rule text-page-ink">Products</Link>, <Link href="/materials" className="link-rule text-page-ink">Materials</Link>,  or <Link href="/foods" className="link-rule text-page-ink">Foods</Link>.
+          </p>
+        </div>
 
         {related.length > 0 && (
           <div className="mt-14 border-t border-page-border pt-10 sm:mt-20">
