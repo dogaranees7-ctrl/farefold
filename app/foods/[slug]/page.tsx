@@ -10,6 +10,20 @@ import { foodTypes, getNodeBySlug, getChildren, getAncestors, getRelated } from 
 type Params = { slug: string };
 type Props = { params: Promise<Params> };
 
+const characteristicLabels: Record<string, string> = {
+  aqueous: "Aqueous",
+  acidic: "Acidic",
+  "oily-fatty": "Oily / fatty",
+  dairy: "Dairy",
+  beverage: "Beverage",
+  bakery: "Bakery",
+  dry: "Dry",
+  frozen: "Frozen",
+  hot: "Typically served hot",
+  refrigerated: "Typically refrigerated",
+  reheated: "Typically reheated",
+};
+
 export const dynamicParams = false;
 
 export function generateStaticParams(): Params[] {
@@ -72,7 +86,7 @@ export default async function FoodTypePage({ params }: Props) {
                     key={characteristic}
                     className="t-tech-sm border border-page-border px-2.5 py-1 text-page-ink-soft"
                   >
-                    {characteristic}
+                    {characteristicLabels[characteristic] ?? characteristic}
                   </span>
                 ))}
               </div>
