@@ -89,6 +89,15 @@ export default async function ProductFamilyPage({ params }: Props) {
           </div>
         )}
 
+        <div className="mt-14 border-t border-page-border pt-8 sm:mt-20">
+          <p className="max-w-[54ch] text-[0.9rem] leading-6 text-page-ink-mute">
+            Exploring packaging by material, food or business type? Browse{" "}
+            <a href="/materials" className="link-rule text-page-ink">Materials</a>,{" "}
+            <a href="/foods" className="link-rule text-page-ink">Foods</a> or{" "}
+            <a href="/businesses" className="link-rule text-page-ink">Businesses</a>.
+          </p>
+        </div>
+
         {related.length > 0 && (
           <div className="mt-14 border-t border-page-border pt-10 sm:mt-20">
             <p className="t-tech-sm text-page-ink-mute">Related</p>
