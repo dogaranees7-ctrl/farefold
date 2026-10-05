@@ -25,28 +25,7 @@ const families = [
 export default function ProductsIndexPage() {
   return (
     <div className="bg-[#f3efe6] text-[#171614]"><div className="mx-auto w-full max-w-[112rem] px-5 sm:px-8 lg:px-12">
-        <PageHead
-          tone="page"
-          eyebrow="Products / Packaging catalogue"
-          headline={
-            <>
-              Packaging that
-              <br />
-              <span className="text-[#567000]">does more.</span>
-            </>
-          }
-          intro={
-            <p>
-              Start with a real packaging direction. Farefold products are built around the food,
-              the journey and the brand — not just a generic box on a shelf. Specifications,
-              materials, print, quantity and pricing are confirmed for each brief.
-            </p>
-          }
-          meta={[
-            ["Product directions", String(catalogProducts.length)],
-            ["Built for", "Food / beverage / retail"],
-          ]}
-        />
+        <div className="border-b border-black/15 pb-10"><p className="text-xs uppercase tracking-[0.24em] text-[#567000]">Products / Packaging catalogue</p><h1 className="mt-5 max-w-5xl text-5xl font-semibold leading-[0.92] tracking-[-0.05em] sm:text-7xl">Packaging directions built around the food.</h1><p className="mt-6 max-w-3xl text-lg leading-8 text-black/60">Explore formats designed around the food, the journey and the brand. Specifications, materials, print, quantity and pricing are confirmed for each brief.</p></div>
 
         <section aria-labelledby="catalog-heading" className="mt-14 sm:mt-20">
           <div className="flex flex-col gap-4 border-y border-black/15 py-6 sm:flex-row sm:items-end sm:justify-between">
