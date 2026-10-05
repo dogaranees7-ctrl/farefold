@@ -1,5 +1,3 @@
-import type { ReactNode } from "react";
-
 export type ProductVisualKind = "pizza" | "coffee" | "meal" | "sauce" | "bottle" | "sushi" | "bag" | "bakery";
 
 type Props = { kind: ProductVisualKind; compact?: boolean };
