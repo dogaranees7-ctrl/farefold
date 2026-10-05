@@ -37,16 +37,7 @@ export default async function ProductDetailPage({ params }: Props) {
 
         <div className="mt-10 grid gap-px border border-black/15 bg-black/15 lg:grid-cols-[1.05fr_.95fr]">
           <div className="bg-[#f3efe6] p-7 sm:p-10 lg:p-14">
-            <PageHead
-              tone="page"
-              eyebrow={product.eyebrow}
-              headline={product.name}
-              intro={<p>{product.description}</p>}
-              meta={[
-                ["Status", "Quote / specification"],
-                ["Format", "Customised to brief"],
-              ]}
-            />
+            <div><p className="text-xs uppercase tracking-[0.24em] text-[#567000]">${product.eyebrow}</p><h1 className="mt-4 text-5xl font-semibold leading-[0.92] tracking-[-0.05em] sm:text-7xl">${product.name}</h1><p className="mt-6 max-w-2xl text-lg leading-8 text-black/60">${product.description}</p><div className="mt-8 grid grid-cols-2 gap-px border border-black/15"><div className="p-4"><p className="text-xs uppercase tracking-[0.18em] text-black/40">Status</p><p className="mt-2 text-sm">Quote / specification</p></div><div className="p-4"><p className="text-xs uppercase tracking-[0.18em] text-black/40">Format</p><p className="mt-2 text-sm">Customised to brief</p></div></div></div>
             <div className="mt-10 border-t border-black/15 pt-7">
               <p className="t-tech-sm text-[#557000]">The problem</p>
               <p className="mt-3 max-w-[55ch] text-base leading-7 text-[#171614]">{product.problem}</p>
