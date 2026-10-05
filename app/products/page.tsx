@@ -56,7 +56,7 @@ export default function ProductsIndexPage() {
         <section aria-labelledby="catalog-heading" className="mt-14 sm:mt-20">
           <div className="flex flex-col gap-4 border-y border-page-border py-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="t-tech-sm text-page-accent">Featured catalogue / 01—36</p>
+              <p className="t-tech-sm text-page-accent">Featured catalogue / 01—08</p>
               <h2 id="catalog-heading" className="t-display-tight mt-2 text-2xl text-page-ink sm:text-4xl">
                 Choose the problem to solve
               </h2>
