@@ -5,7 +5,7 @@ import { catalogProducts } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Request a Quote",
   description:
-    "Send Farefold the packaging brief for a product direction, custom structure or recurring supply requirement.",
+    "Start a Farefold project for restaurant branding, packaging, print, launch ideas or a practical customer-experience problem.",
   alternates: { canonical: "/contact" },
 };
 
