@@ -28,7 +28,7 @@ export function Footer() {
               {siteConfig.description}
             </p>
             <p className="t-tech-sm mt-6 text-ink-mute">
-              Packaging platform · Rev A
+              Restaurant branding · packaging · ideas
             </p>
           </div>
 
@@ -75,7 +75,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href={getMailtoLink("Packaging enquiry")}
+                  href={getMailtoLink("Farefold enquiry")}
                   className="flex items-center gap-2.5 text-[0.95rem] break-all text-ink-soft transition-colors hover:text-ink"
                 >
                   <MailIcon className="h-4 w-4 shrink-0" />
@@ -93,7 +93,7 @@ export function Footer() {
             &copy; {year} {siteConfig.legalName}
           </p>
           <p className="t-tech-sm text-ink-mute">
-            Packaging design · sourcing · print · supply
+            Branding · packaging · print · launch
           </p>
         </div>
       </div>
