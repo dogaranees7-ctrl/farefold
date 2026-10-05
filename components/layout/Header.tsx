@@ -16,8 +16,6 @@ import {
   siteConfig,
   primaryNav,
   getWhatsappLink,
-  getMailtoLink,
-  quoteBrief,
   whatsappOpener,
 } from "@/lib/site-config";
 
@@ -121,7 +119,7 @@ export function Header() {
                   WhatsApp
                 </Button>
                 <Button
-                  href={getMailtoLink("Packaging brief — quote request", quoteBrief)}
+                  href="/contact"
                   variant="primary"
                   size="md"
                 >
@@ -218,7 +216,7 @@ export function Header() {
             WhatsApp Farefold
           </Button>
           <Button
-            href={getMailtoLink("Packaging brief — quote request", quoteBrief)}
+            href="/contact"
             variant="light"
             size="lg"
             className="w-full"
