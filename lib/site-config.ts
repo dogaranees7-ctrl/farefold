@@ -80,12 +80,13 @@ export function getCategoryWhatsappOpener(categoryName: string) {
 export type NavLink = { label: string; href: string };
 
 export const primaryNav: NavLink[] = [
-  { label: "Products", href: "/products" },
-  { label: "Custom", href: "/custom-packaging" },
-  { label: "Solutions", href: "/solutions" },
   { label: "Businesses", href: "/businesses" },
-  { label: "Materials", href: "/materials" },
-  { label: "Lab", href: "/lab" },
+  { label: "Branding", href: "/branding" },
+  { label: "Products", href: "/products" },
+  { label: "Packaging", href: "/products" },
+  { label: "Custom", href: "/custom-packaging" },
+  { label: "Guidelines", href: "/guidelines" },
+  { label: "Contact", href: "/contact" },
 ];
 
 // The fuller site map — every real route on the platform, including Home,
@@ -95,8 +96,6 @@ export const primaryNav: NavLink[] = [
 export const siteMap: NavLink[] = [
   { label: "Home", href: "/#top" },
   ...primaryNav,
-  { label: "Foods", href: "/foods" },
-  { label: "Contact", href: "/#contact" },
 ];
 
 // --- SHEET 02 — Method ------------------------------------------------------
