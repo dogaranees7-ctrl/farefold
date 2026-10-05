@@ -42,10 +42,10 @@
 }
 
 @theme inline {
-  --font-display: var(--font-archivo);
-  --font-sans: var(--font-archivo);
-  --font-mono: var(--font-plex-mono);
-  --font-editorial: var(--font-instrument);
+  --font-display: Arial, Helvetica, sans-serif;
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-mono: "Courier New", monospace;
+  --font-editorial: Georgia, "Times New Roman", serif;
 
   /* Semantic page tokens — resolved at runtime from whichever
      [data-page-world] ancestor is in scope (see "PAGE WORLDS" below), so
@@ -422,40 +422,39 @@ body {
 @utility t-display {
   font-family: var(--font-display);
   font-weight: 800;
-  font-variation-settings: "wdth" 112, "wght" 800;
-  letter-spacing: -0.035em;
-  line-height: 0.86;
-  text-transform: uppercase;
+  letter-spacing: -0.045em;
+  line-height: 0.92;
 }
 
 @utility t-display-tight {
   font-family: var(--font-display);
-  font-weight: 700;
-  font-variation-settings: "wdth" 92, "wght" 700;
-  letter-spacing: -0.02em;
+  font-weight: 750;
+  letter-spacing: -0.035em;
   line-height: 1;
 }
 
 @utility t-tech {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
   line-height: 1.45;
-  letter-spacing: 0.14em;
+  font-weight: 700;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
 }
 
 @utility t-tech-sm {
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-family: var(--font-sans);
+  font-size: 0.66rem;
   line-height: 1.4;
-  letter-spacing: 0.18em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 @utility t-editorial {
   font-family: var(--font-editorial);
   font-weight: 400;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   line-height: 1.16;
 }
 
