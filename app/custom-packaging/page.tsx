@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHead } from "@/components/spec/Sheet";
-import { PageWorld } from "@/components/ui/PageWorld";
 import { Button } from "@/components/ui/Button";
 import { WhatsAppIcon, ArrowRightIcon } from "@/components/icons";
 import {
@@ -30,7 +28,7 @@ const stages: Stage[] = [
 
 export default function CustomPackagingPage() {
   return (
-    <PageWorld world="custom" className="substrate bg-page-bg py-20 sm:py-28 lg:py-32">
+    <PageWorld world="custom" className="bg-[#ffe0a8]">
       <div className="mx-auto w-full max-w-[112rem] px-5 sm:px-8 lg:px-12">
         <PageHead
           tone="page"
@@ -39,7 +37,7 @@ export default function CustomPackagingPage() {
             <>
               Ideas built
               <br />
-              <span className="text-page-accent">around your restaurant.</span>
+              <span className="text-[#007a78]">around your restaurant.</span>
             </>
           }
           intro={
@@ -50,25 +48,25 @@ export default function CustomPackagingPage() {
           meta={[["Stages", String(stages.length)]]}
         />
 
-        <ol className="mt-14 grid grid-cols-1 gap-px border border-page-border bg-page-border sm:mt-20 sm:grid-cols-2 lg:grid-cols-3">
+        <ol className="mt-14 grid grid-cols-1 gap-px border border-black/15 bg-black/15 sm:mt-20 sm:grid-cols-2 lg:grid-cols-3">
           {stages.map((stage) => (
-            <li key={stage.no} className="flex flex-col gap-3 bg-page-bg p-6 sm:p-7">
-              <span className="t-tech-sm text-page-accent">{stage.no}</span>
-              <h2 className="t-display-tight text-lg text-page-ink">{stage.label}</h2>
-              <p className="text-[0.9rem] leading-6 text-page-ink-soft">{stage.body}</p>
+            <li key={stage.no} className="bg-[#ffe0a8]">
+              <span className="t-tech-sm text-[#007a78]">{stage.no}</span>
+              <h2 className="t-display-tight text-lg text-[#171614]">{stage.label}</h2>
+              <p className="text-[0.9rem] leading-6 text-[#171614]-soft">{stage.body}</p>
             </li>
           ))}
         </ol>
 
-        <div className="mt-14 max-w-[64ch] border-t border-page-border pt-8 sm:mt-20">
-          <p className="t-tech-sm text-page-ink-mute">Starting points</p>
-          <p className="mt-3 text-[0.95rem] leading-6 text-page-ink-soft">
+        <div className="mt-14 max-w-[64ch] border-t border-black/15 pt-8 sm:mt-20">
+          <p className="t-tech-sm text-[#171614]-mute">Starting points</p>
+          <p className="mt-3 text-[0.95rem] leading-6 text-[#171614]-soft">
             Not sure where to start? Browse{" "}
-            <Link href="/products/branding-custom" className="link-rule text-page-ink">
+            <Link href="/products/branding-custom" className="link-rule text-[#171614]">
               printed &amp; branded formats
             </Link>{" "}
             for a sense of what&apos;s possible, or{" "}
-            <Link href="/materials" className="link-rule text-page-ink">
+            <Link href="/materials" className="link-rule text-[#171614]">
               Materials
             </Link>{" "}
             for what the structure can be made from.
@@ -96,6 +94,6 @@ export default function CustomPackagingPage() {
           </Button>
         </div>
       </div>
-    </PageWorld>
+    </div>
   );
 }
