@@ -9,14 +9,11 @@ import {
   quoteBrief,
   whatsappOpener,
 } from "@/lib/site-config";
+import type { CatalogProduct } from "@/lib/data";
 
-// SHEET 09 — Work order.
-//
-// The closing sheet is a job ticket rather than a contact form: it states
-// exactly what we need to quote, and both buttons open with those fields
-// already written out. Nothing here pretends to be a form that submits —
-// they are a mailto and a WhatsApp thread, which is what they have always
-// been.
+type ContactProps = {
+  product?: CatalogProduct | null;
+};
 
 const fields = [
   "Business name and type",
@@ -36,7 +33,21 @@ function PunchHole({ className = "" }: { className?: string }) {
   );
 }
 
-export function Contact() {
+export function Contact({ product = null }: ContactProps) {
+  const selectedBrief = product
+    ? [
+        `Product direction: ${product.name}`,
+        `Product code: ${product.id}`,
+        `Family: ${product.familyHref.replace("/products/", "")}`,
+        "",
+        quoteBrief,
+      ].join("\n")
+    : quoteBrief;
+
+  const selectedWhatsappOpener = product
+    ? `Hi Farefold — I would like to request the "${product.name}" packaging direction. Here is what I serve and roughly what I need:`
+    : whatsappOpener;
+
   return (
     <section
       id="contact"
@@ -73,7 +84,6 @@ export function Contact() {
             </Reveal>
           </div>
 
-          {/* The ticket. */}
           <Reveal delay={120} className="lg:col-span-6 lg:col-start-7">
             <div className="relative border border-ink/25 bg-paper">
               <PunchHole className="-top-[7px] left-[12%]" />
@@ -91,6 +101,15 @@ export function Contact() {
 
               <div className="px-6 py-8 sm:px-10">
                 <p className="t-tech text-ink-mute">What we&apos;ll ask for</p>
+
+                {product ? (
+                  <div className="mt-5 border border-kraft-deep/25 bg-kraft-pale px-4 py-4">
+                    <p className="t-tech-sm text-kraft-deep">Selected product direction</p>
+                    <p className="mt-1 text-base font-medium text-ink">{product.name}</p>
+                    <p className="mt-1 text-sm leading-6 text-ink-soft">{product.description}</p>
+                  </div>
+                ) : null}
+
                 <ol className="mt-5">
                   {fields.map((f, i) => (
                     <li
@@ -106,14 +125,13 @@ export function Contact() {
                 </ol>
 
                 <p className="mt-6 text-[0.9rem] leading-6 text-ink-soft">
-                  Both buttons below open with those questions already written
-                  out — fill in what you know and send it. Missing a few is
-                  fine.
+                  Both buttons below open with these details already written out
+                  {product ? " for the selected product direction" : ""}. Fill in what you know and send it. Missing a few is fine.
                 </p>
 
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <Button
-                    href={getWhatsappLink(whatsappOpener)}
+                    href={getWhatsappLink(selectedWhatsappOpener)}
                     variant="whatsapp"
                     size="lg"
                     target="_blank"
@@ -124,7 +142,7 @@ export function Contact() {
                     WhatsApp
                   </Button>
                   <Button
-                    href={getMailtoLink("Packaging brief — quote request", quoteBrief)}
+                    href={getMailtoLink("Packaging brief — quote request", selectedBrief)}
                     variant="primary"
                     size="lg"
                     icon={<ArrowRightIcon className="h-4 w-4" />}
@@ -136,7 +154,7 @@ export function Contact() {
 
                 <div className="mt-8 flex flex-col gap-3 border-t border-line pt-6 sm:flex-row sm:gap-10">
                   <a
-                    href={getWhatsappLink(whatsappOpener)}
+                    href={getWhatsappLink(selectedWhatsappOpener)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="link-rule t-tech-sm inline-flex items-center gap-2.5 text-ink-soft transition-colors hover:text-ink"
