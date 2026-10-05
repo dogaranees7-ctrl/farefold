@@ -42,7 +42,7 @@ export default function BusinessesIndexPage() {
           meta={[["Segments", String(segments.length)]]}
         />
 
-        <ul className="mt-14 grid grid-cols-1 gap-px border border-black/15 bg-page-border sm:mt-20 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-14 grid grid-cols-1 gap-px border border-black/15 bg-black/15 sm:mt-20 sm:grid-cols-2 lg:grid-cols-3">
           {segments.map((segment) => (
             <TaxonomyCard
               key={segment.slug}
