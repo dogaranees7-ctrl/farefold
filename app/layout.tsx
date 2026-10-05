@@ -55,7 +55,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col">
         <a
           href="#main"
-          className="t-tech sr-only bg-ink px-5 py-3 text-paper focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[60]"
+          className="sr-only bg-[#171614] px-5 py-3 text-white focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[60]"
         >
           Skip to content
         </a>
