@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import { PageHead } from "@/components/spec/Sheet";
 import { TaxonomyCard } from "@/components/taxonomy/TaxonomyCard";
-import { PageWorld } from "@/components/ui/PageWorld";
 import { businessTypes, getTopLevel } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -15,8 +13,15 @@ export default function BusinessesIndexPage() {
   const segments = getTopLevel(businessTypes);
 
   return (
-    <PageWorld world="businesses" className="substrate bg-page-bg py-20 sm:py-28 lg:py-32">
-      <div className="mx-auto w-full max-w-[112rem] px-5 sm:px-8 lg:px-12">
+    <div className="bg-[#eee7dc] text-[#171614]">
+      <section className="bg-[#4a214e] px-5 py-20 text-[#f4eadc] sm:px-8 sm:py-28 lg:px-14">
+        <div className="mx-auto max-w-[120rem]">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#c7ff42]">Farefold / Businesses</p>
+          <h1 className="mt-7 max-w-6xl text-[clamp(3.5rem,8vw,8rem)] font-extrabold leading-[0.88] tracking-[-0.06em]">Start with the kind of restaurant you are building.</h1>
+          <p className="mt-8 max-w-2xl text-lg leading-8 text-white/65">Choose your business and find the branding, packaging and practical problems we can help you solve.</p>
+        </div>
+      </section>
+      <section className="px-5 py-20 sm:px-8 sm:py-28 lg:px-14"><div className="mx-auto w-full max-w-[112rem] px-5 sm:px-8 lg:px-12">
         <PageHead
           tone="page"
           eyebrow="Businesses"
@@ -37,7 +42,7 @@ export default function BusinessesIndexPage() {
           meta={[["Segments", String(segments.length)]]}
         />
 
-        <ul className="mt-14 grid grid-cols-1 gap-px border border-page-border bg-page-border sm:mt-20 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-14 grid grid-cols-1 gap-px border border-black/15 bg-page-border sm:mt-20 sm:grid-cols-2 lg:grid-cols-3">
           {segments.map((segment) => (
             <TaxonomyCard
               key={segment.slug}
@@ -47,7 +52,6 @@ export default function BusinessesIndexPage() {
             />
           ))}
         </ul>
-      </div>
-    </PageWorld>
+      </div></section></div>
   );
 }
