@@ -71,16 +71,13 @@ export function Contact({ product = null }: ContactProps) {
                   <>
                     Tell us what
                     <br />
-                    you serve.
+                    you want to build.
                   </>
                 )
               }
               intro={
                 <p>
-                  That is genuinely the first question, and most of the answer
-                  follows from it. Send the menu, the volumes and where it has
-                  to get to, and you&apos;ll get back a structure, a material
-                  and a straight answer on what it costs to make.
+                  Start with the restaurant and the problem. Tell us whether you are launching, rebranding, improving packaging, or looking for a better customer experience. We will take it from there.
                 </p>
               }
             />
@@ -150,7 +147,7 @@ export function Contact({ product = null }: ContactProps) {
                     WhatsApp
                   </Button>
                   <Button
-                    href={getMailtoLink("Packaging brief — quote request", selectedBrief)}
+                    href={getMailtoLink("Farefold project enquiry", selectedBrief)}
                     variant="primary"
                     size="lg"
                     icon={<ArrowRightIcon className="h-4 w-4" />}
@@ -171,7 +168,7 @@ export function Contact({ product = null }: ContactProps) {
                     {siteConfig.whatsappDisplay}
                   </a>
                   <a
-                    href={getMailtoLink("Packaging brief — quote request", selectedBrief)}
+                    href={getMailtoLink("Farefold project enquiry", selectedBrief)}
                     className="link-rule t-tech-sm inline-flex items-center gap-2.5 text-ink-soft transition-colors hover:text-ink"
                   >
                     <MailIcon className="h-4 w-4 shrink-0" />
