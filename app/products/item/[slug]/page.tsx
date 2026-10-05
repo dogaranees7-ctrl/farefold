@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageHead } from "@/components/spec/Sheet";
 import { PageWorld } from "@/components/ui/PageWorld";
+import { ProductVisual } from "@/components/catalog/ProductVisual";
 import { catalogProducts } from "@/lib/data";
 
 type Params = { slug: string };
@@ -23,32 +24,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: product.description,
     alternates: { canonical: `/products/item/${product.slug}` },
   };
-}
-
-function ProductDiagram({ visual }: { visual: (typeof catalogProducts)[number]["visual"] }) {
-  const labels = {
-    pizza: ["PIZZA", "SIDES", "SAUCE"],
-    coffee: ["CUP 01", "CUP 02", "BAKERY"],
-    meal: ["MAIN", "SIDE", "DIP"],
-    sauce: ["CLASSIC", "GARLIC", "BBQ"],
-    bottle: ["DRINK", "BRAND", "LABEL"],
-    sushi: ["MAIN", "ROLL", "DIP"],
-    bag: ["CARRY", "BRAND", "HANDLE"],
-    bakery: ["BAKERY", "WINDOW", "BRAND"],
-  } as const;
-  return (
-    <div className="border border-page-border bg-page-surface p-8">
-      <div className="grid grid-cols-3 gap-3">
-        {labels[visual].map((label, index) => (
-          <div key={label} className={`flex aspect-square items-center justify-center border border-page-ink text-center ${index === 0 ? "bg-page-ink text-page-bg" : ""}`}>
-            <span className="t-tech-sm px-2">{label}</span>
-          </div>
-        ))}
-      </div>
-      <div className="mt-3 h-3 w-2/3 border border-page-ink" />
-      <div className="mt-2 h-3 w-1/2 border border-page-ink" />
-    </div>
-  );
 }
 
 export default async function ProductDetailPage({ params }: Props) {
@@ -86,7 +61,7 @@ export default async function ProductDetailPage({ params }: Props) {
           </div>
 
           <div className="bg-page-bg p-7 sm:p-10 lg:p-14">
-            <ProductDiagram visual={product.visual} />
+            <ProductVisual kind={product.visual} />
             <div className="mt-6 grid grid-cols-2 gap-px border border-page-border bg-page-border">
               <div className="bg-page-bg p-5">
                 <p className="t-tech-sm text-page-ink-mute">CUSTOM</p>
