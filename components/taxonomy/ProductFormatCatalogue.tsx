@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ProductVisual } from "@/components/catalog/ProductVisual";
 import { catalogProducts } from "@/lib/data/catalog-products";
 import { getCategoryWhatsappOpener, getWhatsappLink } from "@/lib/site-config";
 
@@ -99,7 +98,6 @@ export function ProductFormatCatalogue({ slug, categoryName }: { slug: string; c
             {products.map((product) => (
               <li key={product.id} className="bg-page-bg">
                 <Link href={"/products/item/" + product.slug} className="group block h-full">
-                  <ProductVisual kind={product.visual} compact />
                   <div className="p-6 sm:p-7">
                     <p className="t-tech-sm text-page-ink-mute">{product.eyebrow}</p>
                     <h3 className="t-display-tight mt-2 text-xl text-page-ink group-hover:underline">
