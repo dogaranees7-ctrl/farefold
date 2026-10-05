@@ -37,18 +37,18 @@ export function getMailtoLink(subject: string, body?: string) {
 // A real brief template, pre-filled into the visitor's own mail client. Not a
 // fake form — it just asks up front for what we would ask for anyway.
 export const quoteBrief = [
-  "Business name:",
-  "Type of business (restaurant / cafe / bakery / cloud kitchen / other):",
-  "What you serve (top 3 items):",
-  "Packaging you need:",
-  "Approximate monthly volume:",
-  "Do you need design and printing, or supply only?",
-  "Timeline:",
+  "Business / restaurant name:",
+  "What are you building or improving:",
+  "Restaurant type:",
+  "What you serve:",
+  "What do you need help with (brand / packaging / print / launch / other):",
+  "Approximate quantity or monthly volume, if known:",
   "City / delivery location:",
+  "Timeline:",
 ].join("\n");
 
 export const whatsappOpener =
-  "Hi Farefold — I would like to talk about packaging. Here is what I serve and roughly what I need:";
+  "Hi Farefold — I want to talk about a restaurant branding, packaging or creative project. Here is what I am building:";
 
 /**
  * A category-aware variant of whatsappOpener, used on taxonomy pages
