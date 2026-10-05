@@ -56,7 +56,7 @@ export default function ProductsIndexPage() {
                 Choose the problem to solve
               </h2>
             </div>
-            <p className="max-w-[46ch] text-sm leading-6 text-[#171614]-soft">
+            <p className="max-w-[46ch] text-sm leading-6 text-black/60">
               These are Farefold product directions. Open one to see what it is designed to solve,
               then take the specification to a quote.
             </p>
@@ -102,13 +102,13 @@ export default function ProductsIndexPage() {
           </ul>
         </section>
 
-        <section className="mt-20 border border-black/15 bg-page-ink p-7 text-page-bg sm:mt-28 sm:p-10">
+        <section className="mt-20 border border-black/15 bg-[#171614] p-7 text-[#f3efe6] sm:mt-28 sm:p-10">
           <p className="t-tech-sm text-[#567000]">Need something that is not here?</p>
           <div className="mt-3 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <h2 className="t-display-tight max-w-[20ch] text-3xl sm:text-5xl">
               Tell us what the packaging needs to do.
             </h2>
-            <Link href="/contact" className="link-rule w-fit border border-page-bg px-5 py-4 text-sm">
+            <Link href="/contact" className="link-rule w-fit border border-[#f3efe6] px-5 py-4 text-sm">
               Start a packaging brief ↗
             </Link>
           </div>
