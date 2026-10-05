@@ -21,51 +21,11 @@ export const metadata: Metadata = {
 type Stage = { no: string; label: string; body: string };
 
 const stages: Stage[] = [
-  {
-    no: "01",
-    label: "Explore",
-    body: "Start from what you serve, how it travels and what's failing about your current packaging — browse Products, Materials or Solutions for the vocabulary, or come straight to us with the problem.",
-  },
-  {
-    no: "02",
-    label: "Configure",
-    body: "Structure, material, size and finish get chosen against your food and your volume — not picked from a generic size chart.",
-  },
-  {
-    no: "03",
-    label: "Upload / design",
-    body: "Bring existing artwork or a logo, or start from nothing — brand application gets fitted to the panels that actually face your customer.",
-  },
-  {
-    no: "04",
-    label: "Consultation",
-    body: "A real conversation about the brief above, over WhatsApp or email, before anything is drawn.",
-  },
-  {
-    no: "05",
-    label: "Quote",
-    body: "A price against your actual spec and volume — not a published list price, because custom work doesn't have one.",
-  },
-  {
-    no: "06",
-    label: "Approval",
-    body: "You see and sign off the spec — the dieline, material and print — before production starts.",
-  },
-  {
-    no: "07",
-    label: "Payment / order",
-    body: "Confirmed against the approved spec. This step isn't live on the site yet — it happens directly with us while that capability is built.",
-  },
-  {
-    no: "08",
-    label: "Production",
-    body: "Your packaging gets made against the spec you approved, not a guess at it.",
-  },
-  {
-    no: "09",
-    label: "Delivery",
-    body: "Flat-packed to your storeroom, on a schedule — and reorders run off the same approved spec.",
-  },
+  { no: "01", label: "Find the problem", body: "Start with the restaurant, the food, the customer and the moment that needs to work better." },
+  { no: "02", label: "Shape the idea", body: "We develop the identity, packaging direction and practical touchpoints around the experience you want." },
+  { no: "03", label: "Design the system", body: "Brand, boxes, bags, cups, printed pieces and other touchpoints are designed to feel like one restaurant." },
+  { no: "04", label: "Make it real", body: "We prepare the packaging and print direction for the formats, quantities and production route your business needs." },
+  { no: "05", label: "Launch or refresh", body: "Take the system into a new opening, a rebrand, a new menu, a delivery push or a better everyday customer experience." },
 ];
 
 export default function CustomPackagingPage() {
@@ -77,17 +37,14 @@ export default function CustomPackagingPage() {
           eyebrow="Custom Packaging"
           headline={
             <>
-              Packaging built
+              Ideas built
               <br />
-              <span className="text-page-accent">around your product.</span>
+              <span className="text-page-accent">around your restaurant.</span>
             </>
           }
           intro={
             <p>
-              Custom packaging isn&apos;t an instant checkout — it&apos;s a real process with a
-              real person on the other end of it. Here&apos;s how it actually runs, stage by
-              stage. Ordering and payment aren&apos;t live on the site yet; everything through
-              approval already works today, over WhatsApp or email.
+              Bring us the problem: a new restaurant that needs a complete identity, an existing brand that feels dated, packaging that is not working, or a customer experience that needs a better idea. We turn the brief into a practical system of branding, packaging, print and production.
             </p>
           }
           meta={[["Stages", String(stages.length)]]}
