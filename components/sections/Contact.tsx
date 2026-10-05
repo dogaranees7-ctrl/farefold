@@ -61,11 +61,19 @@ export function Contact({ product = null }: ContactProps) {
               discipline="Work order"
               tone="kraft"
               headline={
-                <>
-                  Tell us what
-                  <br />
-                  you serve.
-                </>
+                product ? (
+                  <>
+                    Quote the
+                    <br />
+                    {product.name}.
+                  </>
+                ) : (
+                  <>
+                    Tell us what
+                    <br />
+                    you serve.
+                  </>
+                )
               }
               intro={
                 <p>
@@ -163,7 +171,7 @@ export function Contact({ product = null }: ContactProps) {
                     {siteConfig.whatsappDisplay}
                   </a>
                   <a
-                    href={getMailtoLink("Packaging enquiry")}
+                    href={getMailtoLink("Packaging brief — quote request", selectedBrief)}
                     className="link-rule t-tech-sm inline-flex items-center gap-2.5 text-ink-soft transition-colors hover:text-ink"
                   >
                     <MailIcon className="h-4 w-4 shrink-0" />
