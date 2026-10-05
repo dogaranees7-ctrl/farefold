@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { ProductVisual } from "@/components/catalog/ProductVisual";
+import { catalogProducts } from "@/lib/data/catalog-products";
 import { getCategoryWhatsappOpener, getWhatsappLink } from "@/lib/site-config";
 
 type FormatOption = {
@@ -74,10 +76,46 @@ const defaultFormats: FormatOption[] = [
 
 export function ProductFormatCatalogue({ slug, categoryName }: { slug: string; categoryName: string }) {
   const formats = formatsByFamily[slug] ?? defaultFormats;
+  const products = catalogProducts.filter((product) => product.productFamilySlug === slug);
   const opener = getCategoryWhatsappOpener(categoryName);
 
   return (
     <section aria-labelledby="format-catalogue-heading" className="mt-14 sm:mt-20">
+      {products.length > 0 && (
+        <div className="mb-16 border-y border-page-border py-6 sm:mb-20">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="t-tech-sm text-page-accent">Products</p>
+              <h2 className="t-display-tight mt-2 text-2xl text-page-ink sm:text-3xl">
+                Packaging products in {categoryName.toLowerCase()}
+              </h2>
+            </div>
+            <p className="max-w-[42ch] text-sm leading-6 text-page-ink-soft">
+              Browse the current Farefold product directions for this family. Open a product for its packaging brief and request a quote.
+            </p>
+          </div>
+
+          <ul className="mt-6 grid grid-cols-1 gap-px border border-page-border bg-page-border sm:grid-cols-2">
+            {products.map((product) => (
+              <li key={product.id} className="bg-page-bg">
+                <Link href={"/products/item/" + product.slug} className="group block h-full">
+                  <ProductVisual kind={product.visual} compact />
+                  <div className="p-6 sm:p-7">
+                    <p className="t-tech-sm text-page-ink-mute">{product.eyebrow}</p>
+                    <h3 className="t-display-tight mt-2 text-xl text-page-ink group-hover:underline">
+                      {product.name}
+                    </h3>
+                    <p className="mt-3 text-sm leading-6 text-page-ink-soft">{product.description}</p>
+                    <span className="link-rule mt-6 inline-block text-sm text-page-ink">
+                      View product <span aria-hidden="true">↗</span>
+                    </span>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
       <div className="flex flex-col gap-4 border-y border-page-border py-6 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="t-tech-sm text-page-accent">Explore formats</p>
