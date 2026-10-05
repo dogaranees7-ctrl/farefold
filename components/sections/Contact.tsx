@@ -47,7 +47,11 @@ export function Contact({ product = null }: ContactProps) {
           <div className="lg:col-span-5">
             <div>
               <p className="text-xs uppercase tracking-[0.24em] text-[#7b3d20]">Farefold / Project enquiry</p>
-              <h1 className="mt-6 text-5xl font-semibold leading-[0.92] tracking-[-0.05em] sm:text-7xl">${product ? <>Quote the<br />{product.name}.</> : <>Tell us what<br />you want to build.</>}</h1>
+              {product ? (
+                <h1 className="mt-6 text-5xl font-semibold leading-[0.92] tracking-[-0.05em] sm:text-7xl">Quote the<br />{product.name}.</h1>
+              ) : (
+                <h1 className="mt-6 text-5xl font-semibold leading-[0.92] tracking-[-0.05em] sm:text-7xl">Tell us what<br />you want to build.</h1>
+              )}
               <p className="mt-7 max-w-xl text-lg leading-8 text-black/60">Start with the restaurant and the problem. Tell us whether you are launching, rebranding, improving packaging, or looking for a better customer experience.</p>
               <p className="mt-10 max-w-md text-2xl font-semibold leading-tight tracking-[-0.03em] text-[#171614]">Good packaging does not just hold food. It solves something.</p>
             </div>
@@ -65,13 +69,13 @@ export function Contact({ product = null }: ContactProps) {
               </div>
 
               <div className="px-6 py-8 sm:px-10">
-                <p className="t-tech text-[#171614]-mute">What we&apos;ll ask for</p>
+                <p className="t-tech text-black/40">What we&apos;ll ask for</p>
 
                 {product ? (
-                  <div className="mt-5 border border-kraft-deep/25 bg-[#ffd9c2] px-4 py-4">
+                  <div className="mt-5 border border-black/15 bg-[#ffd9c2] px-4 py-4">
                     <p className="t-tech-sm text-[#7b3d20]">Selected product direction</p>
                     <p className="mt-1 text-base font-medium text-[#171614]">{product.name}</p>
-                    <p className="mt-1 text-sm leading-6 text-[#171614]-soft">{product.description}</p>
+                    <p className="mt-1 text-sm leading-6 text-black/60">{product.description}</p>
                   </div>
                 ) : null}
 
@@ -89,7 +93,7 @@ export function Contact({ product = null }: ContactProps) {
                   ))}
                 </ol>
 
-                <p className="mt-6 text-[0.9rem] leading-6 text-[#171614]-soft">
+                <p className="mt-6 text-[0.9rem] leading-6 text-black/60">
                   Both buttons below open with these details already written out
                   {product ? " for the selected product direction" : ""}. Fill in what you know and send it. Missing a few is fine.
                 </p>
@@ -122,14 +126,14 @@ export function Contact({ product = null }: ContactProps) {
                     href={getWhatsappLink(selectedWhatsappOpener)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="link-rule t-tech-sm inline-flex items-center gap-2.5 text-[#171614]-soft transition-colors hover:text-[#171614]"
+                    className="link-rule t-tech-sm inline-flex items-center gap-2.5 text-black/60 transition-colors hover:text-[#171614]"
                   >
                     <WhatsAppIcon className="h-4 w-4 shrink-0" />
                     {siteConfig.whatsappDisplay}
                   </a>
                   <a
                     href={getMailtoLink("Farefold project enquiry", selectedBrief)}
-                    className="link-rule t-tech-sm inline-flex items-center gap-2.5 text-[#171614]-soft transition-colors hover:text-[#171614]"
+                    className="link-rule t-tech-sm inline-flex items-center gap-2.5 text-black/60 transition-colors hover:text-[#171614]"
                   >
                     <MailIcon className="h-4 w-4 shrink-0" />
                     {siteConfig.email}
