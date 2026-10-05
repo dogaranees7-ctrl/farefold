@@ -83,7 +83,7 @@ export const primaryNav: NavLink[] = [
   { label: "Businesses", href: "/businesses" },
   { label: "Branding", href: "/branding" },
   { label: "Products", href: "/products" },
-  { label: "Packaging", href: "/products" },
+  { label: "Packaging", href: "/packaging" },
   { label: "Custom", href: "/custom-packaging" },
   { label: "Guidelines", href: "/guidelines" },
   { label: "Contact", href: "/contact" },
