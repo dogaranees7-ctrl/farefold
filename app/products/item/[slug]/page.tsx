@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageHead } from "@/components/spec/Sheet";
 import { PageWorld } from "@/components/ui/PageWorld";
-import { ProductVisual } from "@/components/catalog/ProductVisual";
 import { catalogProducts } from "@/lib/data";
 
 type Params = { slug: string };
@@ -61,7 +60,6 @@ export default async function ProductDetailPage({ params }: Props) {
           </div>
 
           <div className="bg-page-bg p-7 sm:p-10 lg:p-14">
-            <ProductVisual kind={product.visual} />
             <div className="mt-6 grid grid-cols-2 gap-px border border-page-border bg-page-border">
               <div className="bg-page-bg p-5">
                 <p className="t-tech-sm text-page-ink-mute">CUSTOM</p>
