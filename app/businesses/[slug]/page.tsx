@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { PageHead } from "@/components/spec/Sheet";
 import { Breadcrumbs } from "@/components/taxonomy/Breadcrumbs";
 import { TaxonomyCard } from "@/components/taxonomy/TaxonomyCard";
 import { CatalogueEmptyState } from "@/components/taxonomy/CatalogueEmptyState";
-import { PageWorld } from "@/components/ui/PageWorld";
 import { businessTypes, getNodeBySlug, getChildren, getAncestors, getRelated } from "@/lib/data";
 
 type Params = { slug: string };
@@ -46,8 +44,8 @@ export default async function BusinessTypePage({ params }: Props) {
   const related = getRelated("businessType", node.slug);
 
   return (
-    <PageWorld world="businesses" className="substrate bg-page-bg py-20 sm:py-28 lg:py-32">
-      <div className="mx-auto w-full max-w-[112rem] px-5 sm:px-8 lg:px-12">
+    <div className="bg-[#eee7dc] text-[#171614]">
+      <div className="mx-auto w-full max-w-[120rem] px-5 py-16 sm:px-8 sm:py-24 lg:px-14">
         <Breadcrumbs
           items={[
             { name: "Businesses", href: "/businesses" },
@@ -70,7 +68,7 @@ export default async function BusinessTypePage({ params }: Props) {
         </div>
 
         {children.length > 0 ? (
-          <ul className="mt-14 grid grid-cols-1 gap-px border border-page-border bg-page-border sm:mt-20 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-14 grid grid-cols-1 gap-px border border-black/15 bg-black/15 sm:mt-20 sm:grid-cols-2 lg:grid-cols-3">
             {children.map((child) => (
               <TaxonomyCard
                 key={child.slug}
@@ -86,18 +84,18 @@ export default async function BusinessTypePage({ params }: Props) {
           </div>
         )}
 
-        <div className="mt-14 border-t border-page-border pt-8 sm:mt-20">
-          <p className="max-w-[54ch] text-[0.9rem] leading-6 text-page-ink-mute">
-            Explore other parts of the packaging taxonomy: <Link href="/products" className="link-rule text-page-ink">Products</Link> or <Link href="/foods" className="link-rule text-page-ink">Foods</Link>.
+        <div className="mt-14 border-t border-black/15 pt-8 sm:mt-20">
+          <p className="max-w-[54ch] text-[0.9rem] leading-6 text-[#171614]-mute">
+            Explore other parts of the packaging taxonomy: <Link href="/products" className="link-rule text-[#171614]">Products</Link> or <Link href="/foods" className="link-rule text-[#171614]">Foods</Link>.
           </p>
         </div>
 
         {related.length > 0 && (
-          <div className="mt-14 border-t border-page-border pt-10 sm:mt-20">
-            <p className="t-tech-sm text-page-ink-mute">Related</p>
+          <div className="mt-14 border-t border-black/15 pt-10 sm:mt-20">
+            <p className="t-tech-sm text-[#171614]-mute">Related</p>
           </div>
         )}
       </div>
-    </PageWorld>
+    </div>
   );
 }
