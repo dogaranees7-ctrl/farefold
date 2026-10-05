@@ -29,4 +29,5 @@ export * from "./product";
 export * from "./catalog-products";
 export * from "./quote";
 export * from "./relationships";
+export * from "./business-packaging";
 export * from "./query";
