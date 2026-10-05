@@ -97,7 +97,7 @@ export default async function ProductDetailPage({ params }: Props) {
                 <p className="mt-2 text-sm text-page-ink">Dimensions, quantity, material and pricing are confirmed per brief.</p>
               </div>
             </div>
-            <Link href="/contact" className="mt-6 inline-flex w-full items-center justify-center border border-page-ink bg-page-ink px-6 py-4 text-sm text-page-bg">
+            <Link href={`/contact?product=${product.slug}`} className="mt-6 inline-flex w-full items-center justify-center border border-page-ink bg-page-ink px-6 py-4 text-sm text-page-bg">
               Request this product direction ↗
             </Link>
           </div>
