@@ -81,30 +81,30 @@ export function ProductFormatCatalogue({ slug, categoryName }: { slug: string; c
   return (
     <section aria-labelledby="format-catalogue-heading" className="mt-14 sm:mt-20">
       {products.length > 0 && (
-        <div className="mb-16 border-y border-page-border py-6 sm:mb-20">
+        <div className="mb-16 border-y border-black/15 py-6 sm:mb-20">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="t-tech-sm text-page-accent">Products</p>
-              <h2 className="t-display-tight mt-2 text-2xl text-page-ink sm:text-3xl">
+              <p className="t-tech-sm text-[#557000]">Products</p>
+              <h2 className="t-display-tight mt-2 text-2xl text-[#171614] sm:text-3xl">
                 Packaging products in {categoryName.toLowerCase()}
               </h2>
             </div>
-            <p className="max-w-[42ch] text-sm leading-6 text-page-ink-soft">
+            <p className="max-w-[42ch] text-sm leading-6 text-[#171614]-soft">
               Browse the current Farefold product directions for this family. Open a product for its packaging brief and request a quote.
             </p>
           </div>
 
-          <ul className="mt-6 grid grid-cols-1 gap-px border border-page-border bg-page-border sm:grid-cols-2">
+          <ul className="mt-6 grid grid-cols-1 gap-px border border-black/15 bg-black/15 sm:grid-cols-2">
             {products.map((product) => (
-              <li key={product.id} className="bg-page-bg">
+              <li key={product.id} className="bg-[#f3efe6]">
                 <Link href={"/products/item/" + product.slug} className="group block h-full">
                   <div className="p-6 sm:p-7">
-                    <p className="t-tech-sm text-page-ink-mute">{product.eyebrow}</p>
-                    <h3 className="t-display-tight mt-2 text-xl text-page-ink group-hover:underline">
+                    <p className="t-tech-sm text-[#171614]-mute">{product.eyebrow}</p>
+                    <h3 className="t-display-tight mt-2 text-xl text-[#171614] group-hover:underline">
                       {product.name}
                     </h3>
-                    <p className="mt-3 text-sm leading-6 text-page-ink-soft">{product.description}</p>
-                    <span className="link-rule mt-6 inline-block text-sm text-page-ink">
+                    <p className="mt-3 text-sm leading-6 text-[#171614]-soft">{product.description}</p>
+                    <span className="link-rule mt-6 inline-block text-sm text-[#171614]">
                       View product <span aria-hidden="true">↗</span>
                     </span>
                   </div>
@@ -114,24 +114,24 @@ export function ProductFormatCatalogue({ slug, categoryName }: { slug: string; c
           </ul>
         </div>
       )}
-      <div className="flex flex-col gap-4 border-y border-page-border py-6 sm:flex-row sm:items-end sm:justify-between">
+      <div className="flex flex-col gap-4 border-y border-black/15 py-6 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="t-tech-sm text-page-accent">Explore formats</p>
-          <h2 id="format-catalogue-heading" className="t-display-tight mt-2 text-2xl text-page-ink sm:text-3xl">
+          <p className="t-tech-sm text-[#557000]">Explore formats</p>
+          <h2 id="format-catalogue-heading" className="t-display-tight mt-2 text-2xl text-[#171614] sm:text-3xl">
             Packaging options to discuss
           </h2>
         </div>
-        <p className="max-w-[42ch] text-sm leading-6 text-page-ink-soft">
+        <p className="max-w-[42ch] text-sm leading-6 text-[#171614]-soft">
           These are format examples, not live SKUs. We’ll confirm dimensions, materials, print options, pricing and availability for your brief.
         </p>
       </div>
 
-      <ul className="mt-px grid grid-cols-1 gap-px border-x border-b border-page-border bg-page-border sm:grid-cols-2 xl:grid-cols-3">
+      <ul className="mt-px grid grid-cols-1 gap-px border-x border-b border-black/15 bg-black/15 sm:grid-cols-2 xl:grid-cols-3">
         {formats.map((format) => (
-          <li key={format.mark} className="flex min-h-[19rem] flex-col bg-page-bg p-6 sm:p-7">
+          <li key={format.mark} className="flex min-h-[19rem] flex-col bg-[#f3efe6] p-6 sm:p-7">
             <div className="flex items-start justify-between">
-              <span className="t-tech-sm text-page-ink-mute">FORMAT / {format.mark}</span>
-              <span aria-hidden="true" className="flex h-12 w-12 items-center justify-center border border-page-border text-page-accent">
+              <span className="t-tech-sm text-[#171614]-mute">FORMAT / {format.mark}</span>
+              <span aria-hidden="true" className="flex h-12 w-12 items-center justify-center border border-black/15 text-[#557000]">
                 <svg viewBox="0 0 40 40" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.3">
                   <path d="M5 13 20 5l15 8-15 8L5 13Z" />
                   <path d="M5 13v14l15 8V21M35 13v14l-15 8" />
@@ -139,14 +139,14 @@ export function ProductFormatCatalogue({ slug, categoryName }: { slug: string; c
                 </svg>
               </span>
             </div>
-            <h3 className="t-display-tight mt-8 text-xl text-page-ink">{format.name}</h3>
-            <p className="mt-3 text-sm leading-6 text-page-ink-soft">{format.description}</p>
-            <p className="mt-4 border-l-2 border-page-accent pl-3 text-xs leading-5 text-page-ink-mute">{format.note}</p>
+            <h3 className="t-display-tight mt-8 text-xl text-[#171614]">{format.name}</h3>
+            <p className="mt-3 text-sm leading-6 text-[#171614]-soft">{format.description}</p>
+            <p className="mt-4 border-l-2 border-page-accent pl-3 text-xs leading-5 text-[#171614]-mute">{format.note}</p>
             <Link
               href={getWhatsappLink(`${opener}\n\nFormat I’m interested in: ${format.name}\nPlease confirm specifications, price and availability.`)}
               target="_blank"
               rel="noopener noreferrer"
-              className="link-rule mt-auto self-start pt-7 text-sm text-page-ink"
+              className="link-rule mt-auto self-start pt-7 text-sm text-[#171614]"
             >
               Ask about this format <span aria-hidden="true">↗</span>
             </Link>
