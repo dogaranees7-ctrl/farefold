@@ -41,6 +41,9 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  alternates: {
+    canonical: siteConfig.url,
+  },
   keywords: [
     "food packaging design",
     "restaurant packaging supplier",
@@ -57,6 +60,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
+    locale: "en_US",
   },
   twitter: {
     card: "summary",
