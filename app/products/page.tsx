@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageHead } from "@/components/spec/Sheet";
 import { TaxonomyCard } from "@/components/taxonomy/TaxonomyCard";
 import { PageWorld } from "@/components/ui/PageWorld";
+import { ProductVisual as ProductVisualComponent } from "@/components/catalog/ProductVisual";
 import { catalogProducts } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -21,42 +22,8 @@ const families = [
   { name: "Branding / custom", href: "/products/branding-custom", text: "Printed packaging, labels, sleeves, inserts and custom work." },
 ];
 
-function ProductVisual({ visual, index }: { visual: (typeof catalogProducts)[number]["visual"]; index: number }) {
-  const labels = {
-    pizza: ["PIZZA", "SIDES", "SAUCE"],
-    coffee: ["CUP 01", "CUP 02", "BAKERY"],
-    meal: ["MAIN", "SIDE", "DIP"],
-    sauce: ["CLASSIC", "GARLIC", "BBQ"],
-    bottle: ["DRINK", "BRAND", "LABEL"],
-    sushi: ["MAIN", "ROLL", "DIP"],
-    bag: ["CARRY", "BRAND", "HANDLE"],
-    bakery: ["BAKERY", "WINDOW", "BRAND"],
-  } as const;
-  const items = labels[visual];
-
-  return (
-    <div className="relative flex min-h-[19rem] items-center justify-center overflow-hidden border-b border-page-border bg-page-surface p-7">
-      <span className="absolute left-5 top-5 t-tech-sm text-page-ink-mute">PRODUCT / {String(index + 1).padStart(2, "0")}</span>
-      <span className="absolute right-5 top-5 t-tech-sm text-page-accent">FAREFOLD</span>
-      <div className="relative w-full max-w-[19rem]">
-        <div className="grid grid-cols-3 gap-2">
-          {items.map((item, i) => (
-            <div
-              key={item}
-              className={[
-                "flex aspect-square items-center justify-center border border-page-ink px-2 text-center",
-                i === 0 ? "bg-page-ink text-page-bg" : "text-page-ink",
-              ].join(" ")}
-            >
-              <span className="t-tech-sm">{item}</span>
-            </div>
-          ))}
-        </div>
-        <div className="mt-2 h-2 w-2/3 border border-page-ink" />
-        <div className="mt-1 h-2 w-1/2 border border-page-ink" />
-      </div>
-    </div>
-  );
+function ProductVisual({ visual }: { visual: (typeof catalogProducts)[number]["visual"] }) {
+  return <ProductVisualComponent kind={visual} compact />;
 }
 
 export default function ProductsIndexPage() {

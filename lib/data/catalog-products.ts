@@ -6,12 +6,20 @@ export type CatalogProduct = ProductAttributes & {
   problem: string;
   solution: string;
   familyHref: string;
+  materialDirection: string;
+  formatDirection: string;
+  useCases: string[];
+  printDirection: string;
   visual: "pizza" | "coffee" | "meal" | "sauce" | "bottle" | "sushi" | "bag" | "bakery";
 };
 
 export const catalogProducts: CatalogProduct[] = [
   {
     id: "ff-pizza-combo-box",
+    materialDirection: "Paperboard carton / corrugated option",
+    formatDirection: "Lidded takeaway box",
+    useCases: ["Pizza delivery", "combo meals", "family orders"],
+    printDirection: "Branded panels + compartment callouts",
     slug: "pizza-combo-box",
     name: "Pizza Combo Box",
     status: "coming-soon",
@@ -28,6 +36,10 @@ export const catalogProducts: CatalogProduct[] = [
   },
   {
     id: "ff-coffee-carrier-kit",
+    materialDirection: "Paperboard carrier",
+    formatDirection: "Multi-cup carry system",
+    useCases: ["Coffee runs", "office orders", "bakery add-ons"],
+    printDirection: "Brand mark + cup-position graphics",
     slug: "coffee-carrier-kit",
     name: "Coffee Carrier Kit",
     status: "coming-soon",
@@ -44,6 +56,10 @@ export const catalogProducts: CatalogProduct[] = [
   },
   {
     id: "ff-compartment-meal-box",
+    materialDirection: "Paperboard or food-container format",
+    formatDirection: "Compartment meal box",
+    useCases: ["Combo meals", "sides", "dips"],
+    printDirection: "Menu-led compartment mapping",
     slug: "compartment-meal-box",
     name: "Compartment Meal Box",
     status: "coming-soon",
@@ -60,6 +76,10 @@ export const catalogProducts: CatalogProduct[] = [
   },
   {
     id: "ff-sauce-portion-system",
+    materialDirection: "Portion container format",
+    formatDirection: "Single-serve condiment system",
+    useCases: ["QSR", "takeaway", "combo meals"],
+    printDirection: "Repeatable sauce-family graphics",
     slug: "sauce-portion-system",
     name: "Sauce Portion System",
     status: "coming-soon",
@@ -76,6 +96,10 @@ export const catalogProducts: CatalogProduct[] = [
   },
   {
     id: "ff-branded-beverage-bottle",
+    materialDirection: "Bottle format / label system",
+    formatDirection: "Beverage bottle",
+    useCases: ["Chilled drinks", "juices", "signature beverages"],
+    printDirection: "Silhouette + label hierarchy",
     slug: "branded-beverage-bottle",
     name: "Branded Beverage Bottle",
     status: "coming-soon",
@@ -92,6 +116,10 @@ export const catalogProducts: CatalogProduct[] = [
   },
   {
     id: "ff-sushi-presentation-kit",
+    materialDirection: "Food tray / presentation carton",
+    formatDirection: "Presentation-led tray",
+    useCases: ["Sushi", "fresh food", "premium takeaway"],
+    printDirection: "Product-facing print + zone labels",
     slug: "sushi-presentation-kit",
     name: "Sushi Presentation Kit",
     status: "coming-soon",
@@ -108,6 +136,10 @@ export const catalogProducts: CatalogProduct[] = [
   },
   {
     id: "ff-branded-takeaway-bag",
+    materialDirection: "Paper carry bag",
+    formatDirection: "Handled takeaway bag",
+    useCases: ["Counter service", "delivery", "retail carry"],
+    printDirection: "Large-format brand graphics",
     slug: "branded-takeaway-bag",
     name: "Branded Takeaway Bag",
     status: "coming-soon",
@@ -124,6 +156,10 @@ export const catalogProducts: CatalogProduct[] = [
   },
   {
     id: "ff-window-bakery-box",
+    materialDirection: "Paperboard carton",
+    formatDirection: "Window display box",
+    useCases: ["Bakery", "pastries", "gifting"],
+    printDirection: "Window + branded outer panels",
     slug: "window-bakery-box",
     name: "Window Bakery Box",
     status: "coming-soon",

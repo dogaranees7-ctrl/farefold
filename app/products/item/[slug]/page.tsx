@@ -103,6 +103,29 @@ export default async function ProductDetailPage({ params }: Props) {
           </div>
         </div>
 
+        <section aria-labelledby="specification-heading" className="mt-14 border-t border-page-border pt-10 sm:mt-20">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="t-tech-sm text-page-accent">Direction / specification</p>
+              <h2 id="specification-heading" className="t-display-tight mt-2 text-2xl text-page-ink sm:text-4xl">Built around the brief</h2>
+            </div>
+            <p className="max-w-[46ch] text-sm leading-6 text-page-ink-soft">These are design directions, not locked production specifications. Final dimensions, materials and print treatment are confirmed during quoting.</p>
+          </div>
+          <dl className="mt-8 grid grid-cols-1 gap-px border border-page-border bg-page-border sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              ["Material direction", product.materialDirection],
+              ["Format", product.formatDirection],
+              ["Print direction", product.printDirection],
+              ["Best suited to", product.useCases.join(" · ")],
+            ].map(([term, value]) => (
+              <div key={term} className="bg-page-bg p-5">
+                <dt className="t-tech-sm text-page-ink-mute">{term}</dt>
+                <dd className="mt-3 text-sm leading-6 text-page-ink">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+
         <div className="mt-14 border-t border-page-border pt-8">
           <Link href={product.familyHref} className="link-rule text-sm text-page-ink">
             Explore the wider family ↗
