@@ -8,8 +8,6 @@ import {
   CloseIcon,
   WhatsAppIcon,
   ArrowRightIcon,
-  CartIcon,
-  AccountIcon,
   FoldMark,
 } from "@/components/icons";
 import {
@@ -89,115 +87,15 @@ export function Header() {
             <nav aria-label="Primary" className="hidden lg:block">
               <ul className="flex items-center gap-6 xl:gap-8">
                 {primaryNav.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="link-rule t-tech-sm whitespace-nowrap text-ink-soft transition-colors hover:text-ink"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-
-            <div className="flex items-center gap-1 sm:gap-2">
-              <div className="hidden items-center border-r border-line pr-2 sm:flex sm:mr-1">
-                <UtilityAction icon={<CartIcon className="h-5 w-5" />} label="Cart" />
-                <UtilityAction icon={<AccountIcon className="h-5 w-5" />} label="Account" />
-              </div>
-
-              <div className="hidden items-center gap-2 md:flex">
-                <Button
-                  href={getWhatsappLink(whatsappOpener)}
-                  variant="outline"
-                  size="md"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  icon={<WhatsAppIcon className="h-4 w-4" />}
-                >
-                  WhatsApp
-                </Button>
-                <Button
-                  href="/contact"
-                  variant="primary"
-                  size="md"
-                >
-                  Request a Quote
-                </Button>
-              </div>
-
-              <button
-                type="button"
-                className="-mr-2 flex h-11 w-11 items-center justify-center text-ink lg:hidden"
-                aria-expanded={open}
-                aria-controls="primary-menu"
-                aria-label={open ? "Close menu" : "Open menu"}
-                onClick={() => setOpen((v) => !v)}
-              >
-                {open ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* Mobile drawer. Kept out of <header> — <header>'s backdrop-blur-md
-          creates a containing block for position:fixed descendants, which
-          collapses this panel's top-16/bottom-0 sizing against header's own
-          ~64px box instead of the viewport. As a sibling of <header>, it
-          sizes against the viewport correctly. */}
-      <div
-        id="primary-menu"
-        className={`fixed inset-x-0 top-16 bottom-0 z-40 flex flex-col bg-ink transition-opacity duration-300 sm:top-18 lg:hidden ${
-          open ? "visible opacity-100" : "invisible opacity-0"
-        }`}
-      >
-        <nav aria-label="Primary" className="flex-1 overflow-y-auto px-5 pt-6 sm:px-8">
-          <p className="t-tech-sm text-paper/50">Platform</p>
-          <ul className="mt-4">
-            {primaryNav.map((link, i) => (
-              <li
-                key={link.href}
-                className={`border-b border-paper/12 transition-all duration-300 ${
-                  open ? "translate-x-0 opacity-100" : "translate-x-3 opacity-0"
-                }`}
-                style={{ transitionDelay: open ? `${60 + i * 35}ms` : "0ms" }}
-              >
-                <Link
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="flex items-baseline gap-5 py-4"
-                >
-                  <span className="t-display-tight text-2xl text-paper">{link.label}</span>
-                  <ArrowRightIcon className="ml-auto h-5 w-5 shrink-0 self-center text-paper/35" />
-                </Link>
-              </li>
-            ))}
-            <li
-              className={`border-b border-paper/12 transition-all duration-300 ${
-                open ? "translate-x-0 opacity-100" : "translate-x-3 opacity-0"
-              }`}
-              style={{ transitionDelay: open ? `${60 + primaryNav.length * 35}ms` : "0ms" }}
-            >
-              <Link
-                href="/foods"
-                onClick={() => setOpen(false)}
-                className="flex items-baseline gap-5 py-4"
-              >
-                <span className="t-display-tight text-2xl text-paper">Foods</span>
-                <ArrowRightIcon className="ml-auto h-5 w-5 shrink-0 self-center text-paper/35" />
-              </Link>
-            </li>
-          </ul>
+                  </ul>
 
           <div className="mt-8 flex items-center gap-6 border-t border-paper/15 pt-6">
             <span className="flex items-center gap-2 text-paper/40">
-              <CartIcon className="h-5 w-5" aria-hidden="true" />
+              < className="h-5 w-5" aria-hidden="true" />
               <span className="t-tech-sm">Cart — Soon</span>
             </span>
             <span className="flex items-center gap-2 text-paper/40">
-              <AccountIcon className="h-5 w-5" aria-hidden="true" />
+              < className="h-5 w-5" aria-hidden="true" />
               <span className="t-tech-sm">Account — Soon</span>
             </span>
           </div>
