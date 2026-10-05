@@ -60,8 +60,8 @@ export function Contact({ product = null }: ContactProps) {
           <div className="lg:col-span-6 lg:col-start-7">
             <div className="relative border border-black/15 bg-[#fffaf4]">
               <div className="flex items-baseline justify-between gap-4 px-6 pt-8 sm:px-10">
-                <p className="t-tech-sm text-[#7b3d20]">Farefold · work order</p>
-                <p className="t-tech-sm text-[#7b3d20]">FF / 09</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-[#7b3d20]">Farefold · work order</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-[#7b3d20]">FF / 09</p>
               </div>
 
               <div className="px-6 sm:px-10">
@@ -69,11 +69,11 @@ export function Contact({ product = null }: ContactProps) {
               </div>
 
               <div className="px-6 py-8 sm:px-10">
-                <p className="t-tech text-black/40">What we&apos;ll ask for</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-black/40">What we&apos;ll ask for</p>
 
                 {product ? (
                   <div className="mt-5 border border-black/15 bg-[#ffd9c2] px-4 py-4">
-                    <p className="t-tech-sm text-[#7b3d20]">Selected product direction</p>
+                    <p className="text-xs uppercase tracking-[0.2em] text-[#7b3d20]">Selected product direction</p>
                     <p className="mt-1 text-base font-medium text-[#171614]">{product.name}</p>
                     <p className="mt-1 text-sm leading-6 text-black/60">{product.description}</p>
                   </div>
@@ -85,7 +85,7 @@ export function Contact({ product = null }: ContactProps) {
                       key={f}
                       className="flex items-baseline gap-4 border-b border-black/10 py-3 last:border-0"
                     >
-                      <span className="t-tech-sm shrink-0 text-[#7b3d20]">
+                      <span className="text-xs uppercase tracking-[0.2em] shrink-0 text-[#7b3d20]">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <span className="text-[0.95rem] leading-6 text-[#171614]">{f}</span>
@@ -126,14 +126,14 @@ export function Contact({ product = null }: ContactProps) {
                     href={getWhatsappLink(selectedWhatsappOpener)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="link-rule t-tech-sm inline-flex items-center gap-2.5 text-black/60 transition-colors hover:text-[#171614]"
+                    className="link-rule text-xs uppercase tracking-[0.2em] inline-flex items-center gap-2.5 text-black/60 transition-colors hover:text-[#171614]"
                   >
                     <WhatsAppIcon className="h-4 w-4 shrink-0" />
                     {siteConfig.whatsappDisplay}
                   </a>
                   <a
                     href={getMailtoLink("Farefold project enquiry", selectedBrief)}
-                    className="link-rule t-tech-sm inline-flex items-center gap-2.5 text-black/60 transition-colors hover:text-[#171614]"
+                    className="link-rule text-xs uppercase tracking-[0.2em] inline-flex items-center gap-2.5 text-black/60 transition-colors hover:text-[#171614]"
                   >
                     <MailIcon className="h-4 w-4 shrink-0" />
                     {siteConfig.email}
