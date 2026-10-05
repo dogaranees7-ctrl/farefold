@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHead } from "@/components/spec/Sheet";
+
 import { TaxonomyCard } from "@/components/taxonomy/TaxonomyCard";
-import { PageWorld } from "@/components/ui/PageWorld";
+
 import { catalogProducts } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -24,8 +24,7 @@ const families = [
 
 export default function ProductsIndexPage() {
   return (
-    <PageWorld world="shop" className="substrate bg-page-bg py-20 sm:py-28 lg:py-32">
-      <div className="mx-auto w-full max-w-[112rem] px-5 sm:px-8 lg:px-12">
+    <div className="bg-[#f3efe6] text-[#171614]"><div className="mx-auto w-full max-w-[112rem] px-5 sm:px-8 lg:px-12">
         <PageHead
           tone="page"
           eyebrow="Products / Packaging catalogue"
@@ -33,7 +32,7 @@ export default function ProductsIndexPage() {
             <>
               Packaging that
               <br />
-              <span className="text-page-accent">does more.</span>
+              <span className="text-[#567000]">does more.</span>
             </>
           }
           intro={
@@ -50,30 +49,30 @@ export default function ProductsIndexPage() {
         />
 
         <section aria-labelledby="catalog-heading" className="mt-14 sm:mt-20">
-          <div className="flex flex-col gap-4 border-y border-page-border py-6 sm:flex-row sm:items-end sm:justify-between">
+          <div className="flex flex-col gap-4 border-y border-black/15 py-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="t-tech-sm text-page-accent">Featured catalogue / 01—08</p>
-              <h2 id="catalog-heading" className="t-display-tight mt-2 text-2xl text-page-ink sm:text-4xl">
+              <p className="t-tech-sm text-[#567000]">Featured catalogue / 01—08</p>
+              <h2 id="catalog-heading" className="t-display-tight mt-2 text-2xl text-[#171614] sm:text-4xl">
                 Choose the problem to solve
               </h2>
             </div>
-            <p className="max-w-[46ch] text-sm leading-6 text-page-ink-soft">
+            <p className="max-w-[46ch] text-sm leading-6 text-[#171614]-soft">
               These are Farefold product directions. Open one to see what it is designed to solve,
               then take the specification to a quote.
             </p>
           </div>
 
-          <ul className="mt-px grid grid-cols-1 gap-px border-x border-b border-page-border bg-page-border sm:grid-cols-2 xl:grid-cols-4">
+          <ul className="mt-px grid grid-cols-1 gap-px border-x border-b border-black/15 bg-black/15 sm:grid-cols-2 xl:grid-cols-4">
             {catalogProducts.map((product, index) => (
-              <li key={product.id} className="flex min-w-0 flex-col bg-page-bg">
+              <li key={product.id} className="flex min-w-0 flex-col bg-[#f3efe6]">
                 <div className="flex flex-1 flex-col p-6">
-                  <p className="t-tech-sm text-page-ink-mute">{product.eyebrow}</p>
-                  <h3 className="t-display-tight mt-3 text-xl text-page-ink">{product.name}</h3>
-                  <p className="mt-3 text-sm leading-6 text-page-ink-soft">{product.description}</p>
-                  <p className="mt-4 border-l-2 border-page-accent pl-3 text-xs leading-5 text-page-ink-mute">
+                  <p className="t-tech-sm text-[#171614]-mute">{product.eyebrow}</p>
+                  <h3 className="t-display-tight mt-3 text-xl text-[#171614]">{product.name}</h3>
+                  <p className="mt-3 text-sm leading-6 text-[#171614]-soft">{product.description}</p>
+                  <p className="mt-4 border-l-2 border-page-accent pl-3 text-xs leading-5 text-[#171614]-mute">
                     {product.solution}
                   </p>
-                  <Link href={`/products/item/${product.slug}`} className="link-rule mt-auto inline-flex w-fit pt-6 text-sm text-page-ink">
+                  <Link href={`/products/item/${product.slug}`} className="link-rule mt-auto inline-flex w-fit pt-6 text-sm text-[#171614]">
                     View product <span aria-hidden="true" className="ml-2">↗</span>
                   </Link>
                 </div>
@@ -83,28 +82,28 @@ export default function ProductsIndexPage() {
         </section>
 
         <section aria-labelledby="families-heading" className="mt-20 sm:mt-28">
-          <div className="flex flex-col gap-4 border-y border-page-border py-6 sm:flex-row sm:items-end sm:justify-between">
+          <div className="flex flex-col gap-4 border-y border-black/15 py-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="t-tech-sm text-page-accent">Browse the range</p>
-              <h2 id="families-heading" className="t-display-tight mt-2 text-2xl text-page-ink sm:text-4xl">
+              <p className="t-tech-sm text-[#567000]">Browse the range</p>
+              <h2 id="families-heading" className="t-display-tight mt-2 text-2xl text-[#171614] sm:text-4xl">
                 Shop by packaging family
               </h2>
             </div>
-            <p className="max-w-[44ch] text-sm leading-6 text-page-ink-soft">
+            <p className="max-w-[44ch] text-sm leading-6 text-[#171614]-soft">
               Need a different structure? Start with the family and we will narrow it around your product.
             </p>
           </div>
-          <ul className="mt-px grid grid-cols-1 gap-px border-x border-b border-page-border sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-px grid grid-cols-1 gap-px border-x border-b border-black/15 sm:grid-cols-2 lg:grid-cols-3">
             {families.map((family) => (
-              <li key={family.href} className="bg-page-bg">
+              <li key={family.href} className="bg-[#f3efe6]">
                 <TaxonomyCard href={family.href} name={family.name} description={family.text} />
               </li>
             ))}
           </ul>
         </section>
 
-        <section className="mt-20 border border-page-border bg-page-ink p-7 text-page-bg sm:mt-28 sm:p-10">
-          <p className="t-tech-sm text-page-accent">Need something that is not here?</p>
+        <section className="mt-20 border border-black/15 bg-page-ink p-7 text-page-bg sm:mt-28 sm:p-10">
+          <p className="t-tech-sm text-[#567000]">Need something that is not here?</p>
           <div className="mt-3 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <h2 className="t-display-tight max-w-[20ch] text-3xl sm:text-5xl">
               Tell us what the packaging needs to do.
@@ -115,6 +114,6 @@ export default function ProductsIndexPage() {
           </div>
         </section>
       </div>
-    </PageWorld>
+    </div>
   );
 }
