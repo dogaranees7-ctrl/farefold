@@ -14,9 +14,9 @@
 export const siteConfig = {
   name: "Farefold",
   legalName: "Farefold",
-  tagline: "Packaging design, structure, print and supply for food businesses",
+  tagline: "Restaurant branding, packaging and ideas that get remembered",
   description:
-    "Farefold designs, engineers, sources, prints and supplies food packaging — structure, material and brand treated as one system, from first dieline to recurring supply.",
+    "Farefold helps restaurants build memorable brands through identity, packaging, print and practical ideas — from first concept to the customer experience.",
   url: "https://www.farefold.com",
   email: "contactfarefold@gmail.com",
   whatsappNumber: "923358577371",
