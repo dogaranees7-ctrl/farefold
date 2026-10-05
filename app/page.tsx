@@ -3,12 +3,12 @@ import { siteConfig } from "@/lib/site-config";
 import { FoldMark, ArrowRightIcon } from "@/components/icons";
 
 const businessPaths = [
-  ["Pizza", "Build a memorable pizza brand from the box out."],
-  ["Burger & QSR", "Make the handoff look as strong as the meal."],
-  ["Café & Coffee", "Turn cups, carriers and bags into brand assets."],
-  ["Bakery & Dessert", "Make every box, sleeve and sticker feel intentional."],
-  ["Desi, BBQ & Shawarma", "Solve heat, grease, sauces and delivery without losing identity."],
-  ["Cloud Kitchen", "Create a complete delivery brand around the food."],
+  ["Pizza", "Build a memorable pizza brand from the box out.", "pizza-restaurant"],
+  ["Burger & QSR", "Make the handoff look as strong as the meal.", "burger-restaurant"],
+  ["Café & Coffee", "Turn cups, carriers and bags into brand assets.", "cafe-beverage"],
+  ["Bakery & Dessert", "Make every box, sleeve and sticker feel intentional.", "bakery-desserts"],
+  ["Desi, BBQ & Shawarma", "Solve heat, grease, sauces and delivery without losing identity.", "pakistani-desi"],
+  ["Cloud Kitchen", "Create a complete delivery brand around the food.", "cloud-kitchen"],
 ];
 
 const brandServices = [
@@ -89,7 +89,7 @@ export default function Home() {
           <p className="text-xs uppercase tracking-[0.28em] text-[#763b1f]">Built around your business</p>
           <div className="mt-5 flex flex-col justify-between gap-6 lg:flex-row lg:items-end"><h2 className="max-w-4xl text-5xl font-semibold leading-[0.95] tracking-[-0.05em] sm:text-7xl">Start with what you sell.</h2><p className="max-w-md leading-7 text-black/60">Choose your restaurant type and discover the brand, packaging and print problems we can solve together.</p></div>
           <div className="mt-12 grid gap-px border border-black/15 bg-black/15 sm:grid-cols-2 lg:grid-cols-3">
-            {businessPaths.map(([name, body]) => <Link key={name} href="/businesses" className="group bg-[#ffd2b8] p-7 hover:bg-[#fff0e5] sm:p-8"><span className="text-xs uppercase tracking-[0.22em] text-black/40">Business</span><h3 className="mt-8 text-3xl font-semibold tracking-[-0.035em]">{name}</h3><p className="mt-3 text-black/60">{body}</p><span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold">Explore <ArrowRightIcon className="h-4 w-4" /></span></Link>)}
+            {businessPaths.map(([name, body, slug]) => <Link key={name} href={`/businesses/${slug}`}/ className="group bg-[#ffd2b8] p-7 hover:bg-[#fff0e5] sm:p-8"><span className="text-xs uppercase tracking-[0.22em] text-black/40">Business</span><h3 className="mt-8 text-3xl font-semibold tracking-[-0.035em]">{name}</h3><p className="mt-3 text-black/60">{body}</p><span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold">Explore <ArrowRightIcon className="h-4 w-4" /></span></Link>)}
           </div>
         </div>
       </section>
