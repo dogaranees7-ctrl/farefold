@@ -3,53 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
-import {
-  MenuIcon,
-  CloseIcon,
-  WhatsAppIcon,
-  ArrowRightIcon,
-  FoldMark,
-} from "@/components/icons";
-import {
-  siteConfig,
-  primaryNav,
-  getWhatsappLink,
-  whatsappOpener,
-} from "@/lib/site-config";
-
-// The global header. Six real destinations — Products, Custom, Solutions,
-// Businesses, Materials, Lab — plus the logo and two utility actions that
-// aren't content navigation: Cart and Account. Both are shown as inert,
-// disabled controls rather than links, because there is no real cart or
-// account route behind them yet — a dead link would be worse than an
-// honestly-disabled button.
-
-/** Cart and Account — utility, not primary content navigation. Rendered as
- *  disabled buttons (so they're out of tab order, matching "there is
- *  nothing here yet") with a visible "Soon" label rather than a link to a
- *  route that doesn't exist. */
-function UtilityAction({
-  icon,
-  label,
-}: {
-  icon: React.ReactNode;
-  label: string;
-}) {
-  return (
-    <button
-      type="button"
-      disabled
-      aria-label={`${label} — coming soon`}
-      className="flex h-11 items-center gap-2 px-2 text-ink-mute disabled:cursor-not-allowed"
-    >
-      {icon}
-      <span className="t-tech-sm hidden sm:inline">{label}</span>
-      <span className="t-tech-sm text-ink-mute/70" aria-hidden="true">
-        Soon
-      </span>
-    </button>
-  );
-}
+import { MenuIcon, CloseIcon, WhatsAppIcon, ArrowRightIcon, FoldMark } from "@/components/icons";
+import { siteConfig, primaryNav, getWhatsappLink, whatsappOpener } from "@/lib/site-config";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -57,9 +12,7 @@ export function Header() {
 
   useEffect(() => {
     document.documentElement.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.documentElement.style.overflow = "";
-    };
+    return () => { document.documentElement.style.overflow = ""; };
   }, [open]);
 
   useEffect(() => {
@@ -76,56 +29,73 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-line bg-paper/92 backdrop-blur-md">
-        <div className="mx-auto w-full max-w-[112rem] px-5 sm:px-8 lg:px-12">
-          <div className="flex h-16 items-center justify-between gap-6 sm:h-18">
-            <Link href="/#top" className="group flex shrink-0 items-center gap-3">
-              <FoldMark className="h-7 w-7 text-ink transition-colors duration-300 group-hover:text-crease" />
-              <span className="t-display-tight text-lg text-ink">Farefold</span>
-            </Link>
+      <header className="sticky top-0 z-50 border-b border-black/10 bg-[#f7f1e7]/95 backdrop-blur-md">
+        <div className="mx-auto flex h-16 w-full max-w-[120rem] items-center justify-between gap-6 px-5 sm:px-8 lg:px-14">
+          <Link href="/#top" className="group flex shrink-0 items-center gap-3">
+            <FoldMark className="h-7 w-7 text-[#171614] transition-transform duration-300 group-hover:rotate-3" />
+            <span className="text-lg font-extrabold tracking-[-0.04em] text-[#171614]">Farefold</span>
+          </Link>
 
-            <nav aria-label="Primary" className="hidden lg:block">
-              <ul className="flex items-center gap-6 xl:gap-8">
-                {primaryNav.map((link) => (
-                  </ul>
+          <nav aria-label="Primary" className="hidden lg:block">
+            <ul className="flex items-center gap-5 xl:gap-7">
+              {primaryNav.map((link) => (
+                <li key={link.label}>
+                  <Link href={link.href} className="text-sm font-semibold text-[#171614]/65 transition-colors hover:text-[#171614]">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-          <div className="mt-8 flex items-center gap-6 border-t border-paper/15 pt-6">
-            <span className="flex items-center gap-2 text-paper/40">
-              < className="h-5 w-5" aria-hidden="true" />
-              <span className="t-tech-sm">Cart — Soon</span>
-            </span>
-            <span className="flex items-center gap-2 text-paper/40">
-              < className="h-5 w-5" aria-hidden="true" />
-              <span className="t-tech-sm">Account — Soon</span>
-            </span>
+          <div className="hidden items-center gap-2 md:flex">
+            <Button href={getWhatsappLink(whatsappOpener)} variant="outline" size="md" target="_blank" rel="noopener noreferrer" icon={<WhatsAppIcon className="h-4 w-4" />}>
+              WhatsApp
+            </Button>
+            <Button href="/contact" variant="primary" size="md">
+              Start a project
+            </Button>
           </div>
-        </nav>
 
-        <div className="flex flex-col gap-3 border-t border-paper/15 px-5 py-6 sm:px-8">
-          <Button
-            href={getWhatsappLink(whatsappOpener)}
-            variant="whatsapp"
-            size="lg"
-            target="_blank"
-            rel="noopener noreferrer"
-            icon={<WhatsAppIcon className="h-4 w-4" />}
-            className="w-full"
+          <button
+            ref={menuButtonRef}
+            type="button"
+            className="-mr-2 flex h-11 w-11 items-center justify-center text-[#171614] lg:hidden"
+            aria-expanded={open}
+            aria-controls="primary-menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen((v) => !v)}
           >
+            {open ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
+          </button>
+        </div>
+      </header>
+
+      <div
+        id="primary-menu"
+        className={`fixed inset-x-0 top-16 bottom-0 z-40 flex flex-col bg-[#171614] transition-opacity duration-200 lg:hidden ${open ? "visible opacity-100" : "invisible opacity-0"}`}
+      >
+        <nav aria-label="Mobile primary" className="flex-1 overflow-y-auto px-5 pt-6 sm:px-8">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/40">Explore Farefold</p>
+          <ul className="mt-4">
+            {primaryNav.map((link, i) => (
+              <li key={link.label} className="border-b border-white/10">
+                <Link href={link.href} onClick={() => setOpen(false)} className="flex items-center py-4 text-2xl font-semibold tracking-[-0.03em] text-white">
+                  {link.label}
+                  <ArrowRightIcon className="ml-auto h-5 w-5 text-white/35" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div className="border-t border-white/10 px-5 py-6 sm:px-8">
+          <Button href={getWhatsappLink(whatsappOpener)} variant="whatsapp" size="lg" target="_blank" rel="noopener noreferrer" icon={<WhatsAppIcon className="h-4 w-4" />} className="w-full">
             WhatsApp Farefold
           </Button>
-          <Button
-            href="/contact"
-            variant="light"
-            size="lg"
-            className="w-full"
-            icon={<ArrowRightIcon className="h-4 w-4" />}
-          >
-            Request a Quote
+          <Button href="/contact" variant="light" size="lg" className="mt-3 w-full" icon={<ArrowRightIcon className="h-4 w-4" />}>
+            Start a project
           </Button>
-
-          <p className="t-tech-sm mt-1 text-center text-paper/60">
-            {siteConfig.whatsappDisplay} · {siteConfig.email}
-          </p>
+          <p className="mt-4 text-center text-xs text-white/45">{siteConfig.whatsappDisplay} · {siteConfig.email}</p>
         </div>
       </div>
     </>
