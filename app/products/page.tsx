@@ -1,98 +1,57 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-
+import { ArrowRightIcon } from "@/components/icons";
 import { TaxonomyCard } from "@/components/taxonomy/TaxonomyCard";
-
-import { catalogProducts } from "@/lib/data";
+import { productFamilies, getTopLevel } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Products",
-  description:
-    "Explore Farefold packaging products and concept-led formats for food, beverage, takeaway and retail brands.",
+  description: "Explore Farefold's restaurant packaging catalogue by format, from boxes and containers to cups, bags, trays, wrapping, tableware and custom printed pieces.",
   alternates: { canonical: "/products" },
 };
 
-const families = [
-  { name: "Boxes", href: "/products/boxes", text: "Pizza, meal, bakery, takeaway and custom box formats." },
-  { name: "Containers", href: "/products/containers", text: "Food, meal, sauce and compartment container formats." },
-  { name: "Cups & carriers", href: "/products/cups", text: "Hot and cold cups plus carry systems for drinks." },
-  { name: "Bags", href: "/products/bags", text: "Takeaway, bakery, retail and delivery carry formats." },
-  { name: "Trays", href: "/products/trays", text: "Serving and presentation-led tray structures." },
-  { name: "Branding / custom", href: "/products/branding-custom", text: "Printed packaging, labels, sleeves, inserts and custom work." },
+const principles = [
+  ["Food first", "Heat, grease, moisture, portion, shape and travel determine the starting format."],
+  ["Brand everywhere", "The identity should work on the panel, lid, sleeve, bag, label and printed piece the customer actually sees."],
+  ["Built to the job", "If an existing format does not solve the food or the customer journey, take the problem to Custom."],
 ];
 
-
 export default function ProductsIndexPage() {
-  return (
-    <div className="bg-[#f3efe6] text-[#171614]"><div className="mx-auto w-full max-w-[112rem] px-5 sm:px-8 lg:px-12">
-        <div className="border-b border-black/15 pb-10"><p className="text-xs uppercase tracking-[0.24em] text-[#567000]">Products / Packaging catalogue</p><h1 className="mt-5 max-w-5xl text-5xl font-semibold leading-[0.92] tracking-[-0.05em] sm:text-7xl">Packaging directions built around the food.</h1><p className="mt-6 max-w-3xl text-lg leading-8 text-black/60">Explore formats designed around the food, the journey and the brand. Specifications, materials, print, quantity and pricing are confirmed for each brief.</p></div>
+  const families = getTopLevel(productFamilies);
 
-        <section aria-labelledby="catalog-heading" className="mt-14 sm:mt-20">
-          <div className="flex flex-col gap-4 border-y border-black/15 py-6 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="t-tech-sm text-[#567000]">Featured catalogue / 01—08</p>
-              <h2 id="catalog-heading" className="t-display-tight mt-2 text-2xl text-[#171614] sm:text-4xl">
-                Choose the problem to solve
-              </h2>
-            </div>
-            <p className="max-w-[46ch] text-sm leading-6 text-black/60">
-              These are Farefold product directions. Open one to see what it is designed to solve,
-              then take the specification to a quote.
-            </p>
-          </div>
-
-          <ul className="mt-px grid grid-cols-1 gap-px border-x border-b border-black/15 bg-black/15 sm:grid-cols-2 xl:grid-cols-4">
-            {catalogProducts.map((product, index) => (
-              <li key={product.id} className="flex min-w-0 flex-col bg-[#f3efe6]">
-                <div className="flex flex-1 flex-col p-6">
-                  <p className="t-tech-sm text-[#171614]-mute">{product.eyebrow}</p>
-                  <h3 className="t-display-tight mt-3 text-xl text-[#171614]">{product.name}</h3>
-                  <p className="mt-3 text-sm leading-6 text-[#171614]-soft">{product.description}</p>
-                  <p className="mt-4 border-l-2 border-page-accent pl-3 text-xs leading-5 text-[#171614]-mute">
-                    {product.solution}
-                  </p>
-                  <Link href={`/products/item/${product.slug}`} className="link-rule mt-auto inline-flex w-fit pt-6 text-sm text-[#171614]">
-                    View product <span aria-hidden="true" className="ml-2">↗</span>
-                  </Link>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section aria-labelledby="families-heading" className="mt-20 sm:mt-28">
-          <div className="flex flex-col gap-4 border-y border-black/15 py-6 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="t-tech-sm text-[#567000]">Browse the range</p>
-              <h2 id="families-heading" className="t-display-tight mt-2 text-2xl text-[#171614] sm:text-4xl">
-                Shop by packaging family
-              </h2>
-            </div>
-            <p className="max-w-[44ch] text-sm leading-6 text-[#171614]-soft">
-              Need a different structure? Start with the family and we will narrow it around your product.
-            </p>
-          </div>
-          <ul className="mt-px grid grid-cols-1 gap-px border-x border-b border-black/15 sm:grid-cols-2 lg:grid-cols-3">
-            {families.map((family) => (
-              <li key={family.href} className="bg-[#f3efe6]">
-                <TaxonomyCard href={family.href} name={family.name} description={family.text} />
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="mt-20 border border-black/15 bg-[#171614] p-7 text-[#f3efe6] sm:mt-28 sm:p-10">
-          <p className="t-tech-sm text-[#567000]">Need something that is not here?</p>
-          <div className="mt-3 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-            <h2 className="t-display-tight max-w-[20ch] text-3xl sm:text-5xl">
-              Tell us what the packaging needs to do.
-            </h2>
-            <Link href="/contact" className="link-rule w-fit border border-[#f3efe6] px-5 py-4 text-sm">
-              Start a packaging brief ↗
-            </Link>
-          </div>
-        </section>
+  return <div className="bg-[#f3efe6] text-[#171614]">
+    <section className="bg-[#171614] px-5 py-20 text-[#f3efe6] sm:px-8 sm:py-28 lg:px-14">
+      <div className="mx-auto max-w-[120rem]">
+        <p className="text-xs uppercase tracking-[0.28em] text-[#c8ff3d]">Farefold / Products</p>
+        <h1 className="mt-8 max-w-6xl text-[clamp(3.5rem,8vw,8rem)] font-semibold leading-[0.88] tracking-[-0.06em]">Packaging organised around the way food moves.</h1>
+        <p className="mt-8 max-w-3xl text-lg leading-8 text-white/60">Browse the complete packaging taxonomy by format. These are product directions and families, not invented photographed SKUs. When you have a real product or reference sample, we can place it into the right system.</p>
       </div>
-    </div>
-  );
+    </section>
+
+    <section className="px-5 py-20 sm:px-8 sm:py-28 lg:px-14">
+      <div className="mx-auto max-w-[120rem]">
+        <div className="flex flex-col justify-between gap-6 border-b border-black/15 pb-8 lg:flex-row lg:items-end">
+          <div><p className="text-xs uppercase tracking-[0.24em] text-[#7d4b35]">Packaging catalogue</p><h2 className="mt-4 text-5xl font-semibold tracking-[-0.05em] sm:text-6xl">Choose a format.</h2></div>
+          <Link href="/packaging" className="inline-flex items-center gap-2 text-sm font-semibold">See packaging by job <ArrowRightIcon className="h-4 w-4" /></Link>
+        </div>
+
+        <ul className="mt-10 grid gap-px border border-black/15 bg-black/15 sm:grid-cols-2 lg:grid-cols-3">
+          {families.map((family) => <TaxonomyCard key={family.slug} href={`/products/${family.slug}`} name={family.name} description={family.description} />)}
+        </ul>
+      </div>
+    </section>
+
+    <section className="bg-[#e9ffb0] px-5 py-20 sm:px-8 sm:py-28 lg:px-14">
+      <div className="mx-auto max-w-[120rem]">
+        <p className="text-xs uppercase tracking-[0.24em] text-[#426000]">How we think about it</p>
+        <div className="mt-10 grid gap-px border border-black/15 bg-black/15 md:grid-cols-3">
+          {principles.map(([title,body],i) => <article key={title} className="bg-[#e9ffb0] p-7 sm:p-9"><span className="text-xs tracking-[0.2em] text-black/35">0{i+1}</span><h3 className="mt-12 text-3xl font-semibold tracking-[-0.03em]">{title}</h3><p className="mt-4 leading-7 text-black/60">{body}</p></article>)}
+        </div>
+        <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <Link href="/businesses" className="inline-flex items-center justify-center gap-3 bg-[#171614] px-6 py-4 text-sm font-semibold text-white">Shop by business <ArrowRightIcon className="h-4 w-4" /></Link>
+          <Link href="/custom-packaging" className="inline-flex items-center justify-center gap-3 border border-black/20 px-6 py-4 text-sm font-semibold">Bring a packaging problem <ArrowRightIcon className="h-4 w-4" /></Link>
+        </div>
+      </div>
+    </section>
+  </div>;
 }
