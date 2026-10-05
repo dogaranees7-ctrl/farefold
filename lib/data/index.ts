@@ -26,6 +26,7 @@ export * from "./materials";
 export * from "./packaging-problems";
 export * from "./safety-knowledge";
 export * from "./product";
+export * from "./catalog-products";
 export * from "./quote";
 export * from "./relationships";
 export * from "./query";
