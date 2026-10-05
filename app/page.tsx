@@ -1,7 +1,6 @@
 import { PageWorld } from "@/components/ui/PageWorld";
 import { Hero } from "@/components/sections/Hero";
 import { StandardVsCustom } from "@/components/sections/StandardVsCustom";
-import { ConceptShowcase } from "@/components/sections/ConceptShowcase";
 import { Matcher } from "@/components/sections/Matcher";
 import { Discovery, type DiscoveryEntry } from "@/components/sections/Discovery";
 import { FinalCta } from "@/components/sections/FinalCta";
@@ -53,7 +52,6 @@ export default function Home() {
       <PageWorld world="home">
         <Hero />
         <StandardVsCustom />
-        <ConceptShowcase />
         <Matcher
           foodGroups={getTopLevel(foodTypes).map(({ slug, name }) => ({ slug, name }))}
           businessGroups={getTopLevel(businessTypes).map(({ slug, name }) => ({ slug, name }))}
