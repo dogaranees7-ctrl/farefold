@@ -9,12 +9,36 @@ export const metadata: Metadata = {
 };
 
 const guides = [
-  ["Brand", "How to make a restaurant identity work beyond the logo."],
-  ["Packaging", "How to choose formats around food, travel, storage and service."],
-  ["Printing", "How to turn boxes, bags, cups and paper touchpoints into a consistent system."],
-  ["New restaurant", "A practical path from restaurant idea to brand and customer-ready packaging."],
-  ["Rebrand", "How to improve an existing restaurant without losing what customers already know."],
-  ["Delivery", "How to make the delivery journey feel like part of the brand."],
+  ["Brand", "A restaurant brand is the whole experience, not just the logo.", [
+    "Start with the customer you want to attract.",
+    "Choose a personality you can repeat across every touchpoint.",
+    "Make the identity work on packaging at real size.",
+  ]],
+  ["Packaging", "Choose packaging around the food, the journey and the customer.", [
+    "Start with heat, grease, moisture, shape and portion.",
+    "Think about stacking, carrying, delivery and opening.",
+    "Then make the format look unmistakably yours.",
+  ]],
+  ["Printing", "Printed details are small, but they make the system feel complete.", [
+    "Keep colours, type and artwork consistent.",
+    "Use stickers, labels, sleeves, menus and inserts with purpose.",
+    "Design for production, not just a screen mockup.",
+  ]],
+  ["New restaurant", "Build the brand system before you start ordering everything separately.", [
+    "Define the concept and customer.",
+    "Create the identity and packaging direction together.",
+    "Prepare the launch touchpoints as one connected set.",
+  ]],
+  ["Rebrand", "Improve the parts that are holding the restaurant back without losing recognition.", [
+    "Keep the equity customers already understand.",
+    "Fix inconsistent identity and weak touchpoints.",
+    "Roll the new system into packaging and print in stages.",
+  ]],
+  ["Delivery", "The package is often the only physical part of the restaurant a delivery customer receives.", [
+    "Protect the food first.",
+    "Make opening and carrying simple.",
+    "Use the delivery moment to reinforce the brand.",
+  ]],
 ];
 
 export default function GuidelinesPage() {
@@ -30,7 +54,13 @@ export default function GuidelinesPage() {
       <section className="px-5 py-20 sm:px-8 sm:py-28 lg:px-14">
         <div className="mx-auto max-w-[120rem]">
           <div className="grid gap-px border border-black/15 bg-black/15 md:grid-cols-2 lg:grid-cols-3">
-            {guides.map(([title,body]) => <article key={title} className="bg-[#f4eee4] p-7 sm:p-9"><p className="text-xs uppercase tracking-[0.22em] text-black/40">Guide</p><h2 className="mt-10 text-3xl font-semibold tracking-[-0.03em]">{title}</h2><p className="mt-4 leading-7 text-black/60">{body}</p><Link href="/contact" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold">Talk to us <ArrowRightIcon className="h-4 w-4" /></Link></article>)}
+            {guides.map(([title,body]) => <article key={title} className="bg-[#f4eee4] p-7 sm:p-9">
+                <p className="text-xs uppercase tracking-[0.22em] text-black/40">Guide</p>
+                <h2 className="mt-8 text-3xl font-semibold tracking-[-0.03em]">{title}</h2>
+                <p className="mt-4 leading-7 text-black/60">{body}</p>
+                <ul className="mt-6 space-y-2 border-t border-black/10 pt-5">{points.map((point) => <li key={point} className="text-sm leading-6 text-black/65">→ {point}</li>)}</ul>
+                <Link href="/contact" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold">Work on this with Farefold <ArrowRightIcon className="h-4 w-4" /></Link>
+              </article>)}
           </div>
         </div>
       </section>
