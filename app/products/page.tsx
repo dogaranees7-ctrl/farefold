@@ -3,7 +3,6 @@ import Link from "next/link";
 import { PageHead } from "@/components/spec/Sheet";
 import { TaxonomyCard } from "@/components/taxonomy/TaxonomyCard";
 import { PageWorld } from "@/components/ui/PageWorld";
-import { ProductVisual as ProductVisualComponent } from "@/components/catalog/ProductVisual";
 import { catalogProducts } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -22,9 +21,6 @@ const families = [
   { name: "Branding / custom", href: "/products/branding-custom", text: "Printed packaging, labels, sleeves, inserts and custom work." },
 ];
 
-function ProductVisual({ visual }: { visual: (typeof catalogProducts)[number]["visual"] }) {
-  return <ProductVisualComponent kind={visual} compact />;
-}
 
 export default function ProductsIndexPage() {
   return (
@@ -70,7 +66,6 @@ export default function ProductsIndexPage() {
           <ul className="mt-px grid grid-cols-1 gap-px border-x border-b border-page-border bg-page-border sm:grid-cols-2 xl:grid-cols-4">
             {catalogProducts.map((product, index) => (
               <li key={product.id} className="flex min-w-0 flex-col bg-page-bg">
-                <ProductVisual visual={product.visual} />
                 <div className="flex flex-1 flex-col p-6">
                   <p className="t-tech-sm text-page-ink-mute">{product.eyebrow}</p>
                   <h3 className="t-display-tight mt-3 text-xl text-page-ink">{product.name}</h3>
