@@ -253,7 +253,6 @@ export const productFamilies: ProductFamily[] = [
   // --- Delivery and catering ------------------------------------------------
   { slug: "delivery-packaging", name: "Delivery Packaging" },
   { slug: "delivery-boxes", name: "Delivery Boxes", parentSlug: "delivery-packaging" },
-  { slug: "delivery-bags", name: "Delivery Bags", parentSlug: "delivery-packaging" },
   { slug: "insulated-delivery-bags", name: "Insulated Delivery Bags", parentSlug: "delivery-packaging" },
   { slug: "food-delivery-seals", name: "Food Delivery Seals", parentSlug: "delivery-packaging" },
   { slug: "catering-disposables", name: "Catering Disposables", parentSlug: "delivery-packaging" },
