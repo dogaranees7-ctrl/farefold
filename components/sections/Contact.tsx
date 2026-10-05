@@ -40,46 +40,21 @@ export function Contact({ product = null }: ContactProps) {
   return (
     <section
       id="contact"
-      className="substrate scroll-mt-24 bg-[#ffd9c2] py-24 sm:py-32 lg:py-40"
+      className="scroll-mt-24 bg-[#ffd9c2] py-24 sm:py-32 lg:py-40"
     >
       <div className="mx-auto w-full max-w-[112rem] px-5 sm:px-8 lg:px-12">
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-14">
           <div className="lg:col-span-5">
-            <SheetHead
-              sheet="09"
-              discipline="Work order"
-              tone="kraft"
-              headline={
-                product ? (
-                  <>
-                    Quote the
-                    <br />
-                    {product.name}.
-                  </>
-                ) : (
-                  <>
-                    Tell us what
-                    <br />
-                    you want to build.
-                  </>
-                )
-              }
-              intro={
-                <p>
-                  Start with the restaurant and the problem. Tell us whether you are launching, rebranding, improving packaging, or looking for a better customer experience. We will take it from there.
-                </p>
-              }
-            />
-
-            <p className="mt-10 max-w-md text-2xl font-semibold leading-tight tracking-[-0.03em] text-[#171614]">Good packaging does not just hold food. It solves something.</p>
+            <div>
+              <p className="text-xs uppercase tracking-[0.24em] text-[#7b3d20]">Farefold / Project enquiry</p>
+              <h1 className="mt-6 text-5xl font-semibold leading-[0.92] tracking-[-0.05em] sm:text-7xl">${product ? <>Quote the<br />{product.name}.</> : <>Tell us what<br />you want to build.</>}</h1>
+              <p className="mt-7 max-w-xl text-lg leading-8 text-black/60">Start with the restaurant and the problem. Tell us whether you are launching, rebranding, improving packaging, or looking for a better customer experience.</p>
+              <p className="mt-10 max-w-md text-2xl font-semibold leading-tight tracking-[-0.03em] text-[#171614]">Good packaging does not just hold food. It solves something.</p>
+            </div>
           </div>
 
           <div className="lg:col-span-6 lg:col-start-7">
             <div className="relative border border-black/15 bg-[#fffaf4]">
-              <PunchHole className="-top-[7px] left-[12%]" />
-              <PunchHole className="-top-[7px] left-1/2 -translate-x-1/2" />
-              <PunchHole className="-top-[7px] right-[12%]" />
-
               <div className="flex items-baseline justify-between gap-4 px-6 pt-8 sm:px-10">
                 <p className="t-tech-sm text-[#7b3d20]">Farefold · work order</p>
                 <p className="t-tech-sm text-[#7b3d20]">FF / 09</p>
