@@ -28,8 +28,7 @@ const stages: Stage[] = [
 
 export default function CustomPackagingPage() {
   return (
-    <PageWorld world="custom" className="bg-[#ffe0a8]">
-      <div className="mx-auto w-full max-w-[112rem] px-5 sm:px-8 lg:px-12">
+    <div className="bg-[#ffe0a8] text-[#171614]"><div className="mx-auto w-full max-w-[120rem] px-5 py-16 sm:px-8 sm:py-24 lg:px-14">
         <PageHead
           tone="page"
           eyebrow="Custom Packaging"
