@@ -1,12 +1,3 @@
-import {PageFrame,LinkCards} from "@/app/components/page-frame";
-const groups=[
-["Boxes","Pizza boxes, burger boxes, chicken boxes, meal boxes, takeaway boxes, bakery and cake boxes, window, folding and custom structures."],
-["Containers","Food, meal, deli, hinged, soup, sauce, salad, dessert and compartment formats."],
-["Cups & Lids","Hot and cold cups, coffee, juice, shake, smoothie and dessert formats with matching lids."],
-["Bags","Paper, kraft, takeaway, bakery, bread, retail, delivery, bottle and printed bags."],
-["Wrapping","Food paper, grease-resistant paper, burger, sandwich, shawarma, deli, bakery paper, sleeves and bands."],
-["Trays & Buckets","Food, chicken, bakery, catering, paperboard, plastic, aluminium trays and bucket formats."],
-["Accessories","Cutlery, chopsticks, straws, stirrers, napkins, tissue, toothpicks, carriers and food picks."],
-["Branding Products","Printed boxes, bags, cups, wrappers, sleeves, stickers, labels, seals, inserts and thank-you cards."]
-];
-export default function Products(){return <PageFrame eyebrow="03 / Products" title={<>Browse the formats.<br/><i>Build your system.</i></>}><section className="section"><div className="sectionIntro wide"><h2>Everything you need to <i>put the brand into the hand.</i></h2><p>Products are the building blocks. The right combination becomes your delivery, dine-in, beverage, bakery or retail system.</p></div><LinkCards items={groups.map(([title,text])=>({title,text,href:"/contact"}))}/></section></PageFrame>}
+import Link from "next/link"; import {PageFrame} from "@/app/components/page-frame"; import {productFamilies} from "@/lib/data/product-families";
+const roots=productFamilies.filter(x=>!x.parentSlug);
+export default function Products(){return <PageFrame eyebrow="03 / Products" title={<>Browse the formats.<br/><i>Build your system.</i></>}><section className="section"><div className="sectionIntro wide"><h2>Everything you need to <i>put the brand into the hand.</i></h2><p>Choose a packaging family, explore its formats, then tell Farefold what you need. This is a quote-led catalogue, not a checkout.</p></div><div className="catalogGrid">{roots.map(root=>{const children=productFamilies.filter(x=>x.parentSlug===root.slug);return <article className="catalogGroup" key={root.slug}><div><p className="eyebrow">Family</p><h3>{root.name}</h3></div><div className="catalogLinks">{children.slice(0,8).map(x=><Link href={`/products/${x.slug}`} key={x.slug}>{x.name}<span>↗</span></Link>)}</div>{children.length>8&&<Link className="textLink" href={`/products/${children[0].slug}`}>Explore {children.length} formats →</Link>}</article>})}</div></section><section className="orangeBand"><p className="eyebrow">Need something specific?</p><h2>Send the requirement.<br/><i>We’ll shape the route.</i></h2><Link className="darkButton" href="/contact">Request a quote <span>→</span></Link></section></PageFrame>}
