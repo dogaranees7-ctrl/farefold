@@ -2,7 +2,7 @@ import Link from "next/link";
 import {SiteShell} from "@/app/components/site-shell";
 
 const businesses=[
-  ["Pizza","pizza-restaurant"],["Burger","burger-restaurant"],["Fried Chicken","fried-chicken-restaurant"],["Café","cafe"],["Bakery","bakery"],["Dessert","dessert-shop"],["Ice Cream","ice-cream-shop"],["Juice & Shakes","juice-smoothie-shop"],["Sushi / Japanese","japanese-restaurant"],["Chinese","chinese-restaurant"],["Pakistani / Desi","pakistani-desi-restaurant"],["BBQ","bbq-restaurant"],["Shawarma","shawarma-restaurant"],["Kebab","kebab-restaurant"],["Sandwich","sandwich-restaurant"],["Fine Dining","fine-dining-restaurant"],["Fast Food","fast-food-qsr"],["Cloud Kitchen","cloud-kitchen"],["Catering","catering"]
+  ["Pizza","pizza-restaurant"],["Burger","burger-restaurant"],["Fried Chicken","fried-chicken-restaurant"],["Café","cafe"],["Bakery","bakery-business"],["Dessert","dessert-shop"],["Ice Cream","ice-cream-business"],["Juice & Shakes","juice-smoothie-business"],["Sushi / Japanese","japanese"],["Chinese","chinese"],["Pakistani / Desi","pakistani-desi"],["BBQ","bbq-restaurant"],["Shawarma","shawarma"],["Kebab","kebab"],["Sandwich","sandwich-business"],["Italian","italian"],["Steakhouse","steakhouse"],["Fast Food","fast-food-qsr"],["Cloud Kitchen","cloud-kitchen"],["Catering","catering"]
 ];
 
 const systems=[
