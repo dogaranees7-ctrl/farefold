@@ -14,9 +14,9 @@
 export const siteConfig = {
   name: "Farefold",
   legalName: "Farefold",
-  tagline: "Packaging design, structure, print and supply for food businesses",
+  tagline: "Restaurant branding, packaging and launch systems",
   description:
-    "Farefold designs, engineers, sources, prints and supplies food packaging — structure, material and brand treated as one system, from first dieline to recurring supply.",
+    "Farefold helps restaurants and food businesses build recognizable brands through branding, packaging, custom systems and launch support. Pakistan first.",
   url: "https://www.farefold.com",
   email: "contactfarefold@gmail.com",
   whatsappNumber: "923358577371",
@@ -53,12 +53,13 @@ export const whatsappOpener =
 // --- Navigation -------------------------------------------------------------
 
 export const navLinks = [
-  { label: "How we work", href: "#sequence" },
-  { label: "Packaging", href: "#library" },
-  { label: "Industries", href: "#industries" },
-  { label: "Materials", href: "#materials" },
-  { label: "Brand", href: "#brand" },
-  { label: "Contact", href: "#contact" },
+  { label: "Businesses", href: "/businesses" },
+  { label: "Branding", href: "/branding" },
+  { label: "Products", href: "/products" },
+  { label: "Packaging", href: "/packaging" },
+  { label: "Custom", href: "/custom" },
+  { label: "Guidelines", href: "/guidelines" },
+  { label: "Contact", href: "/contact" },
 ];
 
 // The sheet index — drives the left drafting rail and the footer colophon.
