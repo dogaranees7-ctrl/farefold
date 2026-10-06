@@ -31,8 +31,8 @@ export default function Home(){
     <div className="heroCopy">
       <p className="eyebrow">Restaurant branding + packaging · Pakistan</p>
       <h1>Build a restaurant brand people <i>remember.</i></h1>
-      <p className="lead">From the first idea to the packaging in the customer's hands, Farefold helps restaurants build a clear, recognizable brand.</p>
-      <div className="actions"><Link className="primary" href="#contact">Tell us what you're building <span>→</span></Link><Link className="secondary" href="#businesses">Explore by business</Link></div>
+      <p className="lead">From the first idea to the packaging in the customer&apos;s hands, Farefold helps restaurants build a clear, recognizable brand.</p>
+      <div className="actions"><Link className="primary" href="#contact">Tell us what you&apos;re building <span>→</span></Link><Link className="secondary" href="#businesses">Explore by business</Link></div>
     </div>
     <div className="heroVisual"><div className="stamp">BRAND<br/>THE<br/><em>WHOLE</em><br/>EXPERIENCE</div><div className="boxMock"><div>F</div></div><div className="heroNote">Identity / Packaging / Print / Launch</div></div>
    </section>
@@ -40,16 +40,16 @@ export default function Home(){
    <section className="marquee"><div>BRANDING <span>✳</span> PACKAGING <span>✳</span> PRINT <span>✳</span> RESTAURANT LAUNCH <span>✳</span> PAKISTAN FIRST <span>✳</span></div></section>
 
    <section id="businesses" className="section business">
-    <div className="sectionIntro"><p className="eyebrow">01 / Businesses</p><h2>Start with what<br/><i>you’re building.</i></h2><p>Whether you're opening a new restaurant or strengthening one that's already running, we build around the business first.</p></div>
+    <div className="sectionIntro"><p className="eyebrow">01 / Businesses</p><h2>Start with what<br/><i>you’re building.</i></h2><p>Whether you&apos;re opening a new restaurant or strengthening one that's already running, we build around the business first.</p></div>
     <div className="businessGrid">{businesses.map((b,i)=><Link href="#contact" className="businessCard" key={b}><span>0{i+1}</span><strong>{b}</strong><b>↗</b></Link>)}</div>
    </section>
 
    <section id="branding" className="brandSection">
-    <div className="brandStatement"><p className="eyebrow">02 / Branding</p><h2>Build a brand,<br/><i>not just a logo.</i></h2><p>Your identity should survive the menu, the box, the cup, the bag, the sticker and the customer's phone camera.</p><Link className="lightCta" href="#contact">Build my brand →</Link></div>
+    <div className="brandStatement"><p className="eyebrow">02 / Branding</p><h2>Build a brand,<br/><i>not just a logo.</i></h2><p>Your identity should survive the menu, the box, the cup, the bag, the sticker and the customer&apos;s phone camera.</p><Link className="lightCta" href="#contact">Build my brand →</Link></div>
     <div className="brandList">{["Brand strategy","Positioning","Naming direction","Logo & visual identity","Colour system & typography","Packaging identity","Brand guidelines","Menu & printed collateral","Social identity","Restaurant launch identity","Rebranding"].map((x,i)=><div key={x}><span>0{i+1}</span>{x}<b>+</b></div>)}</div>
    </section>
 
-   <section id="packaging" className="section systems"><div className="sectionIntro wide"><p className="eyebrow">03 / Packaging systems</p><h2>Packaging is how<br/><i>your brand travels.</i></h2><p>We don't start with a box. We start with the customer experience and build the pieces that make it consistent.</p></div><div className="systemGrid">{systems.map((s,i)=><article key={s.title}><span>0{i+1}</span><h3>{s.title}</h3><p>{s.text}</p><Link href="#contact">Build this system →</Link></article>)}</div></section>
+   <section id="packaging" className="section systems"><div className="sectionIntro wide"><p className="eyebrow">03 / Packaging systems</p><h2>Packaging is how<br/><i>your brand travels.</i></h2><p>We don&apos;t start with a box. We start with the customer experience and build the pieces that make it consistent.</p></div><div className="systemGrid">{systems.map((s,i)=><article key={s.title}><span>0{i+1}</span><h3>{s.title}</h3><p>{s.text}</p><Link href="#contact">Build this system →</Link></article>)}</div></section>
 
    <section id="products" className="section products"><div className="sectionIntro wide"><p className="eyebrow">04 / Products</p><h2>Useful products.<br/><i>Distinctive brands.</i></h2><p>Browse the formats restaurants actually need — then turn the right ones into your own packaging system.</p></div><div className="productGrid">{products.map(([n,t,d])=><article key={t}><div className="productArt"><span>{n}</span><div className="shape"/></div><h3>{t}</h3><p>{d}</p><Link href="#contact">View details →</Link></article>)}</div><Link className="outlineCta" href="#contact">Explore all products →</Link></section>
 
@@ -59,6 +59,6 @@ export default function Home(){
 
    <section id="contact" className="contact"><div><p className="eyebrow">07 / Start here</p><h2>Tell us what<br/><i>you’re building.</i></h2><p>Opening a restaurant? Already running one? Need branding, packaging, or the complete system? Start with the idea — we’ll help shape the rest.</p></div><div className="contactPrompt"><p>Opening a restaurant? Already running one? Need branding, packaging, or the complete system? Start with the idea and send us the brief.</p><Link className="primary" href="/contact">Send project brief <span>→</span></Link></div></section>
   </main>
-  <footer><div className="footerTop"><Link className="logo" href="/">farefold<span>®</span></Link><p>Restaurant brands, packaging & launch systems.<br/>Pakistan first.</p><Link className="footerCta" href="#contact">Tell us what you're building →</Link></div><div className="footerBottom"><span>© 2026 Farefold</span><span>Branding · Packaging · Products · Custom</span><span>Made for restaurants</span></div></footer>
+  <footer><div className="footerTop"><Link className="logo" href="/">farefold<span>®</span></Link><p>Restaurant brands, packaging & launch systems.<br/>Pakistan first.</p><Link className="footerCta" href="#contact">Tell us what you&apos;re building →</Link></div><div className="footerBottom"><span>© 2026 Farefold</span><span>Branding · Packaging · Products · Custom</span><span>Made for restaurants</span></div></footer>
  </div>
 }
