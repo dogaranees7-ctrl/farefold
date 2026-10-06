@@ -26,7 +26,7 @@ export default function Home(){
    <Link className="navCta" href="/contact">Start a project <b>↗</b></Link>
   </header>
 
-  <main>
+  <main id="main">
    <section className="hero">
     <div className="heroCopy">
       <p className="eyebrow">Restaurant branding + packaging · Pakistan</p>
@@ -57,7 +57,7 @@ export default function Home(){
 
    <section id="guides" className="section guides"><div className="sectionIntro wide"><p className="eyebrow">06 / Guidelines</p><h2>Helpful before<br/><i>you buy anything.</i></h2><p>Practical guidance for restaurant owners — from choosing packaging to preparing a new brand for launch.</p></div><div className="guideGrid">{["How to build a restaurant brand","Choosing restaurant colours","How to choose the right box","Packaging for delivery","New restaurant branding checklist","Opening a café / bakery / cloud kitchen"].map((x,i)=><Link href="#contact" key={x}><span>Guide 0{i+1}</span><strong>{x}</strong><b>↗</b></Link>)}</div></section>
 
-   <section id="contact" className="contact"><div><p className="eyebrow">07 / Start here</p><h2>Tell us what<br/><i>you’re building.</i></h2><p>Opening a restaurant? Already running one? Need branding, packaging, or the complete system? Start with the idea — we’ll help shape the rest.</p></div><form><label>Your name<input placeholder="Your name"/></label><label>Business name<input placeholder="Restaurant / business name"/></label><label>What are you building?<select defaultValue=""><option value="" disabled>Select one</option><option>I’m opening a restaurant</option><option>I already have a restaurant</option><option>I need packaging</option><option>I need branding</option><option>I need complete brand + packaging system</option></select></label><label>Tell us a little<textarea placeholder="What are you working on?"/></label><button type="button">Send project brief <span>→</span></button></form></section>
+   <section id="contact" className="contact"><div><p className="eyebrow">07 / Start here</p><h2>Tell us what<br/><i>you’re building.</i></h2><p>Opening a restaurant? Already running one? Need branding, packaging, or the complete system? Start with the idea — we’ll help shape the rest.</p></div><form><label>Your name<input placeholder="Your name"/></label><label>Business name<input placeholder="Restaurant / business name"/></label><label>What are you building?<select defaultValue=""><option value="" disabled>Select one</option><option>I’m opening a restaurant</option><option>I already have a restaurant</option><option>I need packaging</option><option>I need branding</option><option>I need complete brand + packaging system</option></select></label><label>Tell us a little<textarea placeholder="What are you working on?"/></label><Link className="primary" href="/contact">Send project brief <span>→</span></Link></div></section>
   </main>
   <footer><div className="footerTop"><Link className="logo" href="/">farefold<span>®</span></Link><p>Restaurant brands, packaging & launch systems.<br/>Pakistan first.</p><Link className="footerCta" href="#contact">Tell us what you're building →</Link></div><div className="footerBottom"><span>© 2026 Farefold</span><span>Branding · Packaging · Products · Custom</span><span>Made for restaurants</span></div></footer>
  </div>
