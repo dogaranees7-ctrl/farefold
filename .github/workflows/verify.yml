@@ -1,0 +1,51 @@
+name: FareFold verification
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Production build
+        run: npm run build
+
+      - name: Start production server
+        run: |
+          npm run start > /tmp/farefold-next.log 2>&1 &
+          echo $! > /tmp/farefold-next.pid
+
+      - name: Smoke test production routes
+        run: |
+          for route in / /businesses /branding /products /packaging /custom /guidelines /contact; do
+            echo "Checking $route"
+            curl --fail --silent --show-error --location --max-time 20 "http://127.0.0.1:3000$route" > /dev/null
+          done
+
+      - name: Show server log on failure
+        if: failure()
+        run: cat /tmp/farefold-next.log
