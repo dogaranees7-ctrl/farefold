@@ -1,4 +1,15 @@
-import Link from "next/link"; import {PageFrame} from "@/app/components/page-frame";
+import Link from "next/link";
+import {PageFrame} from "@/app/components/page-frame";
+
 const items=["Brand strategy","Positioning","Naming direction","Logo & visual identity","Colour system & typography","Packaging identity","Brand guidelines","Menu & printed collateral","Social identity","Restaurant launch identity","Rebranding"];
 const descriptions=["Clarify what the restaurant should stand for.","Find a useful place in the customer's mind.","Create a direction before visual execution.","Build a recognizable visual language.","Make every touchpoint feel related.","Carry the identity onto packaging.","Document the rules so the brand stays consistent.","Menus, cards, stickers and printed details.","Extend the identity to digital and social.","Create the launch system around the opening.","Refresh an existing restaurant without losing its equity."];
-export default function Branding(){return <PageFrame eyebrow="02 / Branding" title={<>Build a brand,<br/><i>not just a logo.</i>}><section className="section"><div className="sectionIntro wide"><h2>The identity should work <i>everywhere.</i></h2><p>For new restaurants, we can build the identity from zero. For existing restaurants, we strengthen what already works and make the experience more recognizable.</p></div><div className="linkCardGrid">{items.map((title,i)=><Link className="linkCard" href={`/contact?product=${encodeURIComponent(title)}`} key={title}><span>{String(i+1).padStart(2,"0")}</span><h3>{title}</h3><p>{descriptions[i]}</p><b>↗</b></Link>)}</div></section><section className="darkBand"><p className="eyebrow">Brand + packaging</p><h2>One identity.<br/><i>Every touchpoint.</i></h2><Link className="lightCta" href="/packaging">See packaging systems →</Link></section></PageFrame>}
+
+export default function Branding(){
+ return <PageFrame eyebrow="02 / Branding" title="Build a brand, not just a logo.">
+  <section className="section">
+   <div className="sectionIntro wide"><h2>The identity should work <i>everywhere.</i></h2><p>For new restaurants, we can build the identity from zero. For existing restaurants, we strengthen what already works and make the experience more recognizable.</p></div>
+   <div className="linkCardGrid">{items.map((title,i)=><Link className="linkCard" href={`/contact?product=${encodeURIComponent(title)}`} key={title}><span>{String(i+1).padStart(2,"0")}</span><h3>{title}</h3><p>{descriptions[i]}</p><b>↗</b></Link>)}</div>
+  </section>
+  <section className="darkBand"><p className="eyebrow">Brand + packaging</p><h2>One identity.<br/><i>Every touchpoint.</i></h2><Link className="lightCta" href="/packaging">See packaging systems →</Link></section>
+ </PageFrame>
+}
