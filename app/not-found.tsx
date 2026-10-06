@@ -1,0 +1,1 @@
+import Link from "next/link"; export default function NotFound(){return <div className="site"><main className="notFound"><p className="eyebrow">404 / Not found</p><h1>That page <i>folded away.</i></h1><p>Let’s get you back to the Farefold starting point.</p><Link className="primary" href="/">Back home <span>→</span></Link></main></div>}
