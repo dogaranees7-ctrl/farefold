@@ -22,8 +22,8 @@ export default function Home(){
  return <div className="site">
   <header className="nav">
    <Link className="logo" href="/">farefold<span>®</span></Link>
-   <nav><Link href="#businesses">Businesses</Link><Link href="#branding">Branding</Link><Link href="#products">Products</Link><Link href="#packaging">Packaging</Link><Link href="#custom">Custom</Link><Link href="#guides">Guidelines</Link></nav>
-   <Link className="navCta" href="#contact">Start a project <b>↗</b></Link>
+   <nav><Link href="/businesses">Businesses</Link><Link href="/branding">Branding</Link><Link href="/products">Products</Link><Link href="/packaging">Packaging</Link><Link href="/custom">Custom</Link><Link href="/guidelines">Guidelines</Link></nav>
+   <Link className="navCta" href="/contact">Start a project <b>↗</b></Link>
   </header>
 
   <main>
