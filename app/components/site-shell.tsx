@@ -1,6 +1,7 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 
-export function SiteShell({children}:{children:React.ReactNode}) {
+export function SiteShell({children}:{children:ReactNode}) {
   return <div className="site">
     <header className="nav">
       <Link className="logo" href="/">farefold<span>®</span></Link>
