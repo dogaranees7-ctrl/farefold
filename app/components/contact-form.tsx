@@ -1,0 +1,23 @@
+"use client";
+import {FormEvent, useState} from "react";
+import {siteConfig} from "@/lib/site-config";
+
+export function ContactForm(){
+ const [sent,setSent]=useState(false);
+ function submit(e:FormEvent<HTMLFormElement>){
+  e.preventDefault();
+  const data=new FormData(e.currentTarget);
+  const body=[`Name: ${data.get("name")}`,`Business: ${data.get("business")}`,`Need: ${data.get("need")}`,`City: ${data.get("city")}`,`Brief: ${data.get("brief")}`].join("\n");
+  const url=`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent("Hi Farefold — I’d like to start a project.\n\n"+body)}`;
+  window.open(url,"_blank","noopener,noreferrer"); setSent(true);
+ }
+ return <form className="contactForm" onSubmit={submit}>
+  <label>Your name<input required name="name" placeholder="Your name"/></label>
+  <label>Business name<input required name="business" placeholder="Restaurant / business name"/></label>
+  <label>What do you need?<select required name="need" defaultValue=""><option value="" disabled>Select one</option><option>New restaurant brand</option><option>Branding for an existing restaurant</option><option>Packaging</option><option>Brand + packaging system</option><option>Custom packaging</option></select></label>
+  <label>City<input name="city" placeholder="City / delivery location"/></label>
+  <label>Tell us a little<textarea required name="brief" placeholder="What are you building, what do you serve, and what do you need?"/></label>
+  <button type="submit">Send project brief <span>→</span></button>
+  {sent && <p className="formSuccess">Your brief is ready in WhatsApp. Send it there to start the conversation.</p>}
+ </form>
+}
