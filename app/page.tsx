@@ -40,7 +40,7 @@ export default function Home(){
    <section className="marquee"><div>BRANDING <span>✳</span> PACKAGING <span>✳</span> PRINT <span>✳</span> RESTAURANT LAUNCH <span>✳</span> PAKISTAN FIRST <span>✳</span></div></section>
 
    <section id="businesses" className="section business">
-    <div className="sectionIntro"><p className="eyebrow">01 / Businesses</p><h2>Start with what<br/><i>you’re building.</i></h2><p>Whether you&apos;re opening a new restaurant or strengthening one that's already running, we build around the business first.</p></div>
+    <div className="sectionIntro"><p className="eyebrow">01 / Businesses</p><h2>Start with what<br/><i>you’re building.</i></h2><p>Whether you&apos;re opening a new restaurant or strengthening one that&apos;s already running, we build around the business first.</p></div>
     <div className="businessGrid">{businesses.map((b,i)=><Link href="#contact" className="businessCard" key={b}><span>0{i+1}</span><strong>{b}</strong><b>↗</b></Link>)}</div>
    </section>
 
