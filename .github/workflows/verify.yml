@@ -39,6 +39,17 @@ jobs:
           npm run start > /tmp/farefold-next.log 2>&1 &
           echo $! > /tmp/farefold-next.pid
 
+      - name: Wait for production server
+        run: |
+          for i in {1..30}; do
+            if curl --fail --silent --show-error --max-time 2 http://127.0.0.1:3000/ > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/farefold-next.log
+          exit 1
+
       - name: Smoke test production routes
         run: |
           for route in / /businesses /branding /products /packaging /custom /guidelines /contact; do
