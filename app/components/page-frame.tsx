@@ -1,7 +1,8 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import {SiteShell} from "./site-shell";
 
-export function PageFrame({eyebrow,title,children,cta=true}:{eyebrow:string,title:React.ReactNode,children:React.ReactNode,cta?:boolean}){
+export function PageFrame({eyebrow,title,children,cta=true}:{eyebrow:string,title:ReactNode,children:React.ReactNode,cta?:boolean}){
  return <SiteShell><main>
   <section className="pageHero"><p className="eyebrow">{eyebrow}</p><h1>{title}</h1>{cta&&<Link className="primary" href="/contact">Tell us what you’re building <span>→</span></Link>}</section>
   {children}
