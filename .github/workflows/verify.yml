@@ -48,4 +48,4 @@ jobs:
 
       - name: Show server log on failure
         if: failure()
-        run: cat /tmp/farefold-next.log
+        run: test -f /tmp/farefold-next.log && cat /tmp/farefold-next.log || true
