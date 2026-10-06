@@ -77,14 +77,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${archivo.variable} ${plexMono.variable} ${instrument.variable} h-full`}
     >
-      <body className="flex min-h-full flex-col">
-        <a
-          href="#main"
-          className="t-tech sr-only bg-ink px-5 py-3 text-paper focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[60]"
-        >
-          Skip to content
-        </a>
-        <main id="main" className="flex-1">{children}</main>
+      <body className="min-h-full">
+        <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[60] bg-[var(--ink)] text-[var(--paper)] px-5 py-3">Skip to content</a>
+        {children}
       </body>
     </html>
   );
