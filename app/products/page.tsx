@@ -1,3 +1,11 @@
-import Link from "next/link"; import {PageFrame} from "@/app/components/page-frame"; import {productFamilies} from "@/lib/data/product-families";
-const roots=productFamilies.filter(x=>!x.parentSlug);
-export default function Products(){return <PageFrame eyebrow="03 / Products" title={<>Browse the formats.<br/><i>Build your system.</i></>}><section className="section"><div className="sectionIntro wide"><h2>Everything you need to <i>put the brand into the hand.</i></h2><p>Choose a packaging family, explore its formats, then tell Farefold what you need. This is a quote-led catalogue, not a checkout.</p></div><div className="catalogGrid">{roots.map(root=>{const children=productFamilies.filter(x=>x.parentSlug===root.slug);return <article className="catalogGroup" key={root.slug}><div><p className="eyebrow">Family</p><h3>{root.name}</h3></div><div className="catalogLinks">{children.slice(0,8).map(x=><Link href={`/products/${x.slug}`} key={x.slug}>{x.name}<span>↗</span></Link>)}</div>{children.length>8&&<Link className="textLink" href={`/products/${children[0].slug}`}>Explore {children.length} formats →</Link>}</article>})}</div></section><section className="orangeBand"><p className="eyebrow">Need something specific?</p><h2>Send the requirement.<br/><i>We&apos;ll shape the route.</i></h2><Link className="primary dark" href="/contact">Request a quote <span>→</span></Link></section></PageFrame>}
+import Link from "next/link";
+import {PageFrame} from "@/app/components/page-frame";
+import {ProductCatalog} from "@/app/components/product-catalog";
+import {productFamilies} from "@/lib/data/product-families";
+export default function Products(){
+ const items=productFamilies.filter(x=>x.parentSlug).map(x=>({slug:x.slug,name:x.name,parentSlug:x.parentSlug!}));
+ return <PageFrame eyebrow="03 / Products" title={<>Browse the formats.<br/><i>Build your system.</i></>}>
+  <section className="section"><div className="sectionIntro wide"><h2>The packaging catalogue is <i>ready to grow.</i></h2><p>Browse the formats restaurants use, search by packaging type, and open any format to build a project brief. Product photography, specifications, quantities and commercial details can be added to this catalogue as the verified product range is uploaded.</p></div><ProductCatalog items={items}/></section>
+  <section className="orangeBand"><p className="eyebrow">Not a standard format?</p><h2>Bring the problem.<br/><i>We&apos;ll design the solution.</i></h2><p>Custom boxes, bags, cups, trays, containers, die-cuts and complete restaurant packaging systems.</p><Link className="primary dark" href="/custom">Explore custom packaging <span>→</span></Link></section>
+ </PageFrame>
+}
