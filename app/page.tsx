@@ -1,6 +1,7 @@
 import Link from "next/link";
 import {SiteShell} from "@/app/components/site-shell";
 import {ConceptPackagingWall} from "@/app/components/concept-packaging-wall";
+import {ReferencePackagingGallery} from "@/app/components/reference-packaging-gallery";
 
 const businesses=[
   ["Pizza","pizza-restaurant"],["Burger","burger-restaurant"],["Fried Chicken","fried-chicken-restaurant"],["Café","cafe"],
@@ -113,6 +114,7 @@ export default function Home(){
           <p>Browse the actual packaging formats restaurants use. Choose the right pieces, then make them yours.</p>
         </div>
         <ConceptPackagingWall/>
+        <ReferencePackagingGallery/>
         <div className="homeProductGrid">
           {products.map(([title,text,slug,n],i)=><Link href={`/products/${slug}`} className={`homeProduct p${i+1}`} key={slug}><div className="productNumber">{n}</div><div className="productShape"><span>{i===0?"P":i===1?"B":i===2?"F":"F"}</span></div><div className="productMeta"><h3>{title}</h3><p>{text}</p><b>View format ↗</b></div></Link>)}
         </div>
