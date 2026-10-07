@@ -3,6 +3,7 @@ import {notFound} from "next/navigation";
 import type {Metadata} from "next";
 import {PageFrame} from "@/app/components/page-frame";
 import {productFamilies} from "@/lib/data/product-families";
+import {ConceptPackagingWall} from "@/app/components/concept-packaging-wall";
 
 export function generateStaticParams(){
  return productFamilies.filter(x=>x.parentSlug).map(x=>({slug:x.slug}));
@@ -45,7 +46,7 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
   <section className="productDetail">
    <div>
     <div className="routeTrail"><Link href="/products">Products</Link><span>/</span>{parent?.name??"Packaging"}<span>/</span>{item.name}</div>
-    <div className="detailVisual" aria-label={`${item.name} product image area`}><span>{item.name}</span><div className="detailShape"/></div>
+    <div className="detailVisual" aria-label={`${item.name} packaging concept visual`}><span>CONCEPT / CUSTOM FORMAT</span><strong>{item.name}</strong><div className="detailShape"><i>F</i></div><small>Example visual — final structure, artwork and specifications are developed to order.</small></div>
    </div>
    <div>
     <p className="eyebrow">Product family</p>
@@ -54,6 +55,8 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
     <div className="detailActions"><Link className="primary" href={`/contact?product=${encodeURIComponent(item.name)}`}>Request a quote <span>→</span></Link><Link className="outlineCta" href="/products">Back to products</Link></div>
    </div>
   </section>
+
+  <section className="section"><div className="sectionIntro wide"><p className="eyebrow">Visual direction</p><h2>See the format.<br/><i>Then make it yours.</i></h2><p>These visuals communicate packaging possibilities before a physical sample exists. They are concept examples, not claims of current stock.</p></div><ConceptPackagingWall/></section>
 
   <section className="section productSpecGuide">
    <div className="sectionIntro wide"><p className="eyebrow">What we will show when the catalogue is loaded</p><h2>Useful product information.<br/><i>No guessed specifications.</i></h2><p>Every real product can be presented with the information needed to make a buying decision. Until the verified range is supplied, the site deliberately avoids invented sizes, materials, MOQs or prices.</p></div>
