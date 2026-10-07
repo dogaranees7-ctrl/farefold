@@ -1,3 +1,5 @@
+import type {Metadata} from "next";
+export const metadata:Metadata={title:"Restaurant Packaging Systems",description:"Restaurant packaging systems for delivery, takeaway, dine-in, beverages, bakery, cloud kitchens, catering and retail food."};
 import Link from "next/link";
 import {PageFrame} from "@/app/components/page-frame";
 
