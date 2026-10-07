@@ -3,6 +3,7 @@ export const metadata:Metadata={title:"Restaurant Packaging Systems",description
 import Link from "next/link";
 import {PageFrame} from "@/app/components/page-frame";
 import {ConceptPackagingWall} from "@/app/components/concept-packaging-wall";
+import {ReferencePackagingGallery} from "@/app/components/reference-packaging-gallery";
 
 const systems=[
   ["Delivery packaging","Boxes, bags, seals, napkins and sauce containers designed around heat, travel, stacking and the handoff.","Delivery"],
@@ -29,6 +30,7 @@ export default function Packaging(){
    <div className="linkCardGrid">{systems.map(([title,text,key],i)=><Link className="linkCard" href={`/contact?product=${encodeURIComponent(key+" packaging system")}`} key={title}><span>{String(i+1).padStart(2,"0")}</span><h3>{title}</h3><p>{text}</p><b>↗</b></Link>)}</div>
   </section>
   <section className="section"><div className="sectionIntro wide"><p className="eyebrow">Visual examples</p><h2>One packaging language.<br/><i>Many formats.</i></h2><p>Concept visuals show how a restaurant packaging system can stay recognizable across different formats before physical samples are manufactured.</p></div><ConceptPackagingWall/></section>
+  <ReferencePackagingGallery/>
   <section className="darkBand">
    <p className="eyebrow">Packaging workflow</p>
    <h2>Build the pieces as <i>one system.</i></h2>
