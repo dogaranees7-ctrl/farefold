@@ -28,3 +28,4 @@ export * from "./safety-knowledge";
 export * from "./product";
 export * from "./quote";
 export * from "./relationships";
+export * from "./catalog";
