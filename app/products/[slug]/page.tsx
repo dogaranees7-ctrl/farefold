@@ -16,6 +16,19 @@ export async function generateMetadata({params}:{params:Promise<{slug:string}>})
  return {title:item.name,description:`Explore ${item.name.toLowerCase()} as part of the Farefold restaurant packaging catalogue.`};
 }
 
+
+const referenceImages={
+ cups:"https://images.pexels.com/photos/7318858/pexels-photo-7318858.jpeg?cs=srgb&dl=pexels-angela-roma-7318858.jpg&fm=jpg",
+ containers:"https://images.pexels.com/photos/32424228/pexels-photo-32424228.jpeg?cs=srgb&dl=pexels-zehra-k-710717493-32424228.jpg&fm=jpg",
+ boxes:"https://images.pexels.com/photos/8015739/pexels-photo-8015739.jpeg?cs=srgb&dl=pexels-cup-of-couple-8015739.jpg&fm=jpg"
+} as const;
+function referenceImageFor(name:string){
+ const lower=name.toLowerCase();
+ if(lower.includes("cup")||lower.includes("lid")||lower.includes("straw")||lower.includes("carrier")) return referenceImages.cups;
+ if(lower.includes("container")||lower.includes("pot")||lower.includes("bowl")||lower.includes("tub")) return referenceImages.containers;
+ return referenceImages.boxes;
+}
+
 function familyFor(slug:string){
  const item=productFamilies.find(x=>x.slug===slug && x.parentSlug);
  return item?.parentSlug ? productFamilies.find(x=>x.slug===item.parentSlug) : undefined;
@@ -46,7 +59,7 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
   <section className="productDetail">
    <div>
     <div className="routeTrail"><Link href="/products">Products</Link><span>/</span>{parent?.name??"Packaging"}<span>/</span>{item.name}</div>
-    <div className="detailVisual" aria-label={`${item.name} packaging concept visual`}><span>CONCEPT / CUSTOM FORMAT</span><strong>{item.name}</strong><div className="detailShape"><i>F</i></div><small>Example visual — final structure, artwork and specifications are developed to order.</small></div>
+    <div className="detailVisual detailVisualPhoto" aria-label={`${item.name} real packaging reference`} style={{backgroundImage:`url("${referenceImageFor(item.name)}")`}}><span>REAL / REFERENCE</span><strong>{item.name}</strong><small>Reference photography — not Farefold stock. Final structure, artwork and specifications are developed to order.</small></div>
    </div>
    <div>
     <p className="eyebrow">Product family</p>
