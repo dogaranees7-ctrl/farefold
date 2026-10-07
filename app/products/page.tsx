@@ -1,3 +1,5 @@
+import type {Metadata} from "next";
+export const metadata:Metadata={title:"Packaging Products",description:"Browse Farefold packaging formats across boxes, containers, cups, bags, wrapping, trays, accessories and custom formats."};
 import Link from "next/link";
 import {PageFrame} from "@/app/components/page-frame";
 import {ProductCatalog} from "@/app/components/product-catalog";
