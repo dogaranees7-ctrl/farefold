@@ -1,3 +1,5 @@
+import type {Metadata} from "next";
+export const metadata:Metadata={title:"Restaurant Branding",description:"Build a recognizable restaurant brand with strategy, identity, packaging identity, menus, social direction and launch systems."};
 import Link from "next/link";
 import {PageFrame} from "@/app/components/page-frame";
 
