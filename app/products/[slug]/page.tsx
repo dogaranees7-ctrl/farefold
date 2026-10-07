@@ -16,12 +16,12 @@ export async function generateMetadata({params}:{params:Promise<{slug:string}>})
  return {title:item.name,description:`Explore ${item.name.toLowerCase()} as part of the Farefold restaurant packaging catalogue.`};
 }
 
-
 const referenceImages={
  cups:"https://images.pexels.com/photos/7318858/pexels-photo-7318858.jpeg?cs=srgb&dl=pexels-angela-roma-7318858.jpg&fm=jpg",
  containers:"https://images.pexels.com/photos/32424228/pexels-photo-32424228.jpeg?cs=srgb&dl=pexels-zehra-k-710717493-32424228.jpg&fm=jpg",
  boxes:"https://images.pexels.com/photos/8015739/pexels-photo-8015739.jpeg?cs=srgb&dl=pexels-cup-of-couple-8015739.jpg&fm=jpg"
 } as const;
+
 function referenceImageFor(name:string){
  const lower=name.toLowerCase();
  if(lower.includes("cup")||lower.includes("lid")||lower.includes("straw")||lower.includes("carrier")) return referenceImages.cups;
@@ -34,7 +34,7 @@ function familyFor(slug:string){
  return item?.parentSlug ? productFamilies.find(x=>x.slug===item.parentSlug) : undefined;
 }
 
-function useCases(name:string){
+function getUseCases(name:string){
  const lower=name.toLowerCase();
  if(lower.includes("pizza")) return ["Pizza delivery","Takeaway","Delivery bundles"];
  if(lower.includes("burger")) return ["Burger service","Takeaway","Delivery"];
@@ -53,7 +53,7 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
 
  const parent=familyFor(slug);
  const siblings=productFamilies.filter(x=>x.parentSlug===item.parentSlug && x.slug!==item.slug).slice(0,8);
- const uses=useCases(item.name);
+ const uses=getUseCases(item.name);
 
  return <PageFrame eyebrow={`Products / ${item.name}`} title={<>{item.name}.<br/><i>Ready for your brand.</i></>}>
   <section className="productDetail">
