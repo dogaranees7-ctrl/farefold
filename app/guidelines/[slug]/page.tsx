@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type {Metadata} from "next";
 import {notFound} from "next/navigation";
 import {PageFrame} from "@/app/components/page-frame";
 
@@ -14,5 +15,6 @@ const guides={
 } as const;
 
 type GuideSlug=keyof typeof guides;
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{const {slug}=await params;if(!(slug in guides))return {};return {title:guides[slug as GuideSlug].title,description:guides[slug as GuideSlug].intro};}
 export function generateStaticParams(){return Object.keys(guides).map(slug=>({slug}));}
 export default async function GuidePage({params}:{params:Promise<{slug:string}>}){const {slug}=await params;if(!(slug in guides))notFound();const guide=guides[slug as GuideSlug];return <PageFrame eyebrow="06 / Guidelines" title={guide.title}><article className="guideArticle section"><div className="guideArticleIntro"><p>{guide.intro}</p></div><div className="guideSteps">{guide.steps.map((step,i)=><div key={step}><span>{String(i+1).padStart(2,"0")}</span><p>{step}</p></div>)}</div><div className="guideArticleCta"><h2>Want help applying this to <i>your restaurant?</i></h2><p>Tell Farefold what you&apos;re building and we can turn the direction into a practical brand and packaging system.</p><div><Link className="primary" href={`/contact?product=${encodeURIComponent(guide.title)}`}>Talk to Farefold <span>→</span></Link><Link className="secondary" href="/guidelines">Back to guidelines</Link></div></div></article></PageFrame>}
