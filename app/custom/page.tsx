@@ -3,11 +3,13 @@ export const metadata:Metadata={title:"Custom Restaurant Packaging",description:
 import Link from "next/link";
 import {PageFrame} from "@/app/components/page-frame";
 import {ConceptPackagingWall} from "@/app/components/concept-packaging-wall";
+import {ReferencePackagingGallery} from "@/app/components/reference-packaging-gallery";
 const items=[["Custom boxes","Build a box around the food, portion, dimensions and brand."],["Custom bags","Handle, gusset, print area and carrying experience designed together."],["Custom cups","Create the cup, lid and sleeve combination your beverage system needs."],["Custom trays","Specify footprint, depth, stacking and presentation for the menu."],["Custom containers","Shape the format around heat, sauce, portions and delivery."],["Die-cut structures","Develop a new folding structure when a standard format is not enough."],["Printed packaging","Carry the identity across boxes, bags, cups, wraps and sleeves."],["Special structures","Unusual menus deserve packaging designed around the actual use."],["Restaurant launch package","Build the opening-day packaging list around the new brand."],["Complete custom brand system","Brand identity, packaging architecture and launch touchpoints as one project."]];
 export default function Custom(){
  return <PageFrame eyebrow="05 / Custom" title="Nothing fits? We create it.">
   <section className="section"><div className="sectionIntro wide"><h2>From one custom piece to the <i>whole system.</i></h2><p>Bring us the problem, product, sketch or simply the idea. We can start from a blank page and develop the packaging direction around your operation.</p></div><div className="linkCardGrid">{items.map(([title,text],i)=><Link className="linkCard" href={`/contact?product=${encodeURIComponent(title)}`} key={title}><span>{String(i+1).padStart(2,"0")}</span><h3>{title}</h3><p>{text}</p><b>↗</b></Link>)}</div></section>
   <section className="section"><div className="sectionIntro wide"><p className="eyebrow">Concept direction</p><h2>Start with the idea.<br/><i>Shape the format.</i></h2><p>These examples show the level of visual thinking we can apply before a custom structure is manufactured.</p></div><ConceptPackagingWall/></section>
+  <ReferencePackagingGallery/>
   <section className="orangeBand"><p className="eyebrow">Custom brief</p><h2>Have a rough idea?<br/><i>Start there.</i></h2><p>Tell us what you need to make, what it carries and what you want the customer to see.</p><Link className="primary dark" href="/contact">Start a custom brief <span>→</span></Link></section>
  </PageFrame>
 }
