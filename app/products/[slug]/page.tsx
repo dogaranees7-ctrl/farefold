@@ -3,7 +3,6 @@ import {notFound} from "next/navigation";
 import type {Metadata} from "next";
 import {PageFrame} from "@/app/components/page-frame";
 import {productFamilies} from "@/lib/data/product-families";
-import {ConceptPackagingWall} from "@/app/components/concept-packaging-wall";
 
 export function generateStaticParams(){
  return productFamilies.filter(x=>x.parentSlug).map(x=>({slug:x.slug}));
@@ -17,6 +16,8 @@ export async function generateMetadata({params}:{params:Promise<{slug:string}>})
 }
 
 const referenceImages={
+ burger:"https://images.pexels.com/photos/212303/pexels-photo-212303.jpeg?cs=srgb&dl=pexels-digitalbuggu-212303.jpg&fm=jpg",
+ fries:"https://images.pexels.com/photos/31609724/pexels-photo-31609724.jpeg?cs=srgb&dl=pexels-markus-winkler-1430818-31609724.jpg&fm=jpg",
  cups:"https://images.pexels.com/photos/7318858/pexels-photo-7318858.jpeg?cs=srgb&dl=pexels-angela-roma-7318858.jpg&fm=jpg",
  containers:"https://images.pexels.com/photos/32424228/pexels-photo-32424228.jpeg?cs=srgb&dl=pexels-zehra-k-710717493-32424228.jpg&fm=jpg",
  boxes:"https://images.pexels.com/photos/8015739/pexels-photo-8015739.jpeg?cs=srgb&dl=pexels-cup-of-couple-8015739.jpg&fm=jpg"
@@ -24,6 +25,8 @@ const referenceImages={
 
 function referenceImageFor(name:string){
  const lower=name.toLowerCase();
+ if(lower.includes("pizza")||lower.includes("burger")||lower.includes("chicken")||lower.includes("sandwich")) return lower.includes("fries") ? referenceImages.fries : referenceImages.burger;
+ if(lower.includes("fries")||lower.includes("snack")||lower.includes("cone")) return referenceImages.fries;
  if(lower.includes("cup")||lower.includes("lid")||lower.includes("straw")||lower.includes("carrier")) return referenceImages.cups;
  if(lower.includes("container")||lower.includes("pot")||lower.includes("bowl")||lower.includes("tub")) return referenceImages.containers;
  return referenceImages.boxes;
@@ -59,7 +62,7 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
   <section className="productDetail">
    <div>
     <div className="routeTrail"><Link href="/products">Products</Link><span>/</span>{parent?.name??"Packaging"}<span>/</span>{item.name}</div>
-    <div className="detailVisual detailVisualPhoto" aria-label={`${item.name} real packaging reference`} style={{backgroundImage:`url("${referenceImageFor(item.name)}")`}}><span>REAL / REFERENCE</span><strong>{item.name}</strong><small>Reference photography — not Farefold stock. Final structure, artwork and specifications are developed to order.</small></div>
+    <div className="detailVisual detailVisualPhoto" aria-label={`${item.name} real packaging reference`} style={{backgroundImage:`url("${referenceImageFor(item.name)}")`}}><span>PHOTO REFERENCE</span><strong>{item.name}</strong><small>Reference photography — not Farefold stock. Final structure, artwork and specifications are developed to order.</small></div>
    </div>
    <div>
     <p className="eyebrow">Product family</p>
@@ -68,8 +71,6 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
     <div className="detailActions"><Link className="primary" href={`/contact?product=${encodeURIComponent(item.name)}`}>Request a quote <span>→</span></Link><Link className="outlineCta" href="/products">Back to products</Link></div>
    </div>
   </section>
-
-  <section className="section"><div className="sectionIntro wide"><p className="eyebrow">Visual direction</p><h2>See the format.<br/><i>Then make it yours.</i></h2><p>These visuals communicate packaging possibilities before a physical sample exists. They are concept examples, not claims of current stock.</p></div><ConceptPackagingWall/></section>
 
   <section className="section productSpecGuide">
    <div className="sectionIntro wide"><p className="eyebrow">What we will show when the catalogue is loaded</p><h2>Useful product information.<br/><i>No guessed specifications.</i></h2><p>Every real product can be presented with the information needed to make a buying decision. Until the verified range is supplied, the site deliberately avoids invented sizes, materials, MOQs or prices.</p></div>
