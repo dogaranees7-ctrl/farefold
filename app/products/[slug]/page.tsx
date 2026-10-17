@@ -64,25 +64,25 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
     <div className="routeTrail"><Link href="/products">Products</Link><span>/</span>{parent?.name??"Packaging"}<span>/</span>{item.name}</div>
     <div className="detailVisualPhoto" aria-label={`${item.name} reference packaging photograph`}>
      <img className="detailPhotoImg" src={referenceImageFor(item.name)} alt={`${item.name} packaging reference photograph`} />
-     <span className="detailPhotoTag">PHOTO REFERENCE</span>
-     <div className="detailPhotoCaption"><strong>{item.name}</strong><small>Reference photography — not Farefold stock. Final structure, artwork and specifications are developed to order.</small></div>
+     <span className="detailPhotoTag">MADE FOR YOUR BRAND</span>
+     <div className="detailPhotoCaption"><strong>{item.name}</strong><small>Designed around your brand, menu and service needs.</small></div>
     </div>
    </div>
    <div>
     <p className="eyebrow">Product family</p>
     <h2>Specify it. <i>Brand it. Quote it.</i></h2>
-    <p>This is a catalogue-ready product family page. The verified Farefold product range will be added here with real photography, dimensions, specifications, pack quantities and commercial details once the catalogue is supplied.</p>
+    <p>Packaging made to work as hard as your brand. Choose a format, then shape the structure, print and finish around your menu and customer experience.</p>
     <div className="detailActions"><Link className="primary" href={`/contact?product=${encodeURIComponent(item.name)}`}>Request a quote <span>→</span></Link><Link className="outlineCta" href="/products">Back to products</Link></div>
    </div>
   </section>
 
   <section className="section productSpecGuide">
-   <div className="sectionIntro wide"><p className="eyebrow">What we will show when the catalogue is loaded</p><h2>Useful product information.<br/><i>No guessed specifications.</i></h2><p>Every real product can be presented with the information needed to make a buying decision. Until the verified range is supplied, the site deliberately avoids invented sizes, materials, MOQs or prices.</p></div>
+   <div className="sectionIntro wide"><p className="eyebrow">Built around your brief</p><h2>Considered design.<br/><i>Made for service.</i></h2><p>We develop packaging around your product, brand identity and day-to-day service requirements. Share the format and quantity you need and we will help shape the right solution.</p></div>
    <div className="catalogGrid">
-    <article className="catalogGroup"><div><p className="eyebrow">01 / Product</p><h3>Photography</h3><p>Real product photographs, detail shots and branded examples supplied or approved by Farefold.</p></div></article>
-    <article className="catalogGroup"><div><p className="eyebrow">02 / Specification</p><h3>Details</h3><p>Verified size, capacity, construction, printing, pack quantity and other relevant specifications.</p></div></article>
-    <article className="catalogGroup"><div><p className="eyebrow">03 / Fit</p><h3>Use cases</h3><p>Clear guidance about the restaurant formats and menu situations the product is suited to.</p></div></article>
-    <article className="catalogGroup"><div><p className="eyebrow">04 / Project</p><h3>Branding</h3><p>How the format can be branded, customized or connected to the wider restaurant packaging system.</p></div></article>
+    <article className="catalogGroup"><div><p className="eyebrow">01 / Product</p><h3>Product format</h3><p>Choose a packaging style that suits the menu item, service flow and customer experience.</p></div></article>
+    <article className="catalogGroup"><div><p className="eyebrow">02 / Specification</p><h3>Specifications</h3><p>Discuss dimensions, construction, print options and order quantities for your packaging brief.</p></div></article>
+    <article className="catalogGroup"><div><p className="eyebrow">03 / Fit</p><h3>Performance</h3><p>Plan packaging around holding, carrying, takeaway and delivery needs.</p></div></article>
+    <article className="catalogGroup"><div><p className="eyebrow">04 / Project</p><h3>Brand identity</h3><p>Bring your logo, colours and visual identity into a consistent packaging system.</p></div></article>
    </div>
    <div className="detailUseCases"><p className="eyebrow">Typical use cases</p><div className="miniGrid">{uses.map(use=><div key={use}><span>{use}</span></div>)}</div></div>
   </section>

@@ -64,7 +64,7 @@ export function ProductCatalog({items}:{items:Item[]}){
   </div>
   <div className="catalogResultMeta">{filtered.length} packaging formats{query||group!=="all"?" matching your selection":""}</div>
   <div className="catalogProductGrid">{filtered.map((x,i)=>{const photo=referenceFor(x.name);return <Link className="catalogProductCard" href={`/products/${x.slug}`} key={x.slug}>
-    <div className="catalogProductImage" style={{backgroundImage:`url("${photo.image}")`}} role="img" aria-label={photo.label}><span>PHOTO REFERENCE</span></div>
+    <div className="catalogProductImage" style={{backgroundImage:`url("${photo.image}")`}} role="img" aria-label={photo.label}><span>MADE FOR YOUR BRAND</span></div>
     <div className="catalogProductBody"><span>{String(i+1).padStart(2,"0")}</span><small>{x.parentName}</small><h3>{x.name}</h3><p>Explore format →</p><small className="catalogPhotoCredit">Photo: <span>{photo.source}</span></small></div>
   </Link>})}</div>
   {filtered.length===0&&<div className="catalogEmpty"><h3>No format found.</h3><p>Try another packaging term or start a custom brief.</p><Link className="primary" href="/contact?product=Custom%20packaging%20brief">Start a custom brief <span>→</span></Link></div>}
