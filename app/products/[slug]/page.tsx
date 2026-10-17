@@ -16,7 +16,7 @@ export async function generateMetadata({params}:{params:Promise<{slug:string}>})
 }
 
 const referenceImages={
- burger:"https://images.pexels.com/photos/8228281/pexels-photo-8228281.jpeg?auto=compress&cs=tinysrgb&w=1400",
+ burger:"https://images.pexels.com/photos/33673831/pexels-photo-33673831.jpeg?auto=compress&cs=tinysrgb&w=1800",
  fries:"https://images.pexels.com/photos/33673831/pexels-photo-33673831.jpeg?auto=compress&cs=tinysrgb&w=1400",
  cups:"https://images.pexels.com/photos/7318858/pexels-photo-7318858.jpeg?cs=srgb&dl=pexels-angela-roma-7318858.jpg&fm=jpg",
  containers:"https://images.pexels.com/photos/32424228/pexels-photo-32424228.jpeg?cs=srgb&dl=pexels-zehra-k-710717493-32424228.jpg&fm=jpg",
@@ -62,7 +62,11 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
   <section className="productDetail">
    <div>
     <div className="routeTrail"><Link href="/products">Products</Link><span>/</span>{parent?.name??"Packaging"}<span>/</span>{item.name}</div>
-    <div className="detailVisual detailVisualPhoto" aria-label={`${item.name} real packaging reference`} style={{backgroundImage:`url("${referenceImageFor(item.name)}")`}}><span>PHOTO REFERENCE</span><strong>{item.name}</strong><small>Reference photography — not Farefold stock. Final structure, artwork and specifications are developed to order.</small></div>
+    <div className="detailVisualPhoto" aria-label={`${item.name} reference packaging photograph`}>
+     <img className="detailPhotoImg" src={referenceImageFor(item.name)} alt={`${item.name} packaging reference photograph`} />
+     <span className="detailPhotoTag">PHOTO REFERENCE</span>
+     <div className="detailPhotoCaption"><strong>{item.name}</strong><small>Reference photography — not Farefold stock. Final structure, artwork and specifications are developed to order.</small></div>
+    </div>
    </div>
    <div>
     <p className="eyebrow">Product family</p>
