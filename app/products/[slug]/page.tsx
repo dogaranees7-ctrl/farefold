@@ -16,8 +16,8 @@ export async function generateMetadata({params}:{params:Promise<{slug:string}>})
 }
 
 const referenceImages={
- burger:"https://images.pexels.com/photos/212303/pexels-photo-212303.jpeg?cs=srgb&dl=pexels-digitalbuggu-212303.jpg&fm=jpg",
- fries:"https://images.pexels.com/photos/31609724/pexels-photo-31609724.jpeg?cs=srgb&dl=pexels-markus-winkler-1430818-31609724.jpg&fm=jpg",
+ burger:"https://images.pexels.com/photos/8228281/pexels-photo-8228281.jpeg?auto=compress&cs=tinysrgb&w=1400",
+ fries:"https://images.pexels.com/photos/33673831/pexels-photo-33673831.jpeg?auto=compress&cs=tinysrgb&w=1400",
  cups:"https://images.pexels.com/photos/7318858/pexels-photo-7318858.jpeg?cs=srgb&dl=pexels-angela-roma-7318858.jpg&fm=jpg",
  containers:"https://images.pexels.com/photos/32424228/pexels-photo-32424228.jpeg?cs=srgb&dl=pexels-zehra-k-710717493-32424228.jpg&fm=jpg",
  boxes:"https://images.pexels.com/photos/8015739/pexels-photo-8015739.jpeg?cs=srgb&dl=pexels-cup-of-couple-8015739.jpg&fm=jpg"
