@@ -43,6 +43,7 @@ export function ContactForm({product=""}:{product?:string}){
   <label>Timeline<select name="timeline" defaultValue=""><option value="">Optional — when do you need it?</option><option>As soon as possible</option><option>Within 2–4 weeks</option><option>Within 1–2 months</option><option>Planning ahead</option></select></label>
   <label>City<input name="city" autoComplete="address-level2" placeholder="City / delivery location"/></label>
   <label>Tell us a little<textarea required name="brief" placeholder="What are you building, what do you serve, and what do you need?"/></label>
+  <p className="formPrivacyNote">Submitting opens a WhatsApp message for you to review and send. <a href="/privacy">Read the privacy notice</a>.</p>
   <button type="submit">Send project brief <span>→</span></button>
   {sent&&<p className="formSuccess">Your brief has been prepared. If WhatsApp did not open automatically, <a href={whatsappUrl} target="_blank" rel="noreferrer">open your Farefold chat here →</a> and press Send to deliver it.</p>}
  </form>;
