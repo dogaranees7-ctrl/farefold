@@ -111,7 +111,7 @@ export default function Home(){
       <section id="products" className="homeProducts section">
         <div className="homeSectionHead">
           <div><div className="homeSectionNo">06 / PRODUCTS</div><h2>Useful formats.<br/><em>Distinctive brands.</em></h2></div>
-          <p>Explore the packaging formats we help restaurants specify and develop. Product photography and commercial listings will be added once the FareFold range is confirmed.</p>
+          <p>Explore the packaging formats FareFold can design and make, from everyday essentials to distinctive custom structures. Product photography and detailed product information will be added category by category.</p>
         </div>
         <div className="homeProductGrid">
           {products.map(([title,text,slug,n],i)=><Link href={`/products/${slug}`} className={`homeProduct p${i+1}`} key={slug}><div className="productNumber">{n}</div><div className="productMeta"><h3>{title}</h3><p>{text}</p><b>Discuss this format ↗</b></div></Link>)}
