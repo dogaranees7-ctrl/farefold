@@ -145,3 +145,12 @@
 .catalogEmpty p{color:var(--muted);font-size:13px}
 @media(max-width:900px){.catalogCategoryGrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:600px){.catalogBrowseHead{align-items:flex-start;flex-direction:column;margin-top:38px}.catalogCategoryGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.catalogCategory{min-height:125px;padding:15px}.catalogTools{align-items:stretch;flex-direction:column}.catalogReset{align-self:flex-start}.catalogMetaNote{width:100%}}
+
+
+/* Product detail navigation: make the catalogue hierarchy visible and easy to retrace. */
+.productBreadcrumbs{display:flex;align-items:center;flex-wrap:wrap;gap:9px;padding-top:18px;padding-bottom:0;font-size:10px;letter-spacing:.4px;color:var(--muted)}
+.productBreadcrumbs>a{color:var(--orange);font-weight:700}
+.productBreadcrumbs>a:hover{text-decoration:underline;text-underline-offset:3px}
+.productBreadcrumbs>span{display:flex;gap:9px}
+.productBreadcrumbs>span>span{color:var(--ink)}
+.productBreadcrumbs strong{color:var(--ink);font-weight:700}
