@@ -32,12 +32,20 @@ function getFormatDescription(slug:string,name:string){
  const descriptions:Record<string,string>={
   "pizza-boxes":"A branded box concept for carrying pizza from oven to customer, with structure and presentation considered together.",
   "burger-boxes":"A packaging direction for burgers and assembled meals, planned around fit, handling and the customer handoff.",
-  "cake-boxes":"A presentation and carrying format for cakes, with dimensions, support and opening experience considered during development.",
   "coffee-cups":"A branded beverage cup direction for cafés and coffee service, considered alongside compatible lids and sleeves.",
   "paper-bags":"A carry format that connects the takeaway experience to the restaurant identity, with handle and size requirements defined per brief.",
   "food-wrapping-paper":"A branded or functional food wrap direction developed around the item being served and the required handling experience.",
   "meal-containers":"A container direction for complete meals, with portion layout, closure and delivery journey considered together.",
   "sauce-containers":"A small-format container direction for sauces and condiments, with portion, closure and bundle requirements confirmed per project.",
+  "chicken-boxes":"A takeaway format for fried chicken and hot food, considered around portion fit, handling, ventilation and the wider meal bundle.",
+  "snack-boxes":"A flexible format for sides, bites and snack portions, developed around serving size, handling and takeaway presentation.",
+  "meal-boxes":"A meal packaging direction planned around the menu, portion layout, carrying and the customer opening experience.",
+  "hot-cups":"A branded hot-drink cup direction considered with the beverage, lid fit, sleeve requirements and service flow.",
+  "cold-cups":"A cold-beverage cup direction planned with drink type, lid compatibility, carrying and visual identity in mind.",
+  "cake-boxes":"A presentation and carrying format for cakes, with dimensions, support and opening experience considered during development.",
+  "bakery-boxes":"A bakery packaging direction developed around product shape, protection, presentation and the way customers carry it home.",
+  "grease-resistant-paper":"A food-contact wrap or liner direction considered around the menu item, handling and intended service use.",
+  "printed-boxes":"A branded box format where the structure and artwork are developed together around the product and customer experience.",
   "napkins":"A service accessory that can carry the brand identity consistently across dine-in and takeaway touchpoints.",
   "custom-packaging":"A project starting point for a packaging structure developed around a specific product, service journey or brand requirement."
  };
