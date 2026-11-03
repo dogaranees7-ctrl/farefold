@@ -119,21 +119,21 @@ export const productFamilies: ProductFamily[] = [
   { slug: "plastic-trays", name: "Plastic Trays", parentSlug: "trays" },
   { slug: "aluminium-trays", name: "Aluminium Trays", parentSlug: "trays" },
 
-  // --- Cones (research addition — Horizon Foods exposes cups/cones/straws) ---
+  // --- Cones ------------------------------------------------------------------
   {
     slug: "cones",
     name: "Cones",
-    description: "Research addition — cone-format packaging for scoop/fried snack formats.",
+    description: "Cone-format packaging for ice cream, fries and snack servings.",
   },
   { slug: "ice-cream-cones", name: "Ice Cream Cones", parentSlug: "cones" },
   { slug: "fries-cones", name: "Fries Cones", parentSlug: "cones" },
   { slug: "snack-cones", name: "Snack Cones", parentSlug: "cones" },
 
-  // --- Buckets (research addition — Horizon Foods exposes chicken buckets) ---
+  // --- Buckets ---------------------------------------------------------------
   {
     slug: "buckets",
     name: "Buckets",
-    description: "Research addition — tapered bucket formats, chicken being the common case.",
+    description: "Bucket formats for chicken, snacks and other takeaway servings.",
   },
   { slug: "chicken-buckets", name: "Chicken Buckets", parentSlug: "buckets" },
   { slug: "snack-buckets", name: "Snack Buckets", parentSlug: "buckets" },
