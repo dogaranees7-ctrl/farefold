@@ -105,3 +105,16 @@
 .formatStatus{display:inline-block;margin-top:35px;padding-top:15px;border-top:1px solid #45413b;color:#c4beb5;font-size:9px;letter-spacing:1px;text-transform:uppercase}
 @media(max-width:900px){.homeProduct{min-height:210px}.formatStatement{min-height:340px}}
 @media(max-width:560px){.homeProductGrid{grid-template-columns:1fr}.homeProduct{min-height:190px}.homeProduct .productMeta{margin-top:35px}.textOnlyProductCard{min-height:175px}.formatStatement{padding:25px;min-height:310px}}
+
+
+/* Launch refinement: keep product format cards deliberately image-free until real assets are approved. */
+.homeProduct{min-height:245px;display:flex;flex-direction:column;justify-content:space-between;padding:22px;border:1px solid var(--line);transition:background .2s,border-color .2s}
+.homeProduct:hover{border-color:var(--orange);background:var(--cream)}
+.homeProduct .productMeta{position:static;margin-top:auto}
+.homeProduct .productMeta h3{font-size:clamp(22px,2.2vw,30px);margin-bottom:9px}
+.homeProduct .productMeta p{font-size:12px;line-height:1.5;max-width:300px}
+.homeProduct .productMeta b{font-size:10px;letter-spacing:.5px;margin-top:16px}
+.homeProduct .productNumber{font-size:10px;letter-spacing:1.5px}
+@media(max-width:700px){.homeProduct{min-height:220px}}
+@media(max-width:480px){.homeProduct{min-height:205px}}
+.formSuccess a{display:inline-block;margin-top:8px;text-decoration:underline;text-underline-offset:3px;font-weight:700}
