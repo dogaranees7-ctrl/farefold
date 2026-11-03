@@ -43,7 +43,7 @@ export default function Home(){
         <div className="homeHeroCopy">
           <div className="homeKicker"><span>01</span> Restaurant branding + packaging <b>Pakistan first</b></div>
           <h1>Make your<br/><em>food brand</em><br/>impossible to forget.</h1>
-          <p>Farefold builds recognizable restaurant brands from the first idea to the packaging that reaches the customer.</p>
+          <p>FareFold builds recognizable restaurant brands from the first idea to the packaging that reaches the customer.</p>
           <div className="homeActions">
             <Link className="homeButton homeButtonOrange" href="/contact">Start your brand <span>↗</span></Link>
             <Link className="homeTextLink" href="#businesses">Explore businesses <span>↓</span></Link>
@@ -111,7 +111,7 @@ export default function Home(){
       <section id="products" className="homeProducts section">
         <div className="homeSectionHead">
           <div><div className="homeSectionNo">06 / PRODUCTS</div><h2>Useful formats.<br/><em>Distinctive brands.</em></h2></div>
-          <p>Explore the packaging formats we help restaurants specify and develop. Product photography and commercial listings will be added once the Farefold range is confirmed.</p>
+          <p>Explore the packaging formats we help restaurants specify and develop. Product photography and commercial listings will be added once the FareFold range is confirmed.</p>
         </div>
         <div className="homeProductGrid">
           {products.map(([title,text,slug,n],i)=><Link href={`/products/${slug}`} className={`homeProduct p${i+1}`} key={slug}><div className="productNumber">{n}</div><div className="productMeta"><h3>{title}</h3><p>{text}</p><b>Discuss this format ↗</b></div></Link>)}
@@ -137,7 +137,7 @@ export default function Home(){
       <section id="contact" className="homeContact">
         <div className="contactIndex">09 / START HERE</div>
         <div><h2>Tell us what<br/><em>you&apos;re building.</em></h2><p>Opening a restaurant? Already running one? Need branding, packaging, custom work, or the complete system?</p></div>
-        <div className="contactAction"><span>Start with the idea.</span><Link className="homeButton homeButtonOrange" href="/contact">Send project brief <span>↗</span></Link><small>WhatsApp · Email · Project brief</small></div>
+        <div className="contactAction"><span>Start with the idea.</span><Link className="homeButton homeButtonOrange" href="/contact">Send project brief <span>↗</span></Link><small>WhatsApp · Project brief</small></div>
       </section>
     </main>
   </SiteShell>
