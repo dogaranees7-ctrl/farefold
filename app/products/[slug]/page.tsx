@@ -28,6 +28,22 @@ function getAncestors(slug:string){
  return path;
 }
 
+function getFormatDescription(slug:string,name:string){
+ const descriptions:Record<string,string>={
+  "pizza-boxes":"A branded box concept for carrying pizza from oven to customer, with structure and presentation considered together.",
+  "burger-boxes":"A packaging direction for burgers and assembled meals, planned around fit, handling and the customer handoff.",
+  "cake-boxes":"A presentation and carrying format for cakes, with dimensions, support and opening experience considered during development.",
+  "coffee-cups":"A branded beverage cup direction for cafés and coffee service, considered alongside compatible lids and sleeves.",
+  "paper-bags":"A carry format that connects the takeaway experience to the restaurant identity, with handle and size requirements defined per brief.",
+  "food-wrapping-paper":"A branded or functional food wrap direction developed around the item being served and the required handling experience.",
+  "meal-containers":"A container direction for complete meals, with portion layout, closure and delivery journey considered together.",
+  "sauce-containers":"A small-format container direction for sauces and condiments, with portion, closure and bundle requirements confirmed per project.",
+  "napkins":"A service accessory that can carry the brand identity consistently across dine-in and takeaway touchpoints.",
+  "custom-packaging":"A project starting point for a packaging structure developed around a specific product, service journey or brand requirement."
+ };
+ return descriptions[slug]||("A "+name.toLowerCase()+" format to develop around your food product, service model and brand requirements. The final structure and specification are agreed during the project.");
+}
+
 function getUseCases(name:string){
  const lower=name.toLowerCase();
  if(lower.includes("pizza")) return ["Pizza delivery","Takeaway","Delivery bundles"];
@@ -65,7 +81,7 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
     <p className="eyebrow">Packaging format · {root?.name??"Packaging"}</p>
     <span className="formatIndex">FAREFOLD / FORMAT DIRECTORY</span>
     <h2>{item.name}</h2>
-    <p>A starting point for developing the right packaging structure, material, print approach and quantity for your food business.</p>
+    <p>{getFormatDescription(item.slug,item.name)}</p>
     <span className="formatStatus">Project-based specification · Details confirmed on enquiry</span>
    </div>
    <div>
