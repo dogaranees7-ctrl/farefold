@@ -1,7 +1,5 @@
 import Link from "next/link";
 import {SiteShell} from "@/app/components/site-shell";
-import {ConceptPackagingWall} from "@/app/components/concept-packaging-wall";
-import {ReferencePackagingGallery} from "@/app/components/reference-packaging-gallery";
 
 const businesses=[
   ["Pizza","pizza-restaurant"],["Burger","burger-restaurant"],["Fried Chicken","fried-chicken-restaurant"],["Café","cafe"],
@@ -111,12 +109,10 @@ export default function Home(){
       <section id="products" className="homeProducts section">
         <div className="homeSectionHead">
           <div><div className="homeSectionNo">06 / PRODUCTS</div><h2>Useful formats.<br/><em>Distinctive brands.</em></h2></div>
-          <p>Browse the actual packaging formats restaurants use. Choose the right pieces, then make them yours.</p>
+          <p>Explore the packaging formats we help restaurants specify and develop. Product photography and commercial listings will be added once the Farefold range is confirmed.</p>
         </div>
-        <ConceptPackagingWall/>
-        <ReferencePackagingGallery/>
         <div className="homeProductGrid">
-          {products.map(([title,text,slug,n],i)=><Link href={`/products/${slug}`} className={`homeProduct p${i+1}`} key={slug}><div className="productNumber">{n}</div><div className="productShape"><span>{i===0?"P":i===1?"B":i===2?"F":"F"}</span></div><div className="productMeta"><h3>{title}</h3><p>{text}</p><b>View format ↗</b></div></Link>)}
+          {products.map(([title,text,slug,n],i)=><Link href={`/products/${slug}`} className={`homeProduct p${i+1}`} key={slug}><div className="productNumber">{n}</div><div className="productMeta"><h3>{title}</h3><p>{text}</p><b>Discuss this format ↗</b></div></Link>)}
         </div>
         <Link className="homeOutline" href="/products">Browse all products <span>→</span></Link>
       </section>
