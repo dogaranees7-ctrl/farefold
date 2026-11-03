@@ -24,7 +24,9 @@ export function ContactForm({product=""}:{product?:string}){
    `City: ${data.get("city")||"Not specified"}`,
    `Brief: ${data.get("brief")}`
   ].join("\n");
-  window.open(`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent("Hi Farefold — I’d like to start a project.\n\n"+body)}`,"_blank","noopener,noreferrer");
+  const url=`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent("Hi Farefold — I’d like to start a project.\n\n"+body)}`;
+  setWhatsappUrl(url);
+  window.open(url,"_blank","noopener,noreferrer");
   setSent(true);
  }
 
