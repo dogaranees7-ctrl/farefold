@@ -22,7 +22,9 @@ const products=[
   ["Coffee cups","Cup, lid and sleeve.","coffee-cups","03"],
   ["Paper bags","The brand customers carry.","paper-bags","04"],
   ["Sauce containers","Small piece. Big consistency.","sauce-containers","05"],
-  ["Custom packaging","When standard is not enough.","custom-packaging","06"]
+  ["Snack boxes","Portable formats for sides, bites and combo portions.","snack-boxes","06"],
+  ["Chicken boxes","Purpose-led formats for fried chicken and hot food.","chicken-boxes","07"],
+  ["Custom packaging","When standard is not enough.","custom-packaging","08"]
 ];
 
 const guides=[
