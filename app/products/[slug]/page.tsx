@@ -12,24 +12,7 @@ export async function generateMetadata({params}:{params:Promise<{slug:string}>})
  const {slug}=await params;
  const item=productFamilies.find(x=>x.slug===slug && x.parentSlug);
  if(!item)return {};
- return {title:item.name,description:`Explore ${item.name.toLowerCase()} as part of the Farefold restaurant packaging catalogue.`};
-}
-
-const referenceImages={
- burger:"https://images.pexels.com/photos/33673831/pexels-photo-33673831.jpeg?auto=compress&cs=tinysrgb&w=1800",
- fries:"https://images.pexels.com/photos/33673831/pexels-photo-33673831.jpeg?auto=compress&cs=tinysrgb&w=1400",
- cups:"https://images.pexels.com/photos/7318858/pexels-photo-7318858.jpeg?cs=srgb&dl=pexels-angela-roma-7318858.jpg&fm=jpg",
- containers:"https://images.pexels.com/photos/32424228/pexels-photo-32424228.jpeg?cs=srgb&dl=pexels-zehra-k-710717493-32424228.jpg&fm=jpg",
- boxes:"https://images.pexels.com/photos/8015739/pexels-photo-8015739.jpeg?cs=srgb&dl=pexels-cup-of-couple-8015739.jpg&fm=jpg"
-} as const;
-
-function referenceImageFor(name:string){
- const lower=name.toLowerCase();
- if(lower.includes("pizza")||lower.includes("burger")||lower.includes("chicken")||lower.includes("sandwich")) return lower.includes("fries") ? referenceImages.fries : referenceImages.burger;
- if(lower.includes("fries")||lower.includes("snack")||lower.includes("cone")) return referenceImages.fries;
- if(lower.includes("cup")||lower.includes("lid")||lower.includes("straw")||lower.includes("carrier")) return referenceImages.cups;
- if(lower.includes("container")||lower.includes("pot")||lower.includes("bowl")||lower.includes("tub")) return referenceImages.containers;
- return referenceImages.boxes;
+ return {title:item.name,description:`Discuss ${item.name.toLowerCase()} packaging with Farefold. Product specifications and commercial details are confirmed for each project.`};
 }
 
 function familyFor(slug:string){
@@ -58,37 +41,36 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
  const siblings=productFamilies.filter(x=>x.parentSlug===item.parentSlug && x.slug!==item.slug).slice(0,8);
  const uses=getUseCases(item.name);
 
- return <PageFrame eyebrow={`Products / ${item.name}`} title={<>{item.name}.<br/><i>Ready for your brand.</i></>}>
-  <section className="productDetail">
-   <div>
-    <div className="routeTrail"><Link href="/products">Products</Link><span>/</span>{parent?.name??"Packaging"}<span>/</span>{item.name}</div>
-    <div className="detailVisualPhoto" aria-label={`${item.name} reference packaging photograph`}>
-     <img className="detailPhotoImg" src={referenceImageFor(item.name)} alt={`${item.name} packaging reference photograph`} />
-     <span className="detailPhotoTag">MADE FOR YOUR BRAND</span>
-     <div className="detailPhotoCaption"><strong>{item.name}</strong><small>Designed around your brand, menu and service needs.</small></div>
-    </div>
+ return <PageFrame eyebrow={`Packaging formats / ${item.name}`} title={<>{item.name}.<br/><i>Designed around your business.</i></>}>
+  <section className="productDetail productDetailTextOnly">
+   <div className="formatStatement">
+    <p className="eyebrow">Packaging format · {parent?.name??"Packaging"}</p>
+    <span className="formatIndex">FAREFOLD / FORMAT DIRECTORY</span>
+    <h2>{item.name}</h2>
+    <p>A starting point for discussing the right structure, material, print approach and quantity for your food business.</p>
+    <span className="formatStatus">Project-based specification · Details confirmed on enquiry</span>
    </div>
    <div>
-    <p className="eyebrow">Product family</p>
+    <p className="eyebrow">Product enquiry</p>
     <h2>Specify it. <i>Brand it. Quote it.</i></h2>
-    <p>Packaging made to work as hard as your brand. Choose a format, then shape the structure, print and finish around your menu and customer experience.</p>
-    <div className="detailActions"><Link className="primary" href={`/contact?product=${encodeURIComponent(item.name)}`}>Request a quote <span>→</span></Link><Link className="outlineCta" href="/products">Back to products</Link></div>
+    <p>This page describes a packaging format, not a confirmed stock item. We will confirm available construction, dimensions, materials, printing, minimum order quantity, lead time and price against your requirements before quoting.</p>
+    <div className="detailActions"><Link className="primary" href={`/contact?product=${encodeURIComponent(item.name)}`}>Enquire about {item.name} <span>→</span></Link><Link className="outlineCta" href="/products">Back to formats</Link></div>
    </div>
   </section>
 
   <section className="section productSpecGuide">
-   <div className="sectionIntro wide"><p className="eyebrow">Built around your brief</p><h2>Considered design.<br/><i>Made for service.</i></h2><p>We develop packaging around your product, brand identity and day-to-day service requirements. Share the format and quantity you need and we will help shape the right solution.</p></div>
+   <div className="sectionIntro wide"><p className="eyebrow">What we confirm with you</p><h2>The right format.<br/><i>For the real job.</i></h2><p>We do not publish unverified product specifications. These are the details we establish with you before recommending or quoting a solution.</p></div>
    <div className="catalogGrid">
-    <article className="catalogGroup"><div><p className="eyebrow">01 / Product</p><h3>Product format</h3><p>Choose a packaging style that suits the menu item, service flow and customer experience.</p></div></article>
-    <article className="catalogGroup"><div><p className="eyebrow">02 / Specification</p><h3>Specifications</h3><p>Discuss dimensions, construction, print options and order quantities for your packaging brief.</p></div></article>
-    <article className="catalogGroup"><div><p className="eyebrow">03 / Fit</p><h3>Performance</h3><p>Plan packaging around holding, carrying, takeaway and delivery needs.</p></div></article>
-    <article className="catalogGroup"><div><p className="eyebrow">04 / Project</p><h3>Brand identity</h3><p>Bring your logo, colours and visual identity into a consistent packaging system.</p></div></article>
+    <article className="catalogGroup"><div><p className="eyebrow">01 / Fit</p><h3>Food & portion</h3><p>What the packaging needs to hold, protect and present.</p></div></article>
+    <article className="catalogGroup"><div><p className="eyebrow">02 / Structure</p><h3>Dimensions & material</h3><p>Suitable construction, dimensions, closure and material options.</p></div></article>
+    <article className="catalogGroup"><div><p className="eyebrow">03 / Branding</p><h3>Print & finish</h3><p>Artwork, print coverage, colour and finishing options for the format.</p></div></article>
+    <article className="catalogGroup"><div><p className="eyebrow">04 / Order</p><h3>Quantity & timing</h3><p>Minimum order, pack quantity, production lead time and price.</p></div></article>
    </div>
-   <div className="detailUseCases"><p className="eyebrow">Typical use cases</p><div className="miniGrid">{uses.map(use=><div key={use}><span>{use}</span></div>)}</div></div>
+   <div className="detailUseCases"><p className="eyebrow">Common business uses</p><div className="miniGrid">{uses.map(use=><div key={use}><span>{use}</span></div>)}</div></div>
   </section>
 
-  {siblings.length>0&&<section className="section related"><div className="sectionIntro"><p className="eyebrow">Related</p><h2>More in this <i>family.</i></h2></div><div className="miniGrid">{siblings.map(x=><Link href={`/products/${x.slug}`} key={x.slug}><span>{x.name}</span><b>↗</b></Link>)}</div></section>}
+  {siblings.length>0&&<section className="section related"><div className="sectionIntro"><p className="eyebrow">Related formats</p><h2>More in this <i>family.</i></h2></div><div className="miniGrid">{siblings.map(x=><Link href={`/products/${x.slug}`} key={x.slug}><span>{x.name}</span><b>↗</b></Link>)}</div></section>}
 
-  <section className="orangeBand"><p className="eyebrow">Need this format for your restaurant?</p><h2>Tell us the product.<br/><i>We&apos;ll shape the system.</i></h2><p>Send the format, approximate quantity, city and any existing artwork or brand direction. We&apos;ll take it from there.</p><Link className="primary dark" href={`/contact?product=${encodeURIComponent(item.name)}`}>Start a product brief <span>→</span></Link></section>
+  <section className="orangeBand"><p className="eyebrow">Start a product enquiry</p><h2>Tell us what you need.<br/><i>We&apos;ll help specify it.</i></h2><p>Share the food product, approximate quantity, city and any existing brand artwork. Farefold will confirm suitable options and commercial details before you order.</p><Link className="primary dark" href={`/contact?product=${encodeURIComponent(item.name)}`}>Start a product enquiry <span>→</span></Link></section>
  </PageFrame>;
 }
