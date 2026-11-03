@@ -8,7 +8,20 @@ type Category={slug:string;name:string;count:number};
 export function ProductCatalog({items,categories}:{items:Item[];categories:Category[]}){
  const [query,setQuery]=useState("");
  const [group,setGroup]=useState("all");
- const filtered=useMemo(()=>items.filter(x=>(group==="all"||x.parentSlug===group)&&x.name.toLowerCase().includes(query.trim().toLowerCase())),[items,group,query]);
+ const searchAliases:Record<string,string[]>={
+  "pizza-boxes":["pizza","pizzeria","delivery box"],"burger-boxes":["hamburger","burger"],"chicken-boxes":["fried chicken","broast","wings"],"snack-boxes":["fries","finger food","snacks"],
+  "meal-boxes":["lunch box","meal packaging","food box"],"takeaway-boxes":["carryout","take out","to-go"],"pasta-boxes":["macaroni"],"noodle-boxes":["asian food","chinese takeaway"],
+  "bakery-boxes":["pastry","bread","baked goods"],"cake-boxes":["cake packaging","cake carrier"],"dessert-boxes":["sweets","pudding"],"sandwich-boxes":["wrap sandwich","sub"],
+  "food-containers":["clamshell","meal tub"],"soup-containers":["soup tubs","hot soup"],"sauce-containers":["dip cups","condiment cups"],"salad-containers":["salad bowls"],
+  "coffee-cups":["hot drinks","cafe cups"],"juice-cups":["beverage cups","drink cups"],"shake-cups":["milkshake"],"ice-cream-cups":["gelato"],
+  "paper-bags":["shopping bags","carry bags"],"takeaway-bags":["delivery bags","food bags"],"grease-resistant-paper":["greaseproof","burger liner"],"food-wrapping-paper":["food paper","liners"],
+  "cup-carriers":["drink carriers"],"napkins":["serviettes"],"straws":["drinking straws"],"custom-packaging":["bespoke packaging","made to order","special shape"]
+ };
+ const filtered=useMemo(()=>items.filter(x=>{
+  const term=query.trim().toLowerCase();
+  const searchable=[x.name,x.parentName,x.parentDetail,...(searchAliases[x.slug]??[])].join(" ").toLowerCase();
+  return (group==="all"||x.parentSlug===group)&&(!term||searchable.includes(term));
+ }),[items,group,query]);
  const activeCategory=categories.find(x=>x.slug===group);
  return <div className="productCatalog">
   <div className="catalogBrowseHead"><div><p className="eyebrow">Browse by category</p><h3>Explore the <i>range.</i></h3></div><span>{items.length} formats · {categories.length} categories</span></div>
