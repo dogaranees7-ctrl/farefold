@@ -52,10 +52,20 @@ jobs:
 
       - name: Smoke test production routes
         run: |
-          for route in / /businesses /branding /products /packaging /custom /guidelines /contact; do
+          for route in \
+            / \
+            /businesses /businesses/pizza-restaurant /businesses/bakery-business \
+            /branding /products /products/pizza-boxes /products/snack-boxes \
+            /packaging /custom /guidelines \
+            /guidelines/how-to-build-a-restaurant-brand \
+            /guidelines/how-to-plan-packaging-quantities /contact; do
             echo "Checking $route"
             curl --fail --silent --show-error --location --max-time 20 "http://127.0.0.1:3000$route" > /dev/null
           done
+          echo "Checking robots.txt"
+          curl --fail --silent --show-error --max-time 20 http://127.0.0.1:3000/robots.txt > /dev/null
+          echo "Checking sitemap.xml response"
+          curl --fail --silent --show-error --max-time 20 http://127.0.0.1:3000/sitemap.xml > /dev/null
 
       - name: Show server log on failure
         if: failure()
