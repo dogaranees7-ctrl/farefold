@@ -3,6 +3,7 @@ import {notFound} from "next/navigation";
 import type {Metadata} from "next";
 import {PageFrame} from "@/app/components/page-frame";
 import {productFamilies} from "@/lib/data/product-families";
+import {getWhatsappLink} from "@/lib/site-config";
 
 export function generateStaticParams(){
  return productFamilies.filter(x=>x.parentSlug).map(x=>({slug:x.slug}));
@@ -40,6 +41,8 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
  const parent=familyFor(slug);
  const siblings=productFamilies.filter(x=>x.parentSlug===item.parentSlug && x.slug!==item.slug).slice(0,8);
  const uses=getUseCases(item.name);
+ const enquiryMessage=`Hi Farefold — I would like a quotation for ${item.name}.\\n\\nBusiness name: \\nCity / delivery location: \\nApproximate quantity: \\nFood / product being packed: \\nBrand artwork available: Yes / No\\nRequired timeline: \\nAdditional details: `;
+ const whatsappHref=getWhatsappLink(enquiryMessage);
 
  return <PageFrame eyebrow={`Packaging formats / ${item.name}`} title={<>{item.name}.<br/><i>Designed around your business.</i></>}>
   <section className="productDetail productDetailTextOnly">
@@ -54,7 +57,7 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
     <p className="eyebrow">Product enquiry</p>
     <h2>Specify it. <i>Brand it. Quote it.</i></h2>
     <p>This page describes a packaging format, not a confirmed stock item. We will confirm available construction, dimensions, materials, printing, minimum order quantity, lead time and price against your requirements before quoting.</p>
-    <div className="detailActions"><Link className="primary" href={`/contact?product=${encodeURIComponent(item.name)}`}>Enquire about {item.name} <span>→</span></Link><Link className="outlineCta" href="/products">Back to formats</Link></div>
+    <div className="detailActions"><a className="primary" href={whatsappHref} target="_blank" rel="noopener noreferrer">Enquire about {item.name} on WhatsApp <span>→</span></a><Link className="outlineCta" href="/products">Back to formats</Link></div>
    </div>
   </section>
 
@@ -71,6 +74,6 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
 
   {siblings.length>0&&<section className="section related"><div className="sectionIntro"><p className="eyebrow">Related formats</p><h2>More in this <i>family.</i></h2></div><div className="miniGrid">{siblings.map(x=><Link href={`/products/${x.slug}`} key={x.slug}><span>{x.name}</span><b>↗</b></Link>)}</div></section>}
 
-  <section className="orangeBand"><p className="eyebrow">Start a product enquiry</p><h2>Tell us what you need.<br/><i>We&apos;ll help specify it.</i></h2><p>Share the food product, approximate quantity, city and any existing brand artwork. Farefold will confirm suitable options and commercial details before you order.</p><Link className="primary dark" href={`/contact?product=${encodeURIComponent(item.name)}`}>Start a product enquiry <span>→</span></Link></section>
+  <section className="orangeBand"><p className="eyebrow">Start a product enquiry</p><h2>Tell us what you need.<br/><i>We&apos;ll help specify it.</i></h2><p>Share the food product, approximate quantity, city and any existing brand artwork. Farefold will confirm suitable options and commercial details before you order.</p><a className="primary dark" href={whatsappHref} target="_blank" rel="noopener noreferrer">Start a WhatsApp enquiry <span>→</span></a></section>
  </PageFrame>;
 }
