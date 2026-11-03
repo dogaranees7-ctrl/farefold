@@ -154,3 +154,18 @@
 .productBreadcrumbs>span{display:flex;gap:9px}
 .productBreadcrumbs>span>span{color:var(--ink)}
 .productBreadcrumbs strong{color:var(--ink);font-weight:700}
+
+
+/* Expanded practical guide layouts */
+.guideContentSections{display:grid;grid-template-columns:1fr 1fr;gap:0 7vw;border-top:1px solid var(--line);margin-top:55px}
+.guideContentSection{padding:34px 0 38px;border-bottom:1px solid var(--line)}
+.guideContentSection>p:not(.eyebrow){font-size:16px;line-height:1.7;color:var(--muted);max-width:620px}
+.guideContentSection ul,.guideChecklist ul{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:12px}
+.guideContentSection li,.guideChecklist li{font-size:13px;line-height:1.55;padding-left:22px;position:relative;color:var(--ink)}
+.guideContentSection li:before,.guideChecklist li:before{content:"↗";position:absolute;left:0;color:var(--orange);font-weight:700}
+.guideChecklist{margin-top:85px;padding:55px;background:#e8ded0;display:grid;grid-template-columns:1fr 1fr;gap:20px 8vw}
+.guideChecklist .eyebrow{grid-column:1/-1;margin:0}
+.guideChecklist h2{font:600 clamp(38px,4vw,58px)/.98 'Space Grotesk';letter-spacing:-2px;margin:0}
+.guideChecklist h2 i{font-style:normal;color:var(--orange)}
+.guideChecklist ul{margin:0}
+@media(max-width:700px){.guideContentSections{grid-template-columns:1fr}.guideChecklist{grid-template-columns:1fr;padding:28px;gap:16px}.guideChecklist .eyebrow{grid-column:auto}}
