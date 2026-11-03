@@ -15,6 +15,7 @@ const guideSlugs=[
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  if(!siteConfig.url)return [];
   const core=["/","/businesses","/branding","/products","/packaging","/custom","/guidelines","/contact"];
   const businessRoutes=businessTypes.filter(x=>x.parentSlug).map(x=>`/businesses/${x.slug}`);
   const productRoutes=productFamilies.filter(x=>x.parentSlug).map(x=>`/products/${x.slug}`);
