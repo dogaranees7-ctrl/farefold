@@ -2,6 +2,13 @@ import Link from "next/link";
 
 const references=[
   {
+    title:"Snack box clamshells",
+    type:"User-supplied packaging reference",
+    image:"/images/snack-box-clamshell.webp",
+    source:"Farefold reference collection",
+    userSupplied:true
+  },
+  {
     title:"Cups + carton box",
     type:"Real packaging reference",
     image:"https://images.pexels.com/photos/8015739/pexels-photo-8015739.jpeg?cs=srgb&dl=pexels-cup-of-couple-8015739.jpg&fm=jpg",
@@ -31,17 +38,17 @@ export function ReferencePackagingGallery(){
         <p className="eyebrow">Real packaging photography</p>
         <h2 id="reference-gallery-title">See the formats <i>in the real world.</i></h2>
       </div>
-      <p>These are real packaging photographs used as visual references while the Farefold catalogue is being built. They are not presented as Farefold-made products or current stock.</p>
+      <p>These photographs and supplied examples are visual references for the kinds of structures Farefold can develop. They are not presented as Farefold-made products or current stock.</p>
     </div>
     <div className="referenceGalleryGrid">
       {references.map((item)=>(
         <article className="referenceCard" key={item.title}>
           <div className="referenceImage" role="img" aria-label={item.title} style={{backgroundImage:`url("${item.image}")`}}>
-            <span>REAL / REFERENCE</span>
+            <span>{item.userSupplied ? "USER / REFERENCE" : "REAL / REFERENCE"}</span>
           </div>
           <div className="referenceMeta">
             <div><strong>{item.title}</strong><small>{item.type}</small></div>
-            <Link href={item.href} target="_blank" rel="noreferrer">Source: {item.source} ↗</Link>
+            {item.href ? <Link href={item.href} target="_blank" rel="noreferrer">Source: {item.source} ↗</Link> : <small>{item.source}</small>}
           </div>
         </article>
       ))}
