@@ -41,7 +41,7 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
  const parent=familyFor(slug);
  const siblings=productFamilies.filter(x=>x.parentSlug===item.parentSlug && x.slug!==item.slug).slice(0,8);
  const uses=getUseCases(item.name);
- const enquiryMessage=`Hi Farefold — I would like a quotation for ${item.name}.\\n\\nBusiness name: \\nCity / delivery location: \\nApproximate quantity: \\nFood / product being packed: \\nBrand artwork available: Yes / No\\nRequired timeline: \\nAdditional details: `;
+ const enquiryMessage=`Hi Farefold — I would like a quotation for ${item.name}.\n\nBusiness name: \nCity / delivery location: \nApproximate quantity: \nFood / product being packed: \nBrand artwork available: Yes / No\nRequired timeline: \nAdditional details: `;
  const whatsappHref=getWhatsappLink(enquiryMessage);
 
  return <PageFrame eyebrow={`Packaging formats / ${item.name}`} title={<>{item.name}.<br/><i>Designed around your business.</i></>}>
