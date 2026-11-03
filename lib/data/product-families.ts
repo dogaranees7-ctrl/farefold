@@ -42,6 +42,14 @@ export const productFamilies: ProductFamily[] = [
   { slug: "folding-cartons", name: "Folding Cartons", parentSlug: "boxes" },
   { slug: "die-cut-boxes", name: "Die-Cut Boxes", parentSlug: "boxes" },
   { slug: "custom-boxes", name: "Custom Boxes", parentSlug: "boxes" },
+  { slug: "popcorn-boxes", name: "Popcorn Boxes", parentSlug: "boxes" },
+  { slug: "hot-dog-boxes", name: "Hot Dog Boxes", parentSlug: "boxes" },
+  { slug: "taco-boxes", name: "Taco Boxes", parentSlug: "boxes" },
+  { slug: "sushi-boxes", name: "Sushi Boxes", parentSlug: "boxes" },
+  { slug: "cupcake-boxes", name: "Cupcake Boxes", parentSlug: "boxes" },
+  { slug: "donut-boxes", name: "Donut Boxes", parentSlug: "boxes" },
+  { slug: "pastry-boxes", name: "Pastry Boxes", parentSlug: "boxes" },
+  { slug: "macaron-boxes", name: "Macaron Boxes", parentSlug: "boxes" },
 
   // --- Containers ------------------------------------------------------------
   { slug: "containers", name: "Containers" },
@@ -60,6 +68,10 @@ export const productFamilies: ProductFamily[] = [
   { slug: "pet-containers", name: "PET Containers", parentSlug: "containers" },
   { slug: "pp-containers", name: "PP Containers", parentSlug: "containers" },
   { slug: "aluminium-containers", name: "Aluminium Containers", parentSlug: "containers" },
+  { slug: "paper-bowls", name: "Paper Bowls", parentSlug: "containers" },
+  { slug: "noodle-containers", name: "Noodle Containers", parentSlug: "containers" },
+  { slug: "portion-cups", name: "Portion Cups", parentSlug: "containers" },
+  { slug: "microwaveable-containers", name: "Microwaveable Containers", parentSlug: "containers" },
 
   // --- Cups --------------------------------------------------------------------
   { slug: "cups", name: "Cups" },
@@ -94,6 +106,8 @@ export const productFamilies: ProductFamily[] = [
   { slug: "retail-bags", name: "Retail Bags", parentSlug: "bags" },
   { slug: "delivery-bags", name: "Delivery Bags", parentSlug: "bags" },
   { slug: "bottle-bags", name: "Bottle Bags", parentSlug: "bags" },
+  { slug: "bakery-carrier-bags", name: "Bakery Carrier Bags", parentSlug: "bags" },
+  { slug: "handled-paper-bags", name: "Handled Paper Bags", parentSlug: "bags" },
   { slug: "custom-printed-bags", name: "Custom Printed Bags", parentSlug: "bags" },
 
   // --- Wrapping ----------------------------------------------------------------
@@ -104,6 +118,8 @@ export const productFamilies: ProductFamily[] = [
   { slug: "sandwich-paper", name: "Sandwich Paper", parentSlug: "wrapping" },
   { slug: "shawarma-paper", name: "Shawarma Paper", parentSlug: "wrapping" },
   { slug: "deli-paper", name: "Deli Paper", parentSlug: "wrapping" },
+  { slug: "basket-liners", name: "Basket Liners", parentSlug: "wrapping" },
+  { slug: "parchment-paper", name: "Parchment Paper", parentSlug: "wrapping" },
   { slug: "bakery-paper", name: "Bakery Paper", parentSlug: "wrapping" },
   { slug: "sleeves", name: "Sleeves", parentSlug: "wrapping" },
   { slug: "bands", name: "Bands", parentSlug: "wrapping" },
@@ -118,6 +134,8 @@ export const productFamilies: ProductFamily[] = [
   { slug: "paperboard-trays", name: "Paperboard Trays", parentSlug: "trays" },
   { slug: "plastic-trays", name: "Plastic Trays", parentSlug: "trays" },
   { slug: "aluminium-trays", name: "Aluminium Trays", parentSlug: "trays" },
+  { slug: "compartment-trays", name: "Compartment Trays", parentSlug: "trays" },
+  { slug: "sushi-trays", name: "Sushi Trays", parentSlug: "trays" },
 
   // --- Cones ------------------------------------------------------------------
   {
@@ -152,6 +170,9 @@ export const productFamilies: ProductFamily[] = [
   { slug: "tissue", name: "Tissue", parentSlug: "accessories" },
   { slug: "toothpicks", name: "Toothpicks", parentSlug: "accessories" },
   { slug: "cup-carriers", name: "Cup Carriers", parentSlug: "accessories" },
+  { slug: "cup-sleeves", name: "Cup Sleeves", parentSlug: "accessories" },
+  { slug: "portion-cutlery-kits", name: "Portion Cutlery Kits", parentSlug: "accessories" },
+  { slug: "straw-pouches", name: "Straw Pouches", parentSlug: "accessories" },
   { slug: "food-picks", name: "Food Picks", parentSlug: "accessories" },
 
   // --- Branding / custom ---------------------------------------------------
