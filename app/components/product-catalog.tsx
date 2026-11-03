@@ -25,16 +25,16 @@ export function ProductCatalog({items,categories}:{items:Item[];categories:Categ
  const activeCategory=categories.find(x=>x.slug===group);
  return <div className="productCatalog">
   <div className="catalogBrowseHead"><div><p className="eyebrow">Browse by category</p><h3>Explore the <i>range.</i></h3></div><span>{items.length} formats · {categories.length} categories</span></div>
-  <div className="catalogCategoryGrid">
+  <div className="catalogCategoryGrid" aria-label="Packaging categories">
    {categories.map((category,index)=><button type="button" key={category.slug} className={group===category.slug?"catalogCategory active":"catalogCategory"} onClick={()=>setGroup(group===category.slug?"all":category.slug)} aria-pressed={group===category.slug}>
     <span className="catalogCategoryNo">{String(index+1).padStart(2,"0")}</span><strong>{category.name}</strong><small>{category.count} formats <b>↗</b></small>
    </button>)}
   </div>
   <div className="catalogTools">
-   <label className="catalogSearch"><span>Search the catalogue</span><input aria-label="Search packaging formats" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Try pizza box, cup, bag, tray, napkin..." /></label>
+   <label className="catalogSearch"><span>Search the catalogue</span><input type="search" aria-label="Search packaging formats" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Try pizza box, cup, bag, tray, napkin..." /></label>
    <button type="button" className="catalogReset" onClick={()=>{setGroup("all");setQuery("");}}>Reset filters ↺</button>
   </div>
-  <div className="catalogResultMeta"><span>{activeCategory?activeCategory.name:"All categories"}</span><strong>{filtered.length} {filtered.length===1?"format":"formats"}</strong> to explore <span className="catalogMetaNote">· Format directory, not live stock</span></div>
+  <div className="catalogResultMeta" role="status" aria-live="polite"><span>{activeCategory?activeCategory.name:"All categories"}</span><strong>{filtered.length} {filtered.length===1?"format":"formats"}</strong> to explore <span className="catalogMetaNote">· Format directory, not live stock</span></div>
   <div className="catalogProductGrid">{filtered.map((x,i)=><Link className="catalogProductCard textOnlyProductCard" href={`/products/${x.slug}`} key={x.slug}>
     <span>{String(i+1).padStart(2,"0")}</span><small>{x.parentName}{x.parentDetail!==x.parentName? ` / ${x.parentDetail}`:""}</small><h3>{x.name}</h3><p>Explore this format <b aria-hidden="true">↗</b></p>
   </Link>)}</div>
