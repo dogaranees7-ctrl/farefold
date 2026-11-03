@@ -65,7 +65,7 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
     <p className="eyebrow">Packaging format · {root?.name??"Packaging"}</p>
     <span className="formatIndex">FAREFOLD / FORMAT DIRECTORY</span>
     <h2>{item.name}</h2>
-    <p>A starting point for discussing the right structure, material, print approach and quantity for your food business.</p>
+    <p>A starting point for developing the right packaging structure, material, print approach and quantity for your food business.</p>
     <span className="formatStatus">Project-based specification · Details confirmed on enquiry</span>
    </div>
    <div>
