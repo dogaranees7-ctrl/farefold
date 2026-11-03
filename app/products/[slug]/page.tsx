@@ -71,7 +71,7 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
    <div>
     <p className="eyebrow">Product enquiry</p>
     <h2>Specify it. <i>Brand it. Quote it.</i></h2>
-    <p>This page describes a packaging format, not a confirmed stock item. We will confirm available construction, dimensions, materials, printing, minimum order quantity, lead time and price against your requirements before quoting.</p>
+    <p>This page describes a packaging format, not a confirmed stock item. We will develop and confirm the construction, dimensions, materials, printing, minimum order quantity, production lead time and price against your requirements before quoting.</p>
     <div className="detailActions"><a className="primary" href={whatsappHref} target="_blank" rel="noopener noreferrer">Enquire about {item.name} on WhatsApp <span>→</span></a><Link className="outlineCta" href="/products">Back to formats</Link></div>
    </div>
   </section>
