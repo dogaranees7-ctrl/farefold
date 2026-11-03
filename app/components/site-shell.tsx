@@ -27,7 +27,7 @@ export function SiteShell({children}:{children:ReactNode}){
         <Link className="footerCta" href="/contact">Tell us what you&apos;re building →</Link>
       </div>
       <div className="footerLinks">{links.map(([label,href])=><Link href={href} key={href}>{label}</Link>)}</div>
-      <div className="footerBottom"><Link href="/privacy">Privacy notice</Link><span>© 2026 Farefold</span><span>Branding · Packaging · Products · Custom</span><span>Made for restaurants</span></div>
+      <div className="footerBottom"><Link href="/privacy">Privacy notice</Link><span>© 2026 FareFold</span><span>Branding · Packaging · Products · Custom</span><span>Made for restaurants</span></div>
     </footer>
   </div>
 }
