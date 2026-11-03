@@ -76,3 +76,32 @@
 .productDetail .detailPhotoCaption strong{position:static;display:block;max-width:60%;color:#fff;font:600 clamp(30px,4vw,52px)/.95 'Space Grotesk';letter-spacing:-1.8px}
 .productDetail .detailPhotoCaption small{position:static;display:block;max-width:230px;color:#fff;font:500 9px/1.5 'DM Sans';letter-spacing:.4px;text-transform:none}
 @media(max-width:560px){.productDetail .detailVisualPhoto{height:380px}.productDetail .detailPhotoCaption{left:18px;right:18px;bottom:18px;display:block}.productDetail .detailPhotoCaption strong{max-width:100%;margin-bottom:10px}.productDetail .detailPhotoCaption small{max-width:100%}.productDetail .detailPhotoTag{top:16px;left:16px}}
+
+
+/* Catalogue integrity: no stock or illustrative product photography before Farefold's real range is approved. */
+.homeProductGrid{gap:12px}
+.homeProduct{min-height:245px;padding:24px;background:var(--cream);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;transition:background .2s,color .2s}
+.homeProduct:nth-child(2n),.homeProduct:nth-child(3n){background:var(--cream)}
+.homeProduct:hover{background:var(--ink);color:var(--paper)}
+.homeProduct .productNumber{position:static}
+.homeProduct .productMeta{position:static;margin-top:55px}
+.homeProduct .productMeta h3{font:600 clamp(21px,2.2vw,30px)/1.05 'Space Grotesk';letter-spacing:-1px}
+.homeProduct .productMeta p{font-size:12px;color:var(--muted)}
+.homeProduct:hover .productMeta p{color:#c7c0b6}
+.homeProduct .productMeta b{margin-top:18px;color:var(--orange)}
+.textOnlyProductCard{min-height:205px;padding:22px 24px;justify-content:space-between;background:var(--cream)}
+.textOnlyProductCard>span{font-size:9px;color:var(--orange);font-weight:700}
+.textOnlyProductCard>small{font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--muted)}
+.textOnlyProductCard h3{margin:22px 0 auto;padding:15px 0 20px;font-size:clamp(21px,2vw,28px)}
+.textOnlyProductCard p{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:14px;font-size:10px;letter-spacing:.5px;text-transform:uppercase}
+.textOnlyProductCard:hover p{color:var(--orange)}
+.catalogDisclosure{max-width:760px;margin:28px 0 0;color:var(--muted);font-size:11px;line-height:1.65}
+.productDetailTextOnly{align-items:stretch}
+.formatStatement{min-height:420px;padding:38px;background:var(--ink);color:var(--paper);display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between}
+.formatStatement .eyebrow{color:var(--orange)}
+.formatIndex{font-size:9px;letter-spacing:1.5px;color:#aaa49c}
+.formatStatement h2{font-size:clamp(42px,5vw,68px);margin:45px 0 15px;color:var(--paper)}
+.formatStatement>p:not(.eyebrow){max-width:430px;color:#c4beb5;line-height:1.6}
+.formatStatus{display:inline-block;margin-top:35px;padding-top:15px;border-top:1px solid #45413b;color:#c4beb5;font-size:9px;letter-spacing:1px;text-transform:uppercase}
+@media(max-width:900px){.homeProduct{min-height:210px}.formatStatement{min-height:340px}}
+@media(max-width:560px){.homeProductGrid{grid-template-columns:1fr}.homeProduct{min-height:190px}.homeProduct .productMeta{margin-top:35px}.textOnlyProductCard{min-height:175px}.formatStatement{padding:25px;min-height:310px}}
