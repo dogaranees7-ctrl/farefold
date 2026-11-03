@@ -74,7 +74,7 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
  const parent=ancestors.length>1?ancestors[ancestors.length-2]:undefined;
  const siblings=productFamilies.filter(x=>x.parentSlug===(parent?.slug??root?.slug) && x.slug!==item.slug).slice(0,8);
  const uses=getUseCases(item.name);
- const enquiryMessage=\`Hi FareFold — I would like a quotation for ${item.name}. \n\nBusiness name: \nCity / delivery location: \nApproximate quantity: \nFood / product being packed: \nBrand artwork available: Yes / No\nRequired timeline: \nAdditional details: \`;
+ const enquiryMessage=`Hi FareFold — I would like a quotation for ${item.name}.\n\nBusiness name: \nCity / delivery location: \nApproximate quantity: \nFood / product being packed: \nBrand artwork available: Yes / No\nRequired timeline: \nAdditional details: `;
  const whatsappHref=getWhatsappLink(enquiryMessage);
 
  return <PageFrame eyebrow={`Products / ${root?.name??"Packaging"} / ${item.name}`} title={<>{item.name}.<br/><i>Designed around your business.</i></>}>
