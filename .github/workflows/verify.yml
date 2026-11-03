@@ -58,7 +58,7 @@ jobs:
             /branding /products /products/pizza-boxes /products/snack-boxes \
             /packaging /custom /guidelines \
             /guidelines/how-to-build-a-restaurant-brand \
-            /guidelines/how-to-plan-packaging-quantities /contact; do
+            /guidelines/how-to-plan-packaging-quantities /contact /privacy; do
             echo "Checking $route"
             curl --fail --silent --show-error --location --max-time 20 "http://127.0.0.1:3000$route" > /dev/null
           done
