@@ -34,7 +34,7 @@ export default function Packaging(){
   </section>
   <section className="band">
    <h2>Need one product?</h2>
-   <p>Browse the product families or tell us what you need and we&apos;ll help specify the right format. The commercial catalogue will be populated from verified Farefold products when the range is supplied.</p>
+   <p>Browse the product families or tell us what you need. FareFold can develop the format, structure and branded packaging solution around your business.</p>
    <Link className="outlineCta" href="/products">Explore products →</Link>
   </section>
  </PageFrame>
