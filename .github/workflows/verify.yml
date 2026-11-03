@@ -84,6 +84,28 @@ jobs:
           echo "Checking sitemap.xml response"
           curl --fail --silent --show-error --max-time 20 http://127.0.0.1:3000/sitemap.xml > /dev/null
 
+      - name: Smoke test every generated static page
+        run: |
+          node <<'NODE'
+          const fs = require("node:fs");
+          const { execFileSync } = require("node:child_process");
+          const manifest = JSON.parse(fs.readFileSync(".next/prerender-manifest.json", "utf8"));
+          const routes = Object.keys(manifest.routes).filter((route) =>
+            route.startsWith("/") && !route.startsWith("/_") && !route.includes("[")
+          );
+          let failures = 0;
+          for (const route of routes) {
+            try {
+              execFileSync("curl", ["--fail", "--silent", "--show-error", "--location", "--max-time", "20", `http://127.0.0.1:3000${route}`], { stdio: "ignore" });
+            } catch {
+              failures += 1;
+              console.error(`FAILED ${route}`);
+            }
+          }
+          console.log(`Checked ${routes.length} generated static pages; failures: ${failures}`);
+          if (failures) process.exit(1);
+          NODE
+
       - name: Show server log on failure
         if: failure()
         run: test -f /tmp/farefold-next.log && cat /tmp/farefold-next.log || true
