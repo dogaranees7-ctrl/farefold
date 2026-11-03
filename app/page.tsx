@@ -43,7 +43,7 @@ export default function Home(){
         <div className="homeHeroCopy">
           <div className="homeKicker"><span>01</span> Restaurant branding + packaging <b>Pakistan first</b></div>
           <h1>Make your<br/><em>food brand</em><br/>impossible to forget.</h1>
-          <p>FareFold builds recognizable restaurant brands from the first idea to the packaging that reaches the customer.</p>
+          <p>FareFold designs and makes packaging for food businesses — and builds recognizable restaurant brands from the first idea to the customer experience.</p>
           <div className="homeActions">
             <Link className="homeButton homeButtonOrange" href="/contact">Start your brand <span>↗</span></Link>
             <Link className="homeTextLink" href="#businesses">Explore businesses <span>↓</span></Link>
