@@ -122,6 +122,7 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
   <section className="productDetail productDetailTextOnly">
    <div className="formatStatement">
     <p className="eyebrow">Packaging format · {root?.name??"Packaging"}</p>
+    <div className="catalogPackVisual productFormatVisual" data-family={root?.slug??"boxes"} aria-hidden="true"><span className="catalogPackMark">F / F</span><i className="catalogPackShape"/><small>FAREFOLD · FORMAT STUDY</small></div>
     <span className="formatIndex">FAREFOLD / FORMAT DIRECTORY</span>
     <h2>{item.name}</h2>
     <p>{getFormatDescription(item.slug,item.name,root?.name??"Packaging")}</p>
