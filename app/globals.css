@@ -208,3 +208,6 @@
 .catalogProductInfo p b{color:var(--orange);font-size:16px}
 @media(max-width:900px){.catalogProductGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.catalogProductGrid{grid-template-columns:1fr}.catalogPackVisual{height:210px}}
+
+.productFormatVisual{height:250px;max-width:520px;margin:0 0 28px}
+@media(max-width:560px){.productFormatVisual{height:210px}}
