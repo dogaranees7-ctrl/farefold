@@ -169,3 +169,42 @@
 .guideChecklist h2 i{font-style:normal;color:var(--orange)}
 .guideChecklist ul{margin:0}
 @media(max-width:700px){.guideContentSections{grid-template-columns:1fr}.guideChecklist{grid-template-columns:1fr;padding:28px;gap:16px}.guideChecklist .eyebrow{grid-column:auto}}
+
+/* FareFold format gallery: original abstract package studies, not product photography */
+.catalogProductGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.visualProductCard{display:block;border:1px solid var(--line);background:var(--cream);min-width:0;transition:transform .2s ease,border-color .2s ease}
+.visualProductCard:hover{transform:translateY(-4px);border-color:var(--orange)}
+.catalogPackVisual{height:220px;position:relative;overflow:hidden;background:#e8ded0;display:flex;align-items:center;justify-content:center}
+.catalogPackVisual:before{content:"";position:absolute;width:62%;height:1px;background:rgba(23,22,19,.12);top:22%;left:19%;transform:rotate(-12deg)}
+.catalogPackVisual:after{content:"";position:absolute;width:70%;height:1px;background:rgba(23,22,19,.12);bottom:21%;left:15%;transform:rotate(9deg)}
+.catalogPackMark{position:absolute;top:16px;left:18px;font:700 12px 'Space Grotesk';letter-spacing:-.7px;color:var(--ink);z-index:2}
+.catalogPackVisual>small{position:absolute;bottom:13px;right:15px;font-size:8px;letter-spacing:1.2px;color:rgba(23,22,19,.55);z-index:2}
+.catalogPackShape{position:relative;display:block;width:43%;height:48%;background:var(--orange);transform:rotate(-7deg);box-shadow:18px 20px 0 rgba(23,22,19,.09);z-index:1}
+.catalogPackShape:before,.catalogPackShape:after{content:"";position:absolute;display:block}
+.catalogPackShape:before{inset:12% 10%;border:1px solid rgba(255,255,255,.55)}
+.catalogPackShape:after{width:22%;height:22%;right:-13%;top:-13%;background:rgba(255,255,255,.35);transform:skewY(-25deg)}
+.catalogPackVisual[data-family="cups"] .catalogPackShape{width:27%;height:55%;border-radius:5% 5% 14% 14%;transform:perspective(250px) rotateX(-5deg);background:#24221f}
+.catalogPackVisual[data-family="cups"] .catalogPackShape:before{inset:-7% -8% auto;height:10%;border:0;background:var(--orange);border-radius:50%}
+.catalogPackVisual[data-family="lids"] .catalogPackShape{width:48%;height:23%;border-radius:50%;background:#24221f;transform:rotate(-8deg)}
+.catalogPackVisual[data-family="lids"] .catalogPackShape:before{inset:20%;border:2px solid rgba(255,255,255,.55);border-radius:50%}
+.catalogPackVisual[data-family="bags"] .catalogPackShape{width:38%;height:55%;background:#c49a68;transform:rotate(4deg);clip-path:polygon(8% 0,92% 0,100% 100%,0 100%)}
+.catalogPackVisual[data-family="bags"] .catalogPackShape:before{inset:-22% 25% auto;height:35%;border:3px solid #8c6948;border-bottom:0;border-radius:50% 50% 0 0}
+.catalogPackVisual[data-family="wrapping"] .catalogPackShape{width:56%;height:37%;background:#f7f2e8;transform:rotate(-12deg);border:1px solid #cfc4b5;box-shadow:14px 14px 0 rgba(23,22,19,.07)}
+.catalogPackVisual[data-family="wrapping"] .catalogPackShape:before{inset:15%;border:1px dashed var(--orange)}
+.catalogPackVisual[data-family="trays"] .catalogPackShape{width:54%;height:34%;background:#c7b9a5;transform:perspective(240px) rotateX(28deg) rotateZ(-8deg);border:8px solid #f4eee5}
+.catalogPackVisual[data-family="trays"] .catalogPackShape:before{inset:18%;border:1px solid rgba(23,22,19,.25)}
+.catalogPackVisual[data-family="containers"] .catalogPackShape{width:48%;height:37%;background:#f8f4ec;border-radius:8% 8% 15% 15%;border-top:10px solid var(--orange);transform:perspective(220px) rotateX(-10deg)}
+.catalogPackVisual[data-family="containers"] .catalogPackShape:before{inset:20%;border:1px solid #d7cbbc}
+.catalogPackVisual[data-family="buckets"] .catalogPackShape{width:39%;height:50%;background:#24221f;clip-path:polygon(8% 0,92% 0,78% 100%,22% 100%);transform:rotate(-5deg)}
+.catalogPackVisual[data-family="buckets"] .catalogPackShape:before{inset:9% 12%;border:1px solid rgba(255,255,255,.6)}
+.catalogPackVisual[data-family="cones"] .catalogPackShape{width:34%;height:55%;background:var(--orange);clip-path:polygon(0 0,100% 0,50% 100%);transform:rotate(7deg)}
+.catalogPackVisual[data-family="accessories"] .catalogPackShape{width:45%;height:20%;border-radius:50%;background:#24221f;transform:rotate(-12deg)}
+.catalogPackVisual[data-family="branding-custom"] .catalogPackShape{width:44%;height:44%;background:var(--orange);transform:rotate(12deg);border:7px solid #f8f4ec}
+.catalogProductInfo{padding:18px 20px 20px;position:relative}
+.catalogProductInfo>span{font-size:9px;color:var(--orange);font-weight:700}
+.catalogProductInfo>small{display:block;margin-top:8px;color:var(--muted);font-size:9px;letter-spacing:1px;text-transform:uppercase}
+.catalogProductInfo h3{font:600 22px/1.05 'Space Grotesk';letter-spacing:-.7px;margin:13px 0 16px}
+.catalogProductInfo p{font-size:11px;font-weight:700;margin:0;display:flex;justify-content:space-between}
+.catalogProductInfo p b{color:var(--orange);font-size:16px}
+@media(max-width:900px){.catalogProductGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.catalogProductGrid{grid-template-columns:1fr}.catalogPackVisual{height:210px}}
