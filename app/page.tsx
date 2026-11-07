@@ -60,7 +60,7 @@ export default function Home(){
       </section>
 
       <section className="homeRibbon">
-        <div>BRANDING</div><span>✳</span><div>PACKAGING</div><span>✳</span><div>PRODUCTS</div><span>✳</span><div>CUSTOM</div><span>✳</span><div>RESTAURANT LAUNCH</div><span>✳</span><div>PAKISTAN FIRST</div>
+        <div>BRANDING</div><span>✳</span><div>PACKAGING</div><span>✳</span><div>PRODUCTS</div><span>✳</span><div>CUSTOM</div><span>✳</span><div>RESTAURANT LAUNCH</div><span>✳</span><div>ACROSS PAKISTAN</div>
       </section>
 
       <section className="homeIntro section">
