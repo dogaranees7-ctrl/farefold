@@ -41,7 +41,7 @@ export default function Home(){
     <main id="main" className="home">
       <section className="homeHero">
         <div className="homeHeroCopy">
-          <div className="homeKicker"><span>01</span> Restaurant branding + packaging <b>Pakistan first</b></div>
+          <div className="homeKicker"><span>01</span> Restaurant branding + packaging <b>Serving businesses across Pakistan</b></div>
           <h1>Make your<br/><em>food brand</em><br/>impossible to forget.</h1>
           <p>FareFold designs and makes packaging for food businesses — and builds recognizable restaurant brands from the first idea to the customer experience.</p>
           <div className="homeActions">
@@ -111,7 +111,7 @@ export default function Home(){
       <section id="products" className="homeProducts section">
         <div className="homeSectionHead">
           <div><div className="homeSectionNo">06 / PRODUCTS</div><h2>Useful formats.<br/><em>Distinctive brands.</em></h2></div>
-          <p>Explore the packaging formats FareFold can design and make, from everyday essentials to distinctive custom structures. Product photography and detailed product information will be added category by category.</p>
+          <p>Explore packaging formats FareFold designs and manufactures for food businesses, from everyday essentials to distinctive custom structures developed around each brand.</p>
         </div>
         <div className="homeProductGrid">
           {products.map(([title,text,slug,n],i)=><Link href={`/products/${slug}`} className={`homeProduct p${i+1}`} key={slug}><div className="productNumber">{n}</div><div className="productMeta"><h3>{title}</h3><p>{text}</p><b>Discuss this format ↗</b></div></Link>)}
