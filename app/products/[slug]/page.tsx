@@ -13,7 +13,7 @@ export async function generateMetadata({params}:{params:Promise<{slug:string}>})
  const {slug}=await params;
  const item=productFamilies.find(x=>x.slug===slug && x.parentSlug);
  if(!item)return {};
- return {title:item.name,description:`Explore the ${item.name.toLowerCase()} format in FareFold's packaging catalogue. Discuss structure, branding and project requirements with our team.`};
+ return {title:item.name,description:`Explore FareFold ${item.name.toLowerCase()} packaging design and manufacturing options for businesses across Pakistan. Discuss structure, branding and project requirements with our team.`};
 }
 
 function getAncestors(slug:string){
@@ -66,6 +66,26 @@ function getFormatDescription(slug:string,name:string,rootName:string){
  return (familyCopy[rootName]??"A packaging format developed around your product, brand and service requirements.")+" FareFold works with businesses across Pakistan to develop packaging briefs and confirm practical production details before an order is placed.";
 }
 
+function getDesignDirections(rootName:string,name:string){
+ const lower=name.toLowerCase();
+ if(rootName==="Boxes"){
+  if(lower.includes("pizza"))return ["Classic delivery box with considered ventilation","Slice-friendly or serving-convertible structure","Distinctive die-cut shape with bold exterior branding"];
+  if(lower.includes("cake")||lower.includes("cupcake")||lower.includes("pastry"))return ["Presentation box with a secure product fit","Window-led display that reveals the product","Gift-style opening with coordinated inserts"];
+  if(lower.includes("burger")||lower.includes("chicken")||lower.includes("snack"))return ["Quick-service tuck-top format","Compartments for sides, dips or meal combinations","Custom die-cut silhouette and printed interior"];
+  return ["Clean folding carton with a strong brand panel","Window or reveal feature for product presentation","Custom insert or compartment layout"];
+ }
+ if(rootName==="Containers")return ["Portion-led shape and closure options","Multi-compartment layout for separated items","Clear, printed or label-led brand presentation"];
+ if(rootName==="Cups")return ["Minimal identity with a strong repeat pattern","Full-wrap colour and graphic treatment","Coordinated cup, lid and sleeve family"];
+ if(rootName==="Lids")return ["Coordinated fit and finish with the matching vessel","Branded or colour-coded identification","Opening and closure details suited to the serving"];
+ if(rootName==="Bags")return ["Premium kraft look with restrained print","Bold full-panel brand graphics","Distinctive handle, gusset or base details"];
+ if(rootName==="Wrapping")return ["Repeat-pattern branded wrap","Minimal one-colour food-service liner","Coordinated wrap, sleeve and seal system"];
+ if(rootName==="Trays")return ["Simple open tray for quick service","Compartment layout for meal combinations","Printed tray with coordinated liner"];
+ if(rootName==="Cones")return ["Bold wraparound print for handheld service","Folded rim and grip-focused presentation","Coordinated cone and serving accessory"];
+ if(rootName==="Buckets")return ["Stackable takeaway presentation","Large-format repeat branding","Coordinated lid and carry details"];
+ if(rootName==="Accessories")return ["Minimal brand mark for everyday service","Colour and pattern matched to the main pack","Coordinated multi-piece service kit"];
+ if(rootName==="Branding / Custom")return ["Distinctive structural or die-cut direction","Consistent identity across a packaging family","Special opening, insert or unboxing detail"];
+ return ["Brand-led visual direction","Practical structure shaped around the product","Coordinated details across the customer experience"];
+}
 function getUseCases(name:string){
  const lower=name.toLowerCase();
  if(lower.includes("pizza")) return ["Pizza delivery","Takeaway","Delivery bundles"];
@@ -88,6 +108,7 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
  const parent=ancestors.length>1?ancestors[ancestors.length-2]:undefined;
  const siblings=productFamilies.filter(x=>x.parentSlug===(parent?.slug??root?.slug) && x.slug!==item.slug).slice(0,8);
  const uses=getUseCases(item.name);
+ const designDirections=getDesignDirections(root?.name??"Packaging",item.name);
  const enquiryMessage=`Hi FareFold — I would like a quotation for ${item.name}.\n\nBusiness name: \nCity / delivery location: \nApproximate quantity: \nFood / product being packed: \nBrand artwork available: Yes / No\nRequired timeline: \nAdditional details: `;
  const whatsappHref=getWhatsappLink(enquiryMessage);
 
@@ -114,6 +135,10 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
    </div>
   </section>
 
+  <section className="section productDesignDirections">
+   <div className="sectionIntro wide"><p className="eyebrow">Design development</p><h2>Make the format <i>feel like your brand.</i></h2><p>These are creative directions to explore with FareFold. We can adapt the visual treatment and develop a physical sample around your product, brand and production brief.</p></div>
+   <div className="miniGrid">{designDirections.map((direction,index)=><div key={direction}><span>{String(index+1).padStart(2,"0")} / {direction}</span></div>)}</div>
+  </section>
   <section className="section productSpecGuide">
    <div className="sectionIntro wide"><p className="eyebrow">What we confirm with you</p><h2>The right format.<br/><i>For the real job.</i></h2><p>Every project is reviewed against its intended use. We confirm the details that matter before production so the finished packaging is fit for the product and the customer journey.</p></div>
    <div className="catalogGrid">
