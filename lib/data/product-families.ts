@@ -5,10 +5,8 @@
 // products on. Structured as family groups (BOXES, CONTAINERS, CUPS, ...)
 // with specific product families nested under them via `parentSlug`, and
 // one extra level of nesting where a natural sub-group exists (e.g.
-// Cutlery under Accessories). This is a starting taxonomy per the brief —
-// designed to be extended with more families/subcategories, not a limit
-// on what the catalogue can eventually hold (hundreds/thousands of SKUs
-// per Horizon Foods' ~265-product and A1 Traders' 5,000+ SKU ranges).
+// Cutlery under Accessories). This is the working taxonomy for FareFold's catalogue —
+// designed to expand as FareFold develops additional packaging formats and verified product records.
 //
 // These are CATEGORY nodes, not products: no SKU, price, stock, MOQ or
 // supplier data lives here. Real products will reference a family slug
