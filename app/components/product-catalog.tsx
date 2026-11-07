@@ -153,8 +153,9 @@ export function ProductCatalog({items,categories}:{items:Item[];categories:Categ
    <button type="button" className="catalogReset" onClick={()=>{setGroup("all");setQuery("");}}>Reset filters ↺</button>
   </div>
   <div className="catalogResultMeta" role="status" aria-live="polite"><span>{activeCategory?activeCategory.name:"All categories"}</span><strong>{filtered.length} {filtered.length===1?"format":"formats"}</strong> to explore <span className="catalogMetaNote">· Format directory, not live stock</span></div>
-  <div className="catalogProductGrid">{filtered.map((x,i)=><Link className="catalogProductCard textOnlyProductCard" href={`/products/${x.slug}`} key={x.slug}>
-    <span>{String(i+1).padStart(2,"0")}</span><small>{x.parentName}{x.parentDetail!==x.parentName? ` / ${x.parentDetail}`:""}</small><h3>{x.name}</h3><p>Explore this format <b aria-hidden="true">↗</b></p>
+  <div className="catalogProductGrid">{filtered.map((x,i)=><Link className="catalogProductCard visualProductCard" href={`/products/${x.slug}`} key={x.slug}>
+    <div className="catalogPackVisual" data-family={x.parentSlug} aria-hidden="true"><span className="catalogPackMark">F / F</span><i className="catalogPackShape"/><small>FAREFOLD · FORMAT STUDY</small></div>
+    <div className="catalogProductInfo"><span>{String(i+1).padStart(2,"0")}</span><small>{x.parentName}{x.parentDetail!==x.parentName? ` / ${x.parentDetail}`:""}</small><h3>{x.name}</h3><p>Explore this format <b aria-hidden="true">↗</b></p></div>
   </Link>)}</div>
   {filtered.length===0&&<div className="catalogEmpty"><h3>No matching format found.</h3><p>Try a different search, clear the filters or send us a custom packaging brief.</p><button type="button" className="catalogReset" onClick={()=>{setGroup("all");setQuery("");}}>Clear search and filters ↺</button><Link className="primary" href="/contact?product=Custom%20packaging%20brief">Start a custom brief <span>→</span></Link></div>}
   <p className="catalogDisclosure">This catalogue maps packaging formats that can be discussed and developed with FareFold. It does not imply every format is currently stocked or available. Product photographs, construction, materials, dimensions, minimum quantities, lead times and prices will be confirmed for each enquiry before an order is accepted.</p>
