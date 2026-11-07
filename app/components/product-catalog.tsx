@@ -136,7 +136,7 @@ export function ProductCatalog({items,categories}:{items:Item[];categories:Categ
   "custom-packaging":["bespoke packaging","made to order","special shape"]
  };
  const filtered=useMemo(()=>items.filter(x=>{
-  const terms=query.trim().toLowerCase().split(/\\s+/).filter(Boolean);
+  const terms=query.trim().toLowerCase().split(/\s+/).filter(Boolean);
   const searchable=[x.name,x.slug.replace(/-/g," "),x.parentName,x.parentDetail,...(searchAliases[x.slug]??[])].join(" ").toLowerCase();
   return (group==="all"||x.parentSlug===group)&&terms.every(term=>searchable.includes(term));
  }),[items,group,query]);
