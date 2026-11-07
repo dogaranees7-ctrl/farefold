@@ -28,7 +28,7 @@ function getAncestors(slug:string){
  return path;
 }
 
-function getFormatDescription(slug:string,name:string){
+function getFormatDescription(slug:string,name:string,rootName:string){
  const descriptions:Record<string,string>={
   "pizza-boxes":"A branded box concept for carrying pizza from oven to customer, with structure and presentation considered together.",
   "burger-boxes":"A packaging direction for burgers and assembled meals, planned around fit, handling and the customer handoff.",
@@ -49,7 +49,21 @@ function getFormatDescription(slug:string,name:string){
   "napkins":"A service accessory that can carry the brand identity consistently across dine-in and takeaway touchpoints.",
   "custom-packaging":"A project starting point for a packaging structure developed around a specific product, service journey or brand requirement."
  };
- return descriptions[slug]||("A "+name.toLowerCase()+" format to develop around your food product, service model and brand requirements. The final structure and specification are agreed during the project.");
+ if(descriptions[slug])return descriptions[slug];
+ const familyCopy:Record<string,string>={
+  "Boxes":"A purpose-developed box format for food presentation, protection and transport. FareFold can develop the dimensions, opening style, structure and branded artwork around the product and service journey.",
+  "Containers":"A practical container format developed around the food, portion, closure and delivery requirements. Construction, dimensions, material options and compatibility are confirmed against the project brief.",
+  "Cups":"A beverage or dessert cup format planned around the serving, customer handling and brand experience. Capacity, material, print treatment and compatible accessories are specified for each project.",
+  "Lids":"A closure component selected to work with the relevant cup or container. Fit, opening style, use conditions and compatibility are confirmed with the matching packaging format.",
+  "Bags":"A carry format developed around the items being packed, expected handling and brand presentation. Size, paper or other suitable material options, handle style and print requirements are agreed per brief.",
+  "Wrapping":"A wrap, liner or sleeve format considered around the food item, serving method and presentation. The intended application and material requirements are reviewed before specification.",
+  "Trays":"A serving or transport tray format developed around product layout, portion arrangement and handling. Dimensions, compartments, construction and finishing are confirmed for the intended use.",
+  "Cones":"A shaped serving format for handheld snacks or desserts, designed around portion size, grip, presentation and the customer experience.",
+  "Buckets":"A larger serving and carry format developed around the menu, portion size, stacking and takeaway handling. Structure, dimensions and branding are agreed for the application.",
+  "Accessories":"A supporting packaging or service component designed to work as part of a consistent customer experience. Size, material, presentation and compatibility are confirmed for the intended use.",
+  "Branding / Custom":"A custom-branded packaging component developed to connect the physical format with the wider brand identity. FareFold can discuss artwork, structure, print treatment and production requirements as one project."
+ };
+ return (familyCopy[rootName]??"A packaging format developed around your product, brand and service requirements.")+" FareFold works with businesses across Pakistan to develop packaging briefs and confirm practical production details before an order is placed.";
 }
 
 function getUseCases(name:string){
@@ -89,19 +103,19 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
     <p className="eyebrow">Packaging format · {root?.name??"Packaging"}</p>
     <span className="formatIndex">FAREFOLD / FORMAT DIRECTORY</span>
     <h2>{item.name}</h2>
-    <p>{getFormatDescription(item.slug,item.name)}</p>
+    <p>{getFormatDescription(item.slug,item.name,root?.name??"Packaging")}</p>
     <span className="formatStatus">Project-based specification · Details confirmed on enquiry</span>
    </div>
    <div>
     <p className="eyebrow">Product enquiry</p>
     <h2>Specify it. <i>Brand it. Quote it.</i></h2>
-    <p>This page describes a packaging format, not a confirmed stock item. We will develop and confirm the construction, dimensions, materials, printing, minimum order quantity, production lead time and price against your requirements before quoting.</p>
+    <p>FareFold develops packaging around each business, product and brand. Share a reference, sketch or brief and our team can discuss the structure, dimensions, suitable materials, printing and finishing, order quantity, production timeline and delivery requirements before preparing a quotation.</p>
     <div className="detailActions"><a className="primary" href={whatsappHref} target="_blank" rel="noopener noreferrer">Enquire about {item.name} on WhatsApp <span>→</span></a><Link className="outlineCta" href="/products">Back to formats</Link></div>
    </div>
   </section>
 
   <section className="section productSpecGuide">
-   <div className="sectionIntro wide"><p className="eyebrow">What we confirm with you</p><h2>The right format.<br/><i>For the real job.</i></h2><p>We do not publish unverified product specifications. These are the details we establish with you before recommending or quoting a solution.</p></div>
+   <div className="sectionIntro wide"><p className="eyebrow">What we confirm with you</p><h2>The right format.<br/><i>For the real job.</i></h2><p>Every project is reviewed against its intended use. We confirm the details that matter before production so the finished packaging is fit for the product and the customer journey.</p></div>
    <div className="catalogGrid">
     <article className="catalogGroup"><div><p className="eyebrow">01 / Fit</p><h3>Food & portion</h3><p>What the packaging needs to hold, protect and present.</p></div></article>
     <article className="catalogGroup"><div><p className="eyebrow">02 / Structure</p><h3>Dimensions & material</h3><p>Suitable construction, dimensions, closure and material options.</p></div></article>
@@ -113,6 +127,6 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
 
   {siblings.length>0&&<section className="section related"><div className="sectionIntro"><p className="eyebrow">Related formats · {parent?.name??root?.name}</p><h2>Explore this <i>family.</i></h2></div><div className="miniGrid">{siblings.map(x=><Link href={`/products/${x.slug}`} key={x.slug}><span>{x.name}</span><b>↗</b></Link>)}</div></section>}
 
-  <section className="orangeBand"><p className="eyebrow">Start a product enquiry</p><h2>Tell us what you need.<br/><i>We&apos;ll help specify it.</i></h2><p>Share the food product, approximate quantity, city and any existing brand artwork. FareFold will develop a suitable solution and confirm the commercial details before you order.</p><a className="primary dark" href={whatsappHref} target="_blank" rel="noopener noreferrer">Start a WhatsApp enquiry <span>→</span></a></section>
+  <section className="orangeBand"><p className="eyebrow">Start a product enquiry</p><h2>Tell us what you need.<br/><i>We&apos;ll help specify it.</i></h2><p>Share the food product, approximate quantity, city and any existing brand artwork. FareFold works with food businesses across Pakistan to develop a suitable packaging solution and confirm the commercial details before production.</p><a className="primary dark" href={whatsappHref} target="_blank" rel="noopener noreferrer">Start a WhatsApp enquiry <span>→</span></a></section>
  </PageFrame>;
 }
