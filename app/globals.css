@@ -211,3 +211,5 @@
 
 .productFormatVisual{height:250px;max-width:520px;margin:0 0 28px}
 @media(max-width:560px){.productFormatVisual{height:210px}}
+
+.visualProductCard{padding:0;min-height:0;display:block}.visualProductCard:hover{background:var(--cream);color:var(--ink)}
