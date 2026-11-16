@@ -98,6 +98,26 @@ function getUseCases(name:string){
  return ["Restaurant service","Takeaway","Delivery","Custom brand systems"];
 }
 
+const pizzaGallery=[
+ "Pizza box with open lid and branded delivery presentation",
+ "Kraft pizza box with green illustrated pizza artwork",
+ "White pizza box with red illustrated food graphics",
+ "Multi-compartment pizza and meal takeaway packaging",
+ "Turquoise pizza box with colourful illustrated artwork",
+ "Premium dark pizza boxes with gold-style branding",
+ "Two-colour printed pizza box packaging",
+ "Red and green pizza box design studies",
+ "Red pizza box with checkerboard border and top-view details",
+ "White pizza box with red illustrated pizza artwork",
+ "White branded pizza box with pizza photography",
+ "Kraft corrugated pizza box with open lid",
+ "Black and yellow pizza packaging dieline concept",
+ "White pizza box with orange and black branding",
+ "Pink pizza takeaway box",
+ "Kraft pizza box with printed restaurant graphics",
+ "Pizza box with playful character-shaped opening display",
+ "Black pizza box with a viewing window"
+];
 export default async function ProductFamilyPage({params}:{params:Promise<{slug:string}>}){
  const {slug}=await params;
  const item=productFamilies.find(x=>x.slug===slug && x.parentSlug);
@@ -150,6 +170,8 @@ export default async function ProductFamilyPage({params}:{params:Promise<{slug:s
    </div>
    <div className="detailUseCases"><p className="eyebrow">Potential applications to discuss</p><div className="miniGrid">{uses.map(use=><div key={use}><span>{use}</span></div>)}</div></div>
   </section>
+
+  {item.slug==="pizza-boxes"&&<section className="section pizzaPhotoGallery"><div className="sectionIntro wide"><p className="eyebrow">Pizza packaging · Visual references</p><h2>Explore real <i>packaging examples.</i></h2><p>A gallery of the 18 pizza-box images supplied for this project. These examples are visual references for structure, print, presentation and branding—not a claim that every pictured design was manufactured by FareFold.</p></div><div className="pizzaPhotoGrid">{pizzaGallery.map((alt,index)=><figure className="pizzaPhotoCard" key={alt}><div className="pizzaPhoto" role="img" aria-label={alt} style={{backgroundPosition:`${(index%6)*20}% ${Math.floor(index/6)*50}%`}}/><figcaption><span>{String(index+1).padStart(2,"0")}</span>{alt}</figcaption></figure>)}</div></section>}
 
   {siblings.length>0&&<section className="section related"><div className="sectionIntro"><p className="eyebrow">Related formats · {parent?.name??root?.name}</p><h2>Explore this <i>family.</i></h2></div><div className="miniGrid">{siblings.map(x=><Link href={`/products/${x.slug}`} key={x.slug}><span>{x.name}</span><b>↗</b></Link>)}</div></section>}
 
