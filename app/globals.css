@@ -231,3 +231,30 @@
 .catalogQuickLinks button:hover{background:var(--orange);border-color:var(--orange);color:#fff}
 .catalogQuickLinks button:hover span{color:#fff}
 @media(max-width:600px){.catalogFinder{padding:18px}.catalogFinder .catalogTools{flex-direction:column;align-items:stretch}.catalogFinder .catalogReset{align-self:flex-start}.catalogQuickLinks{display:grid;grid-template-columns:1fr 1fr}.catalogQuickLinks button{justify-content:space-between;gap:6px;padding:11px 9px}}
+
+
+/* Individual format silhouettes: recognizable structure instead of one generic box. */
+.catalogPackVisual[data-format="pizza-boxes"] .catalogPackShape{width:58%;height:42%;background:#d5b88f;transform:perspective(300px) rotateX(12deg) rotateZ(-5deg);border:5px solid #f6ead7;box-shadow:16px 18px 0 rgba(23,22,19,.12)}
+.catalogPackVisual[data-format="pizza-boxes"] .catalogPackShape:before{inset:12%;border:1px dashed #9b7954}
+.catalogPackVisual[data-format="burger-boxes"] .catalogPackShape{width:48%;height:43%;background:#d8bd92;clip-path:polygon(8% 18%,50% 0,92% 18%,92% 100%,8% 100%);transform:rotate(-4deg)}
+.catalogPackVisual[data-format="burger-boxes"] .catalogPackShape:before{inset:18% 12% 12%;border:2px solid #9b7954}
+.catalogPackVisual[data-format="chicken-boxes"] .catalogPackShape{width:43%;height:56%;background:#d8bd92;clip-path:polygon(8% 0,92% 0,100% 100%,0 100%);transform:rotate(4deg)}
+.catalogPackVisual[data-format="chicken-boxes"] .catalogPackShape:before{inset:13% 12%;border:2px solid #9b7954}
+.catalogPackVisual[data-format="snack-boxes"] .catalogPackShape{width:42%;height:50%;background:#e4cda9;clip-path:polygon(0 12%,100% 12%,84% 100%,16% 100%);transform:rotate(-5deg)}
+.catalogPackVisual[data-format="cake-boxes"] .catalogPackShape,.catalogPackVisual[data-format="bakery-boxes"] .catalogPackShape{width:53%;height:43%;background:#f6eee1;border:5px solid #c8a77c;transform:perspective(280px) rotateX(8deg) rotateZ(-4deg)}
+.catalogPackVisual[data-format="cake-boxes"] .catalogPackShape:before,.catalogPackVisual[data-format="bakery-boxes"] .catalogPackShape:before{inset:10%;border:1px solid #c8a77c}
+.catalogPackVisual[data-format="coffee-cups"] .catalogPackShape,.catalogPackVisual[data-format="hot-cups"] .catalogPackShape{width:29%;height:56%;background:#f8f2e8;border-radius:4% 4% 15% 15%;border-top:9px solid var(--orange);transform:perspective(240px) rotateX(-6deg)}
+.catalogPackVisual[data-format="coffee-cups"] .catalogPackShape:before,.catalogPackVisual[data-format="hot-cups"] .catalogPackShape:before{inset:22% 10%;border:1px solid #c8b9a6}
+.catalogPackVisual[data-format="paper-bags"] .catalogPackShape,.catalogPackVisual[data-format="kraft-bags"] .catalogPackShape{width:37%;height:57%;background:#c49a68;clip-path:polygon(8% 0,92% 0,100% 100%,0 100%);transform:rotate(3deg)}
+.catalogPackVisual[data-format="paper-bags"] .catalogPackShape:before,.catalogPackVisual[data-format="kraft-bags"] .catalogPackShape:before{inset:-18% 24% auto;height:28%;border:3px solid #8c6948;border-bottom:0;border-radius:50% 50% 0 0}
+.catalogPackVisual[data-format="sauce-containers"] .catalogPackShape{width:37%;height:35%;background:#f8f2e8;border-radius:8% 8% 18% 18%;border-top:8px solid var(--orange);transform:perspective(220px) rotateX(-8deg)}
+.catalogPackVisual[data-format="sauce-containers"] .catalogPackShape:before{inset:-18% -5% auto;height:18%;background:#24221f;border:0;border-radius:5px}
+.catalogPackVisual[data-format="food-containers"] .catalogPackShape,.catalogPackVisual[data-format="meal-containers"] .catalogPackShape{width:52%;height:38%;background:#f8f2e8;border-radius:7% 7% 16% 16%;border-top:10px solid #24221f;transform:perspective(240px) rotateX(-9deg)}
+.catalogPackVisual[data-format="food-containers"] .catalogPackShape:before,.catalogPackVisual[data-format="meal-containers"] .catalogPackShape:before{inset:20%;border:1px solid #c8b9a6}
+.catalogPackVisual[data-format="paper-bowls"] .catalogPackShape{width:43%;height:30%;background:#f8f2e8;border-radius:0 0 50% 50%;border-top:9px solid var(--orange);transform:perspective(200px) rotateX(-8deg)}
+.catalogPackVisual[data-format="paper-bowls"] .catalogPackShape:before{inset:20% 12%;border:1px solid #c8b9a6;border-top:0}
+.catalogPackVisual[data-format="food-trays"] .catalogPackShape,.catalogPackVisual[data-format="chicken-trays"] .catalogPackShape{width:57%;height:31%;background:#d3c3aa;border:8px solid #f8f2e8;transform:perspective(250px) rotateX(30deg) rotateZ(-6deg)}
+.catalogPackVisual[data-format="food-trays"] .catalogPackShape:before,.catalogPackVisual[data-format="chicken-trays"] .catalogPackShape:before{inset:18%;border:1px solid #a99a84}
+.catalogPackVisual[data-format="ice-cream-cones"] .catalogPackShape,.catalogPackVisual[data-format="fries-cones"] .catalogPackShape{width:34%;height:58%;background:#d7b17a;clip-path:polygon(0 0,100% 0,50% 100%);transform:rotate(5deg)}
+.catalogPackVisual[data-format="printed-boxes"] .catalogPackShape{width:48%;height:47%;background:var(--orange);border:7px solid #f8f2e8;transform:rotate(7deg)}
+.catalogPackVisual[data-format="printed-boxes"] .catalogPackShape:before{inset:12%;border:1px solid #fff}
