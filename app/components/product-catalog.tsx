@@ -143,14 +143,20 @@ export function ProductCatalog({items,categories}:{items:Item[];categories:Categ
  const activeCategory=categories.find(x=>x.slug===group);
  return <div className="productCatalog">
   <div className="catalogBrowseHead"><div><p className="eyebrow">Browse by category</p><h3>Explore the <i>range.</i></h3></div><span>{items.length} formats · {categories.length} categories</span></div>
+  <div className="catalogFinder">
+   <div className="catalogTools">
+    <label className="catalogSearch"><span>Search products and packaging formats</span><input type="search" aria-label="Search packaging formats" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search pizza boxes, burger boxes, cups, bags, containers..." /></label>
+    <button type="button" className="catalogReset" onClick={()=>{setGroup("all");setQuery("");}}>Clear search ↺</button>
+   </div>
+   <p className="catalogQuickLabel">Popular starting points</p>
+   <div className="catalogQuickLinks">
+    {[["Pizza boxes","pizza"],["Burger boxes","burger"],["Chicken boxes","chicken"],["Coffee cups","coffee"],["Food containers","containers"],["Paper bags","paper bags"],["Cake boxes","cake"],["Sauce containers","sauce"]].map(([label,term])=><button type="button" key={term} onClick={()=>{setGroup("all");setQuery(term);}}>{label}<span>↗</span></button>)}
+   </div>
+  </div>
   <div className="catalogCategoryGrid" aria-label="Packaging categories">
    {categories.map((category,index)=><button type="button" key={category.slug} className={group===category.slug?"catalogCategory active":"catalogCategory"} onClick={()=>setGroup(group===category.slug?"all":category.slug)} aria-pressed={group===category.slug}>
     <span className="catalogCategoryNo">{String(index+1).padStart(2,"0")}</span><strong>{category.name}</strong><small>{category.count} formats <b>↗</b></small>
    </button>)}
-  </div>
-  <div className="catalogTools">
-   <label className="catalogSearch"><span>Search the catalogue</span><input type="search" aria-label="Search packaging formats" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Try pizza box, cup, bag, tray, napkin..." /></label>
-   <button type="button" className="catalogReset" onClick={()=>{setGroup("all");setQuery("");}}>Reset filters ↺</button>
   </div>
   <div className="catalogResultMeta" role="status" aria-live="polite"><span>{activeCategory?activeCategory.name:"All categories"}</span><strong>{filtered.length} {filtered.length===1?"format":"formats"}</strong> to explore <span className="catalogMetaNote">· Format directory, not live stock</span></div>
   <div className="catalogProductGrid">{filtered.map((x,i)=><Link className="catalogProductCard visualProductCard" href={`/products/${x.slug}`} key={x.slug}>
