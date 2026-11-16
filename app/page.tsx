@@ -45,8 +45,8 @@ export default function Home(){
           <h1>Make your<br/><em>food brand</em><br/>impossible to forget.</h1>
           <p>FareFold designs and makes packaging for food businesses — and builds recognizable restaurant brands from the first idea to the customer experience.</p>
           <div className="homeActions">
-            <Link className="homeButton homeButtonOrange" href="/contact">Start your brand <span>↗</span></Link>
-            <Link className="homeTextLink" href="#businesses">Explore businesses <span>↓</span></Link>
+            <Link className="homeButton homeButtonOrange" href="/products">Browse packaging products <span>↗</span></Link>
+            <Link className="homeTextLink" href="/contact">Request a quotation <span>↗</span></Link>
           </div>
         </div>
         <div className="heroComposition" aria-label="Farefold packaging and brand composition">
