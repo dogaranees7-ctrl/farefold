@@ -291,3 +291,14 @@
 .catalogPackVisual[data-format="napkins"] .catalogPackShape:before,.catalogPackVisual[data-format="food-wrapping-paper"] .catalogPackShape:before,.catalogPackVisual[data-format="burger-paper"] .catalogPackShape:before{inset:13%;border:1px dashed #c49a68}
 .catalogPackVisual[data-format="forks"] .catalogPackShape,.catalogPackVisual[data-format="knives"] .catalogPackShape,.catalogPackVisual[data-format="spoons"] .catalogPackShape{width:9%;height:62%;background:#b9b8b2;border-radius:8px;box-shadow:15px 0 0 #b9b8b2,30px 0 0 #b9b8b2;transform:rotate(8deg)}
 .catalogPackVisual[data-format="stickers"] .catalogPackShape,.catalogPackVisual[data-format="labels"] .catalogPackShape,.catalogPackVisual[data-format="seals"] .catalogPackShape{width:40%;height:40%;background:var(--orange);border:8px solid #f8f4ec;border-radius:50%;transform:rotate(-8deg)}
+
+
+/* Real customer-supplied pizza packaging photo gallery */
+.pizzaPhotoGallery{padding-top:clamp(54px,8vw,110px);border-top:1px solid var(--line,#ded8cf)}
+.pizzaPhotoGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.pizzaPhotoCard{margin:0;min-width:0;background:#f2eee7;border:1px solid rgba(35,32,27,.1)}
+.pizzaPhoto{width:100%;aspect-ratio:4/5;background-image:url('/images/pizza-packaging-gallery.webp');background-size:600% 300%;background-repeat:no-repeat;background-color:#f4f1eb}
+.pizzaPhotoCard figcaption{display:flex;gap:12px;align-items:flex-start;padding:14px 15px 16px;font-size:12px;line-height:1.5;color:var(--ink,#28251f)}
+.pizzaPhotoCard figcaption span{flex:0 0 auto;font-size:10px;letter-spacing:.12em;color:var(--muted,#81796d)}
+@media(max-width:900px){.pizzaPhotoGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+@media(max-width:520px){.pizzaPhotoGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.pizzaPhotoCard figcaption{padding:10px;font-size:11px}}
