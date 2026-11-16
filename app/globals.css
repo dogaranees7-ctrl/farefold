@@ -213,3 +213,21 @@
 @media(max-width:560px){.productFormatVisual{height:210px}}
 
 .visualProductCard{padding:0;min-height:0;display:block}.visualProductCard:hover{background:var(--cream);color:var(--ink)}
+
+
+/* Product finder priority: put search and popular shortcuts before category browsing. */
+.catalogFinder{margin:30px 0 38px;padding:26px;background:var(--ink);color:var(--paper)}
+.catalogFinder .catalogSearch{display:flex;flex:1;flex-direction:column;gap:9px;min-width:0}
+.catalogFinder .catalogSearch>span{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#d8d0c5;font-weight:700}
+.catalogFinder .catalogSearch input{width:100%;min-height:54px;padding:0 17px;border:1px solid #6a6258;background:#fff;color:#171613;font:500 15px 'DM Sans';outline:none}
+.catalogFinder .catalogSearch input:focus{border-color:var(--orange);box-shadow:0 0 0 2px rgba(239,104,43,.2)}
+.catalogFinder .catalogTools{align-items:end}
+.catalogFinder .catalogReset{border-color:#777067;color:#fff}
+.catalogFinder .catalogReset:hover{border-color:var(--orange);color:var(--orange)}
+.catalogQuickLabel{margin:22px 0 10px;color:#c7c0b6;font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.catalogQuickLinks{display:flex;flex-wrap:wrap;gap:8px}
+.catalogQuickLinks button{display:flex;align-items:center;gap:18px;padding:10px 12px;border:1px solid #514b44;background:transparent;color:#fff;font:600 11px 'DM Sans';cursor:pointer}
+.catalogQuickLinks button span{color:var(--orange)}
+.catalogQuickLinks button:hover{background:var(--orange);border-color:var(--orange);color:#fff}
+.catalogQuickLinks button:hover span{color:#fff}
+@media(max-width:600px){.catalogFinder{padding:18px}.catalogFinder .catalogTools{flex-direction:column;align-items:stretch}.catalogFinder .catalogReset{align-self:flex-start}.catalogQuickLinks{display:grid;grid-template-columns:1fr 1fr}.catalogQuickLinks button{justify-content:space-between;gap:6px;padding:11px 9px}}
